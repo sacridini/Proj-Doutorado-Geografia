@@ -1,0 +1,25 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+
+\title{Campos Temáticos 2019}
+\author{Eduardo Ribeiro Lacerda }
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+O objetivo deste trabalho é apresentar o estado da arte sobre a aplicação de técnicas de análise e séries temporais em imagens de satélite orbitais para o estudo de áreas de floresta que sofreram ou não algum tipo de distúrbio.    
+\end{abstract}
+
+\section{Introdução}
+A aplicação de técnicas de análise de séries temporais para o monitoramento espaço-temporal da paisagem e em específico para o de áreas florestadas vem possibilitando o desenvolvimento de estudos que visam para além de uma descrição estática da paisagem através da elaboração de mapas de uso e cobertura, um entendimento mais aprofundado sobre os processos ocorridos na paisagem ao estabelecer o tempo como ator importante. A incorporação do tempo possui importância estratégia pois possibilita tipos de monitoramentos que se tornam cada vez mais importantes sob os aspectos políticos e sócio-econômicos, como os acordos internacionais de restauração florestal e políticas de REDD+. 
+\par
+Além disso, analisar áreas florestadas sob uma perspectiva temporal possibilita a identificação de processos e padrões que uma simples caracterização espectral mais tradicional não é possível de identificar devido a limitações ligadas a resolução espacial, radiométrica e espectral. Sendo assim, ao incluir o a dimensão temporal, é possível entender dinâmicas como a supressão da floresta em um dado momento, como também os distúrbios naturais e degradações de origem antrópica ao longo do tempo.
+A degradação associada ao desmatamento e posterior uso agrícola da terra, seguido do abandono e consequente retorno da vegetação através de processos de regeneração natural, ou então um processo de degradação mais lento, como a extração seletiva de madeira, são exemplos de mudanças no uso e cobertura da terra que só podem ser compreendidos através de técnicas como as que serão mostradas neste trabalho. \par
+Técnicas de detecção de mudança possuem uma longa história na área de sensoriamento remoto. Desde as primeiras aplicações utilizando sensores TM do satélite Landsat 5 na década de 1980 e 1990, muitos estudos foram feitos. Inicialmente os estudos da área visavam somente na aplicação de técnicas mais tradicionais como o mapeamento das áreas de interesse utilizando técnicas tradicionais de classificação de imagens tanto de forma supervisionada como não supervisionada e posterior cálculo da diferença entre as duas ou mais imagens. Neste caso, somente métricas como o ganho e perda de área e sua consequente espacialização poderiam ser extraídas e visualizadas. No entanto, com o constante avanço da tecnologia computacional tanto no poder de processamento como no de armazenamento e no consequente amadurecimento das técnicas, softwares e bibliotecas disponíveis, o processamento de dados multi-temporais passaram a ser entendidos em sua totalidade. Ou seja, sem a necessidade prévia da aplicação de técnicas reducionistas. O que isso significa na prática é que a análise de mudanças de áreas de floresta passou a ser feita através da manipulação e criação de composições anuais ou intra-anuais ou então na pura análise de toda a série temporal sem maiores cortes. 
+\par
+A capacidade de análise utilizando algoritmos voltados para o processamento de séries temporais necessita, antes de tudo, da composição de uma série de dados com uma densidade mínima para que o processo que esteja sendo estudado possa ser identificado. No caso da utilização de imagens de satélite isso se torna um limitador importante, já que a disponibilidade de satélites imageadores historicamente nunca foi alta e tem custo extremamente elevado de produção quando comparado a outros tipos de sensores. Ou problema é que os satélites possuem um tempo de revisita que em muitos casos não possibilitam que uma série mais densa possa ser estruturada. Além disso, problemas como a presença de nuvens e sombras, assim como ruídos na própria imagem e a diferenciação espacial da área de imageamento do satélite devido a heterogeneidade da distribuição solar no planeta dificultam ainda mais esse processo. No entanto, com o tempo, outros satélites foram sendo desenvolvidos e propositalmente pensados com o objetivo de incorporar as séries de imagens já existentes derivadas de projetos antigos e abandonados com os recém lançados. Um exemplo disso foi o lançamento da série Sentinel 2 (A e B) pela Agência Espacial Europeia com uma resolução espectral e espacial similar as encontradas na série Landsat, o que possibilita uma fusão entre imagens de satélites diferentes com o objetivo de aumentar a densidade de imagens. 
+
+
+\end{document}
