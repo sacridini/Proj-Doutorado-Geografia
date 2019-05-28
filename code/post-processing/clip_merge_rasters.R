@@ -2,8 +2,12 @@
 library(raster)
 library(gdalUtils)
 
+ltr_analysis_folder <- "ltgee_loss_greatest"
+raster_folder <- "/media/eduardo/data/Doutorado/raster/"
+
 # Clip Raster -------------------------------------------------------------
-ltr_rasters <- list.files("/media/eduardo/data/Doutorado/raster/ltgee_loss_greatest", pattern = "*.tif", full.names = TRUE)
+print("Clipping the rasters using the voronoi vectors")
+ltr_rasters <- list.files(paste0(raster_folder, ltr_analysis_folder), pattern = "*.tif", full.names = TRUE)
 voronoi_vectors <- list.files("/media/eduardo/data/Doutorado/vector/voronoi_splits", pattern = "*.shp", full.names = TRUE)
 vector_names <- list.files("/media/eduardo/data/Doutorado/vector/voronoi_splits", pattern = "*.shp")
 
@@ -14,13 +18,14 @@ for(i in 1:length(ltr_rasters))
                 voronoi_vectors[[i]],
                 " -crop_to_cutline ",
                 ltr_rasters[[i]],
-                " /media/eduardo/data/Doutorado/raster/ltgee_loss_greatest/clip/", output_name ,
+                raster_folder, ltr_analysis_folder, "/clip/", output_name ,
                 " -co BIGTIFF=YES -wm 2000 -co COMPRESS=DEFLATE -multi -wo NUM_THREADS=ALL_CPUS"))
 }
 
 
 # Zero to NA --------------------------------------------------------------
-clip_path <- list.files("/media/eduardo/data/Doutorado/raster/ltgee_loss_greatest/clip", pattern = "*.tif", full.names = TRUE)
+print("Reclassify: 0 to NA")
+clip_path <- list.files(raster_folder, ltr_analysis_folder, "/clip", pattern = "*.tif", full.names = TRUE)
 
 for(i in 1:length(clip_path))
 {
@@ -35,9 +40,22 @@ for(i in 1:length(clip_path))
 
 
 # Create VRT --------------------------------------------------------------
-system(paste0("gdalbuildvrt /media/eduardo/data/Doutorado/raster/ltgee_loss_greatest/clip/mosaic.vrt *na.tif -a_srs \"EPSG:4326\""))
+print("Creating VRT")
+system(paste0("gdalbuildvrt ", raster_folder, ltr_analysis_folder, "/clip/mosaic.vrt *na.tif -a_srs \"EPSG:4326\""))
 
 # Create Mosaic -----------------------------------------------------------
+print("Creating Mosaic")
 system(paste0("gdal_translate -of GTiff -ot UInt16 -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 -co BIGTIFF=YES -a_srs epsg:4326 ",
-              "/media/eduardo/data/Doutorado/raster/ltgee_loss_greatest/clip/mosaic.vrt ",
-              "/media/eduardo/data/Doutorado/raster/ltgee_loss_greatest/clip/mosaic.tif"))
+              raster_folder, ltr_analysis_folder, "/clip/mosaic.vrt ",
+              raster_folder, ltr_analysis_folder, "/clip/mosaic.tif"))
+    
+
+# Clip by MA Shapefile ----------------------------------------------------
+print("Clipping the mosaic using the MA Shapefile")
+system(paste0("gdalwarp -cutline ",
+              "/media/eduardo/data/Doutorado/vector/mata_atlantica_limite.shp",
+              " -crop_to_cutline ",
+              raster_folder, ltr_analysis_folder, "/clip/mosaic.tif ",
+              raster_folder, ltr_analysis_folder, "/clip/mosaic_clip.tif",
+              " -co BIGTIFF=YES -wm 2000 -co COMPRESS=DEFLATE -multi -wo NUM_THREADS=ALL_CPUS ",
+              " --config GDALWARP_IGNORE_BAD_CUTLINE YES"))
