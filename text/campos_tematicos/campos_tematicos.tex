@@ -1,9 +1,18 @@
 \documentclass{article}
+\usepackage[portuguese]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage{comment}
 
-\title{Campos Temáticos 2019}
+% Keywords command
+\providecommand{\keywords}[1]
+{
+  \small	
+  \textbf{\text{Palavras-chave---}} #1
+}
+
+\title{Perspectivas sobre a Utilização de Algoritmos para o Processamento de Séries Temporais no Estudo de Distúrbios Florestais}
 \author{Eduardo Ribeiro Lacerda }
-\date{\today}
+\date{\the\year}
 
 \begin{document}
 \maketitle
@@ -12,8 +21,11 @@
 O objetivo deste trabalho é apresentar o estado da arte sobre a aplicação de técnicas de análise e séries temporais em imagens de satélite orbitais para o estudo de áreas de floresta que sofreram ou não algum tipo de distúrbio.    
 \end{abstract}
 
+\vspace{1cm}
+\keywords{Séries Temporais; Algoritmos; Landtrendr; Distúrbios}
+
 \section{Introdução}
-A aplicação de técnicas de análise de séries temporais para o monitoramento espaço-temporal da paisagem e em específico para o de áreas florestadas vem possibilitando o desenvolvimento de estudos que visam para além de uma descrição estática da paisagem através da elaboração de mapas de uso e cobertura, um entendimento mais aprofundado sobre os processos ocorridos na paisagem ao estabelecer o tempo como ator importante. A incorporação do tempo possui importância estratégia pois possibilita tipos de monitoramentos que se tornam cada vez mais importantes sob os aspectos políticos e sócio-econômicos, como os acordos internacionais de restauração florestal e políticas de REDD+. 
+A aplicação de técnicas de análise de séries temporais para o monitoramento espaço-temporal da paisagem e em específico para o de áreas florestadas vem possibilitando o desenvolvimento de estudos que visam para além de uma descrição estática da paisagem através da elaboração de mapas de uso e cobertura, um entendimento mais aprofundado sobre os processos ocorridos na paisagem ao estabelecer o tempo como ator importante. A incorporação do tempo possui importância estratégia pois possibilita tipos de monitoramentos que se tornam cada vez mais importantes sob os aspectos políticos e sócio-econômicos, como os acordos internacionais de restauração florestal e políticas de REDD+ ~\cite{BOS2019295, CROUZEILLES2019}. 
 \par
 Além disso, analisar áreas florestadas sob uma perspectiva temporal possibilita a identificação de processos e padrões que uma simples caracterização espectral mais tradicional não é possível de identificar devido a limitações ligadas a resolução espacial, radiométrica e espectral. Sendo assim, ao incluir o a dimensão temporal, é possível entender dinâmicas como a supressão da floresta em um dado momento, como também os distúrbios naturais e degradações de origem antrópica ao longo do tempo.
 A degradação associada ao desmatamento e posterior uso agrícola da terra, seguido do abandono e consequente retorno da vegetação através de processos de regeneração natural, ou então um processo de degradação mais lento, como a extração seletiva de madeira, são exemplos de mudanças no uso e cobertura da terra que só podem ser compreendidos através de técnicas como as que serão mostradas neste trabalho. \par
@@ -21,5 +33,21 @@ Técnicas de detecção de mudança possuem uma longa história na área de sens
 \par
 A capacidade de análise utilizando algoritmos voltados para o processamento de séries temporais necessita, antes de tudo, da composição de uma série de dados com uma densidade mínima para que o processo que esteja sendo estudado possa ser identificado. No caso da utilização de imagens de satélite isso se torna um limitador importante, já que a disponibilidade de satélites imageadores historicamente nunca foi alta e tem custo extremamente elevado de produção quando comparado a outros tipos de sensores. Ou problema é que os satélites possuem um tempo de revisita que em muitos casos não possibilitam que uma série mais densa possa ser estruturada. Além disso, problemas como a presença de nuvens e sombras, assim como ruídos na própria imagem e a diferenciação espacial da área de imageamento do satélite devido a heterogeneidade da distribuição solar no planeta dificultam ainda mais esse processo. No entanto, com o tempo, outros satélites foram sendo desenvolvidos e propositalmente pensados com o objetivo de incorporar as séries de imagens já existentes derivadas de projetos antigos e abandonados com os recém lançados. Um exemplo disso foi o lançamento da série Sentinel 2 (A e B) pela Agência Espacial Europeia com uma resolução espectral e espacial similar as encontradas na série Landsat, o que possibilita uma fusão entre imagens de satélites diferentes com o objetivo de aumentar a densidade de imagens. 
 
+\begin{comment}
+    Brazil made an ambitious pledge of 12 Mha as a contribution to the Bonn Challenge global target of bringing 150 and 350 Mha of  degraded/deforested lands under restoration by 2020 and 2030, respectively (www.bonnchallenge.org).
+    
+    It is also part of Brazil’s pledge to the Paris Climate Agreement 
+    (http://www.mma.gov.br/images/arquivo/80108/BRASIL%20iNDC%20portugues%20F 
+    INAL.pdf) and its National Policy for Native Vegetation Recovery 
+    (http://www.mma.gov.br/images/arquivos/florestas/planaveg_plano_nacional_recuperacao_vegetacao_nativa.pdf).
+\end{comment}
 
+
+\bibliographystyle{apalike}
+\bibliography{bibliography.bib}
 \end{document}
+
+
+
+
+
