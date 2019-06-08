@@ -23,3 +23,318 @@ author = "Astrid B. Bos and Veronique De Sy and Amy E. Duchelle and Martin Herol
 keywords = "Accuracy, Deforestation, Measurement, reporting and verification, Performance, REDD+, Uncertainty",
 abstract = "Assessing the performance of efforts to reduce emissions from deforestation and forest degradation (REDD+) requires data on forest cover change. Innovations in remote sensing and forest monitoring provide ever-increasing levels of coverage, spatial and temporal detail, and accuracy. More global products and advanced open-source algorithms are becoming available. Still, these datasets and tools are not always consistent or complementary, and their suitability for local REDD+ performance assessments remains unclear. These assessments should, ideally, be free of any confounding factors, but performance estimates are affected by data uncertainties in unknown ways. Here, we analyse (1) differences in accuracy between datasets of forest cover change; (2) if and how combinations of datasets can increase accuracy; and we demonstrate (3) the effect of (not) doing accuracy assessments for REDD+ performance measurements. Our study covers five local REDD+ initiatives in four countries across the tropics. We compared accuracies of a readily available global forest cover change dataset and a locally modifiable open-source break detection algorithm. We applied human interpretation validation tools using Landsat Time Series data and high-resolution optical imagery. Next, we assessed whether and how combining different datasets can increase accuracies using several combination strategies. Finally, we demonstrated the consequences of using the input datasets for REDD+ performance assessments with and without considering their accuracies and uncertainties. Estimating the amount of deforestation using validation samples could substantially reduce uncertainty in REDD+ performance assessments. We found that the accuracies of the various data sources differ at site level, although on average neither one of the input products consistently excelled in accuracy. Using a combination of both products as stratification for area estimation and validated with a sample of high-resolution data seems promising. In these combined products, the expected trade-offs in accuracies across change classes (before, after, no change) and across accuracy types (user’s and producer’s accuracy) were negligible, so their use is advantageous over single-source datasets. More locally calibrated wall-to-wall products should be developed to make them more useful and applicable for REDD+ purposes. The direction and degree of REDD+ performance remained statistically uncertain, as CIs were overlapping in most cases for the deforestation estimates before and after the start of the REDD+ interventions. Given these uncertainties and inaccuracies and to increase the credibility of REDD+ it is advised to (1) be conservative in REDD+ accounting, and (2) not to rely on results from single currently available global data sources or tools without sample-based validation if results-based payments are intended to be made on this basis."
 }
+
+
+@article{VERBESSELT2010106,
+title = "Detecting trend and seasonal changes in satellite image time series",
+journal = "Remote Sensing of Environment",
+volume = "114",
+number = "1",
+pages = "106 - 115",
+year = "2010",
+issn = "0034-4257",
+doi = "https://doi.org/10.1016/j.rse.2009.08.014",
+url = "http://www.sciencedirect.com/science/article/pii/S003442570900265X",
+author = "Jan Verbesselt and Rob Hyndman and Glenn Newnham and Darius Culvenor",
+keywords = "Change detection, NDVI, Time series, Trend analysis, MODIS, Piecewise linear regression, Vegetation dynamics, Phenology",
+abstract = "A wealth of remotely sensed image time series covering large areas is now available to the earth science community. Change detection methods are often not capable of detecting land cover changes within time series that are heavily influenced by seasonal climatic variations. Detecting change within the trend and seasonal components of time series enables the classification of different types of changes. Changes occurring in the trend component often indicate disturbances (e.g. fires, insect attacks), while changes occurring in the seasonal component indicate phenological changes (e.g. change in land cover type). A generic change detection approach is proposed for time series by detecting and characterizing Breaks For Additive Seasonal and Trend (BFAST). BFAST integrates the decomposition of time series into trend, seasonal, and remainder components with methods for detecting change within time series. BFAST iteratively estimates the time and number of changes, and characterizes change by its magnitude and direction. We tested BFAST by simulating 16-day Normalized Difference Vegetation Index (NDVI) time series with varying amounts of seasonality and noise, and by adding abrupt changes at different times and magnitudes. This revealed that BFAST can robustly detect change with different magnitudes (>0.1 NDVI) within time series with different noise levels (0.01–0.07 σ) and seasonal amplitudes (0.1–0.5 NDVI). Additionally, BFAST was applied to 16-day NDVI Moderate Resolution Imaging Spectroradiometer (MODIS) composites for a forested study area in south eastern Australia. This showed that BFAST is able to detect and characterize spatial and temporal changes in a forested landscape. BFAST is not specific to a particular data type and can be applied to time series without the need to normalize for land cover types, select a reference period, or change trajectory. The method can be integrated within monitoring frameworks and used as an alarm system to flag when and where changes occur."
+}
+
+@article{VERBESSELT20102970,
+title = "Phenological change detection while accounting for abrupt and gradual trends in satellite image time series",
+journal = "Remote Sensing of Environment",
+volume = "114",
+number = "12",
+pages = "2970 - 2980",
+year = "2010",
+issn = "0034-4257",
+doi = "https://doi.org/10.1016/j.rse.2010.08.003",
+url = "http://www.sciencedirect.com/science/article/pii/S0034425710002336",
+author = "Jan Verbesselt and Rob Hyndman and Achim Zeileis and Darius Culvenor",
+keywords = "Phenology, Change detection, Time series, disturbance, Climate change, Remote sensing",
+abstract = "A challenge in phenology studies is understanding what constitutes phenological change amidst background variation. The majority of phenological studies have focused on extracting critical points in the seasonal growth cycle, without exploiting the full temporal detail. The high degree of phenological variability between years demonstrates the necessity of distinguishing long-term phenological change from temporal variability. Here, we demonstrate the phenological change detection ability of a method for detecting change within time series. BFAST, Breaks For Additive Seasonal and Trend, integrates the decomposition of time series into trend, seasonal, and remainder components with methods for detecting change. We tested BFAST by simulating 16-day NDVI time series with varying amounts of seasonal amplitude and noise, containing abrupt disturbances (e.g. fires) and long-term phenological changes. This revealed that the method is able to detect the timing of phenological changes within time series while accounting for abrupt disturbances and noise. Results showed that the phenological change detection is influenced by the signal-to-noise ratio of the time series. Between different land cover types the seasonal amplitude varies and determines the signal-to-noise ratio, and as such the capacity to differentiate phenological changes from noise. Application of the method on 16-day NDVI MODIS images from 2000 until 2009 for a forested study area in south eastern Australia confirmed these results. It was shown that a minimum seasonal amplitude of 0.1 NDVI is required to detect phenological change within cleaned MODIS NDVI time series using the quality flags. BFAST identifies phenological change independent of phenological metrics by exploiting the full time series. The method is globally applicable since it analyzes each pixel individually without the setting of thresholds to detect change within a time series. Long-term phenological changes can be detected within NDVI time series of a large range of land cover types (e.g. grassland, woodlands and deciduous forests) having a seasonal amplitude larger than the noise level. The method can be applied to any time series data and it is not necessarily limited to NDVI."
+}
+
+@article{VERBESSELT201298,
+title = "Near real-time disturbance detection using satellite image time series",
+journal = "Remote Sensing of Environment",
+volume = "123",
+pages = "98 - 108",
+year = "2012",
+issn = "0034-4257",
+doi = "https://doi.org/10.1016/j.rse.2012.02.022",
+url = "http://www.sciencedirect.com/science/article/pii/S0034425712001150",
+author = "Jan Verbesselt and Achim Zeileis and Martin Herold",
+keywords = "Early warning, Real-time monitoring, Global change, Disturbance, Time series, Remote sensing, Vegetation phenology, Climate dynamics",
+abstract = "Near real-time monitoring of ecosystem disturbances is critical for rapidly assessing and addressing impacts on carbon dynamics, biodiversity, and socio-ecological processes. Satellite remote sensing enables cost-effective and accurate monitoring at frequent time steps over large areas. Yet, generic methods to detect disturbances within newly captured satellite images are lacking. We propose a multi-purpose time-series-based disturbance detection approach that identifies and models stable historical variation to enable change detection within newly acquired data. Satellite image time series of vegetation greenness provide a global record of terrestrial vegetation productivity over the past decades. Here, we assess and demonstrate the method by applying it to (1) simulated time series of vegetation greenness data from satellite data, (2) real-world satellite greenness image time series between February 2000 and July 2011 covering Somalia to detect drought-related vegetation disturbances. First, simulation results illustrate that disturbances are successfully detected in near real-time while being robust to seasonality and noise. Second, major drought-related disturbance corresponding with most drought-stressed regions in Somalia are detected from mid-2010 onwards. The method can analyse in-situ or satellite data time series of biophysical indicators from local to global scale since it is fast, does not depend on thresholds and does not require time series gap filling. While the data and methods used are appropriate for proof-of-concept development of global scale disturbance monitoring, specific applications (e.g., drought or deforestation monitoring) mandate integration within an operational monitoring framework (e.g., http://www.fews.net/)."
+}
+
+@phdthesis{LATIFAH2016,
+  title = "Quantifying Land Use Intensity of Slash and Burn Agriculture Using Remote Sensing Time-Series",
+  author = "Siti H. Latifah",
+  school = "Wageningen University",
+  url = "http://edepot.wur.nl/351172",
+  year = "2016",
+} 
+
+@software{bfastSpatial,
+  author = {Dutrieux, Lo\"{i}c and DeVries, Ben},
+  title = {{bfastSpatial: Set of utilities and wrappers to perform change detection on satellite image time-series}},
+  url = {https://github.com/loicdtx/bfastSpatial},
+  version = {0.6.2},
+  year = "2014",
+  date = {2014-12-04},
+  doi = {10.5281/zenodo.49693}
+}
+
+@article{DUTRIEUX2016112,
+title = "Reconstructing land use history from Landsat time-series: Case study of a swidden agriculture system in Brazil",
+journal = "International Journal of Applied Earth Observation and Geoinformation",
+volume = "47",
+pages = "112 - 124",
+year = "2016",
+issn = "0303-2434",
+doi = "https://doi.org/10.1016/j.jag.2015.11.018",
+url = "http://www.sciencedirect.com/science/article/pii/S0303243415300647",
+author = "Loïc P. Dutrieux and Catarina C. Jakovac and Siti H. Latifah and Lammert Kooistra",
+keywords = "Landsat, Land trajectories, Swidden agriculture, Segmentation, Time-series, Land use history, Slash and burn agriculture",
+abstract = "We developed a method to reconstruct land use history from Landsat images time-series. The method uses a breakpoint detection framework derived from the econometrics field and applicable to time-series regression models. The Breaks For Additive Season and Trend (BFAST) framework is used for defining the time-series regression models which may contain trend and phenology, hence appropriately modelling vegetation intra and inter-annual dynamics. All available Landsat data are used for a selected study area, and the time-series are partitioned into segments delimited by breakpoints. Segments can be associated to land use regimes, while the breakpoints then correspond to shifts in land use regimes. In order to further characterize these shifts, we classified the unlabelled breakpoints returned by the algorithm into their corresponding processes. We used a Random Forest classifier, trained from a set of visually interpreted time-series profiles to infer the processes and assign labels to the breakpoints. The whole approach was applied to quantifying the number of cultivation cycles in a swidden agriculture system in Brazil (state of Amazonas). Number and frequency of cultivation cycles is of particular ecological relevance in these systems since they largely affect the capacity of the forest to regenerate after land abandonment. We applied the method to a Landsat time-series of Normalized Difference Moisture Index (NDMI) spanning the 1984–2015 period and derived from it the number of cultivation cycles during that period at the individual field scale level. Agricultural fields boundaries used to apply the method were derived using a multi-temporal segmentation approach. We validated the number of cultivation cycles predicted by the method against in-situ information collected from farmers interviews, resulting in a Normalized Residual Mean Squared Error (NRMSE) of 0.25. Overall the method performed well, producing maps with coherent spatial patterns. We identified various sources of error in the approach, including low data availability in the 90s and sub-object mixture of land uses. We conclude that the method holds great promise for land use history mapping in the tropics and beyond."
+}
+
+@article{JAKOVAC2017,
+    author = {Jakovac, Catarina Conte AND Dutrieux, Loïc Paul AND Siti, Latifah AND Peña-Claros, Marielos AND Bongers, Frans},
+    journal = {PLOS ONE},
+    publisher = {Public Library of Science},
+    title = {Spatial and temporal dynamics of shifting cultivation in the middle-Amazonas river: Expansion and intensification},
+    year = {2017},
+    month = {07},
+    volume = {12},
+    url = {https://doi.org/10.1371/journal.pone.0181092},
+    pages = {1-15},
+    abstract = {Shifting cultivation is the main land-use system transforming landscapes in riverine Amazonia. Increased concentration of the human population around villages and increasing market integration during the last decades may be causing agricultural intensification. Studies have shown that agricultural intensification, i.e. higher number of swidden-fallow cycles and shorter fallow periods, reduces crop productivity of swiddens and the regrowth capacity of fallows, undermining the resilience of the shifting cultivation system as a whole. We investigated the temporal and spatial dynamics of shifting cultivation in Brazilian Amazonia to test the hypotheses that (i) agriculture has become more intensive over time, and (ii) patterns of land-use intensity are related to land accessibility and human population density. We applied a breakpoint-detection algorithm to Landsat time-series spanning three decades (1984–2015) and retrieved the temporal dynamics of shifting cultivation fields, which go through alternating phases of crop production (swidden) and secondary forest regrowth (fallow). We found that fallow-period length has decreased from 6.4 to 5.1 years on average, and that expansion over old-growth forest has slowed down over time. Shorter fallow periods and higher frequency of slash and burn cycles are practiced closer to residences and around larger villages. Our results indicate that shifting cultivation in riverine Amazonia has gone through a process of agricultural intensification in the past three decades. The resulting landscape is predominantly covered by young secondary forests (≤ 12 yrs old), and 20% of it have gone through intensive use. Reversing this trend and avoiding the negative consequences of agricultural intensification requires land use planning that accounts for the constraints of land use in riverine areas.},
+    number = {7},
+    doi = {10.1371/journal.pone.0181092}
+}
+
+@article{Jnsson2004TIMESATA,
+  title={TIMESAT - a program for analyzing time-series of satellite sensor data},
+  author={Per J{\"o}nsson and Lars Eklundh},
+  journal={Computers \& Geosciences},
+  year={2004},
+  volume={30},
+  pages={833-845}
+}
+
+@article{Wenbo2017,
+  title={The dynamic response of forest vegetation to hydrothermal conditions in the Funiu Mountains of western Henan Province},
+  author={ZHU Wenbo and LI Shuangcheng},
+  journal={Journal of Geographical Sciences},
+  year={2017},
+  volume={5},
+  pages={565-578}
+}
+
+@article {Harris1573,
+	author = {Harris, Nancy L. and Brown, Sandra and Hagen, Stephen C. and Saatchi, Sassan S. and Petrova, Silvia and Salas, William and Hansen, Matthew C. and Potapov, Peter V. and Lotsch, Alexander},
+	title = {Baseline Map of Carbon Emissions from Deforestation in Tropical Regions},
+	volume = {336},
+	number = {6088},
+	pages = {1573--1576},
+	year = {2012},
+	doi = {10.1126/science.1217962},
+	publisher = {American Association for the Advancement of Science},
+	abstract = {Accurate and precise measures of tropical deforestation and the resulting carbon emissions are needed in order to formulate climate policy. Harris et al. (p. 1573; see the Perspective by Zarin) used satellite observations of deforestation within the tropics of three continents to estimate that gross annual carbon emissions were approximately 0.8 Pg Cyr-2 (Pg = 1015 g) for the years 2000 to 2005, from the loss of 43 million hectares of forest. This result, which is about one-third of some previous estimates, should serve as a baseline for future assessments of changes in the rate of loss of tropical forests.Policies to reduce emissions from deforestation would benefit from clearly derived, spatially explicit, statistically bounded estimates of carbon emissions. Existing efforts derive carbon impacts of land-use change using broad assumptions, unreliable data, or both. We improve on this approach using satellite observations of gross forest cover loss and a map of forest carbon stocks to estimate gross carbon emissions across tropical regions between 2000 and 2005 as 0.81 petagram of carbon per year, with a 90\% prediction interval of 0.57 to 1.22 petagrams of carbon per year. This estimate is 25 to 50\% of recently published estimates. By systematically matching areas of forest loss with their carbon stocks before clearing, these results serve as a more accurate benchmark for monitoring global progress on reducing emissions from deforestation.},
+	issn = {0036-8075},
+	URL = {https://science.sciencemag.org/content/336/6088/1573},
+	eprint = {https://science.sciencemag.org/content/336/6088/1573.full.pdf},
+	journal = {Science}
+}
+
+@Article{Houghton2012,
+    AUTHOR = {Houghton, R. A. and House, J. I. and Pongratz, J. and van der Werf, G. R. and DeFries, R. S. and Hansen, M. C. and Le Qu\'er\'e, C. and Ramankutty, N.},
+    TITLE = {Carbon emissions from land use and land-cover change},
+    JOURNAL = {Biogeosciences},
+    VOLUME = {9},
+    YEAR = {2012},
+    NUMBER = {12},
+    PAGES = {5125--5142},
+    URL = {https://www.biogeosciences.net/9/5125/2012/},
+    DOI = {10.5194/bg-9-5125-2012}
+}
+
+@article{Grace2014,
+author = {Grace, John and Mitchard, Edward and Gloor, Emanuel},
+title = {Perturbations in the carbon budget of the tropics},
+journal = {Global Change Biology},
+volume = {20},
+number = {10},
+pages = {3238-3255},
+keywords = {carbon emissions, deforestation, forest degradation, human development index, land-use change},
+doi = {10.1111/gcb.12600},
+url = {https://onlinelibrary.wiley.com/doi/abs/10.1111/gcb.12600},
+eprint = {https://onlinelibrary.wiley.com/doi/pdf/10.1111/gcb.12600},
+abstract = {Abstract The carbon budget of the tropics has been perturbed as a result of human influences. Here, we attempt to construct a ‘bottom-up’ analysis of the biological components of the budget as they are affected by human activities. There are major uncertainties in the extent and carbon content of different vegetation types, the rates of land-use change and forest degradation, but recent developments in satellite remote sensing have gone far towards reducing these uncertainties. Stocks of carbon as biomass in tropical forests and woodlands add up to 271 ± 16 Pg with an even greater quantity of carbon as soil organic matter. Carbon loss from deforestation, degradation, harvesting and peat fires is estimated as 2.01 ± 1.1 Pg annum−1; while carbon gain from forest and woodland growth is 1.85 ± 0.09 Pg annum−1. We conclude that tropical lands are on average a small carbon source to the atmosphere, a result that is consistent with the ‘top-down’ result from measurements in the atmosphere. If they were to be conserved, they would be a substantial carbon sink. Release of carbon as carbon dioxide from fossil fuel burning in the tropics is 0.74 Pg annum−1 or 0.57 MgC person−1 annum−1, much lower than the corresponding figures from developed regions of the world.},
+year = {2014}
+}
+
+@Article{Hirschmugl2017,
+author="Hirschmugl, Manuela
+and Gallaun, Heinz
+and Dees, Matthias
+and Datta, Pawan
+and Deutscher, Janik
+and Koutsias, Nikos
+and Schardt, Mathias",
+title="Methods for Mapping Forest Disturbance and Degradation from Optical Earth Observation Data: a Review",
+journal="Current Forestry Reports",
+year="2017",
+month="Mar",
+day="01",
+volume="3",
+number="1",
+pages="32--45",
+abstract="This paper presents a review of the current state of the art in remote sensing-based monitoring of forest disturbances and forest degradation from optical Earth Observation data. Part one comprises an overview and tabular description of currently available optical remote sensing sensors, which can be used for forest disturbance and degradation mapping. Part two reviews the two main categories of existing mapping approaches: first, classical image-to-image change detection and second, time series analysis.",
+issn="2198-6436",
+doi="10.1007/s40725-017-0047-2",
+url="https://doi.org/10.1007/s40725-017-0047-2"
+}
+
+@article{Savitzky1964,
+author = {Savitzky, Abraham. and Golay, M. J. E.},
+title = {Smoothing and Differentiation of Data by Simplified Least Squares Procedures.},
+journal = {Analytical Chemistry},
+volume = {36},
+number = {8},
+pages = {1627-1639},
+year = {1964},
+doi = {10.1021/ac60214a047},
+
+URL = { 
+        https://doi.org/10.1021/ac60214a047
+    
+},
+eprint = { 
+        https://doi.org/10.1021/ac60214a047
+}
+}
+
+
+@ARTICLE{Gutjahr2014, 
+author={K. {Gutjahr} and R. {Perko} and H. {Raggam} and M. {Schardt}}, 
+journal={IEEE Transactions on Geoscience and Remote Sensing}, 
+title={The Epipolarity Constraint in Stereo-Radargrammetric DEM Generation}, 
+year={2014}, 
+volume={52}, 
+number={8}, 
+pages={5014-5022}, 
+keywords={digital elevation models;geometry;geophysical image processing;image matching;image sensors;optical images;radar imaging;stereo image processing;synthetic aperture radar;stereo-radargrammetric DEM generation;optical image stereometric processing;epipolar geometry concept;image matching;digital elevation model;cocircular geometry;SAR image pair;synthetic aperture radar image pair;SAR acquisition;SAR sensor;geometric image transformation;semiglobal matching algorithm;SGM algorithm;TerraSAR-X stereo data set;Synthetic aperture radar;Geometry;Optical sensors;Accuracy;Doppler effect;Optical imaging;Laser radar;Digital elevation model (DEM);epipolar geometry;stereo-radargrammetry;synthetic aperture radar (SAR);3-D mapping;Digital elevation model (DEM);epipolar geometry;stereo-radargrammetry;synthetic aperture radar (SAR);3-D mapping}, 
+doi={10.1109/TGRS.2013.2286409}, 
+ISSN={0196-2892}, 
+month={Aug},
+}
+
+@article{Chen2010,
+author = { Weirong   Chen  and  Wenjun   Chen  and  Junhua   Li },
+title = {Comparison of surface reflectance derived by relative radiometric normalization versus atmospheric correction for generating large-scale Landsat mosaics},
+journal = {Remote Sensing Letters},
+volume = {1},
+number = {2},
+pages = {103-109},
+year  = {2010},
+publisher = {Taylor & Francis},
+doi = {10.1080/01431160903518057},
+
+URL = { 
+        https://doi.org/10.1080/01431160903518057
+    
+},
+eprint = { 
+        https://doi.org/10.1080/01431160903518057
+}
+}
+
+@article{Sagan2004,
+author = {Sagan, Vasit and Qin, Qimin and Zhu, L},
+year = {2004},
+month = {07},
+pages = {611-618},
+title = {6S model based atmospheric correction of visible and near-infrared data and sensitivity analysis},
+volume = {40}
+}
+
+
+@article{Huang2010,
+author = {Chengquan Huang and Nancy Thomas and Samuel N. Goward and Jeffrey G. Masek and Zhiliang Zhu and John R. G. Townshend and James E. Vogelmann},
+title = {Automated masking of cloud and cloud shadow for forest change analysis using Landsat images},
+journal = {International Journal of Remote Sensing},
+volume = {31},
+number = {20},
+pages = {5449-5464},
+year  = {2010},
+publisher = {Taylor & Francis},
+doi = {10.1080/01431160903369642},
+
+URL = { 
+        https://doi.org/10.1080/01431160903369642
+    
+},
+eprint = { 
+        https://doi.org/10.1080/01431160903369642
+}
+}
+
+@article{ZHU201283,
+title = "Object-based cloud and cloud shadow detection in Landsat imagery",
+journal = "Remote Sensing of Environment",
+volume = "118",
+pages = "83 - 94",
+year = "2012",
+issn = "0034-4257",
+doi = "https://doi.org/10.1016/j.rse.2011.10.028",
+url = "http://www.sciencedirect.com/science/article/pii/S0034425711003853",
+author = "Zhe Zhu and Curtis E. Woodcock",
+keywords = "Landsat, Cloud, Cloud shadow, Fmask, Object-based, Detection",
+abstract = "A new method called Fmask (Function of mask) for cloud and cloud shadow detection in Landsat imagery is provided. Landsat Top of Atmosphere (TOA) reflectance and Brightness Temperature (BT) are used as inputs. Fmask first uses rules based on cloud physical properties to separate Potential Cloud Pixels (PCPs) and clear-sky pixels. Next, a normalized temperature probability, spectral variability probability, and brightness probability are combined to produce a probability mask for clouds over land and water separately. Then, the PCPs and the cloud probability mask are used together to derive the potential cloud layer. The darkening effect of the cloud shadows in the Near Infrared (NIR) Band is used to generate a potential shadow layer by applying the flood-fill transformation. Subsequently, 3D cloud objects are determined via segmentation of the potential cloud layer and assumption of a constant temperature lapse rate within each cloud object. The view angle of the satellite sensor and the illuminating angle are used to predict possible cloud shadow locations and select the one that has the maximum similarity with the potential cloud shadow mask. If the scene has snow, a snow mask is also produced. For a globally distributed set of reference data, the average Fmask overall cloud accuracy is as high as 96.4%. The goal is development of a cloud and cloud shadow detection algorithm suitable for routine usage with Landsat images."
+}
+
+@article{ZHU2015269,
+title = "Improvement and expansion of the Fmask algorithm: cloud, cloud shadow, and snow detection for Landsats 4–7, 8, and Sentinel 2 images",
+journal = "Remote Sensing of Environment",
+volume = "159",
+pages = "269 - 277",
+year = "2015",
+issn = "0034-4257",
+doi = "https://doi.org/10.1016/j.rse.2014.12.014",
+url = "http://www.sciencedirect.com/science/article/pii/S0034425714005069",
+author = "Zhe Zhu and Shixiong Wang and Curtis E. Woodcock",
+keywords = "Fmask, Cloud, Cloud shadow, Snow, Landsat, Sentinel, Cirrus",
+abstract = "Identification of clouds, cloud shadows and snow in optical images is often a necessary step toward their use. Recently a new program (named Fmask) designed to accomplish these tasks was introduced for use with images from Landsats 4–7 (Zhu & Woodcock, 2012). In this paper, there are the following: (1) improvements in the Fmask algorithm for Landsats 4–7; (2) a new version for use with Landsat 8 that takes advantage of the new cirrus band; and (3) a prototype algorithm for Sentinel 2 images. Though Sentinel 2 images do not have a thermal band to help with cloud detection, the new cirrus band is found to be useful for detecting clouds, especially for thin cirrus clouds. By adding a new cirrus cloud probability and removing the steps that use the thermal band, the Sentinel 2 scenario achieves significantly better results than the Landsats 4–7 scenario for all 7 images tested. For Landsat 8, almost all the Fmask algorithm components are the same as for Landsats 4–7, except a new cirrus cloud probability is calculated using the new cirrus band, which improves detection of thin cirrus clouds. Landsat 8 results are better than the Sentinel 2 scenario, with 6 out of 7 test images showing higher accuracies."
+}
+
+
+@article{Maus2019,
+   author = {Victor Maus and Gilberto Câmara and Marius Appel and Edzer Pebesma},
+   title = {dtwSat: Time-Weighted Dynamic Time Warping for Satellite Image Time Series Analysis in R},
+   journal = {Journal of Statistical Software, Articles},
+   volume = {88},
+   number = {5},
+   year = {2019},
+   keywords = {dynamic programming; MODIS time series; land cover changes; crop monitoring},
+   abstract = {The opening of large archives of satellite data such as LANDSAT, MODIS and the SENTINELs has given researchers unprecedented access to data, allowing them to better quantify and understand local and global land change. The need to analyze such large data sets has led to the development of automated and semi-automated methods for satellite image time series analysis. However, few of the proposed methods for remote sensing time series analysis are available as open source software. In this paper we present the R package dtwSat. This package provides an implementation of the time-weighted dynamic time warping method for land cover mapping using sequence of multi-band satellite images. Methods based on dynamic time warping are flexible to handle irregular sampling and out-of-phase time series, and they have achieved significant results in time series analysis. Package dtwSat is available from the Comprehensive R Archive Network (CRAN) and contributes to making methods for satellite time series analysis available to a larger audience. The package supports the full cycle of land cover classification using image time series, ranging from selecting temporal patterns to visualizing and assessing the results.},
+   issn = {1548-7660},
+   pages = {1--31},
+   doi = {10.18637/jss.v088.i05},
+   url = {https://www.jstatsoft.org/v088/i05}
+}
+
+@article{Bendini2016,
+author = {Bendini, Hugo and Sanches, Ieda and Körting, Thales and Fonseca, Leila and Luiz, Alfredo and Formaggio, Antonio},
+year = {2016},
+month = {06},
+pages = {845-850},
+title = {USING LANDSAT 8 IMAGE TIME SERIES FOR CROP MAPPING IN A REGION OF CERRADO, BRAZIL},
+volume = {XLI-B8},
+journal = {ISPRS - International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences},
+doi = {10.5194/isprsarchives-XLI-B8-845-2016}
+}
+
