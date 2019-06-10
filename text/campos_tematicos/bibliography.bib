@@ -705,7 +705,86 @@ ABSTRACT = {The LandTrendr (LT) algorithm has been used widely for analysis of c
 DOI = {10.3390/rs10050691}
 }
 
+@ARTICLE{Brooks2012, 
+author={E. B. {Brooks} and V. A. {Thomas} and R. H. {Wynne} and J. W. {Coulston}}, 
+journal={IEEE Transactions on Geoscience and Remote Sensing}, 
+title={Fitting the Multitemporal Curve: A Fourier Series Approach to the Missing Data Problem in Remote Sensing Analysis}, 
+year={2012}, 
+volume={50}, 
+number={9}, 
+pages={3340-3353}, 
+keywords={curve fitting;Fourier series;regression analysis;remote sensing;time series;vegetation;multitemporal curve fitting;Fourier series approach;missing data problem;remote sensing analysis;Landsat data;remotely sensed data;multitemporal analysis;biophysical parameter estimation;remotely sensed time series;Fourier regression algorithm;NDVI time series;normalized difference vegetation indices;Spatial and Temporal Adaptive Reflectance Fusion Model comparison;STAR-FM comparison;MODIS pixels;Fourier regression fitting;Remote sensing;Satellites;Earth;Harmonic analysis;Time series analysis;MODIS;Fourier series;Data fusion;disturbance;harmonic analysis;interpolation;phenology;time series}, 
+doi={10.1109/TGRS.2012.2183137}, 
+ISSN={0196-2892}, 
+month={Sep.},}
 
+@article{SCHROEDER2017230,
+title = "Testing a Landsat-based approach for mapping disturbance causality in U.S. forests",
+journal = "Remote Sensing of Environment",
+volume = "195",
+pages = "230 - 243",
+year = "2017",
+issn = "0034-4257",
+doi = "https://doi.org/10.1016/j.rse.2017.03.033",
+url = "http://www.sciencedirect.com/science/article/pii/S0034425717301372",
+author = "Todd A. Schroeder and Karen G. Schleeweis and Gretchen G. Moisen and Chris Toney and Warren B. Cohen and Elizabeth A. Freeman and Zhiqiang Yang and Chengquan Huang",
+keywords = "Forest disturbance mapping, Causal agents, Landsat time series, Empirical modeling, Random Forests, Remote sensing",
+abstract = "In light of Earth's changing climate and growing human population, there is an urgent need to improve monitoring of natural and anthropogenic disturbances which effect forests' ability to sequester carbon and provide other ecosystem services. In this study, a two-step modeling approach was used to map the type and timing of forest disturbances occurring between 1984 and 2010 in ten Landsat scenes located in diverse forest systems of the conterminous U.S. In step one, Random Forest (RF) models were developed to predict the presence of five forest disturbance agents (conversion, fire, harvest, stress and wind) and stable (i.e. undisturbed) forest. Models were developed using a suite of predictors including spectral change metrics derived from a nonparametric shape-restricted spline fitting algorithm, as well as several topographic and biophysical variables which potentially influence the initiation and/or spread of forest disturbance agents. Step two involved applying a rule-based model to the spectrally-based shape parameters (e.g. shape type, year and duration) to assign a year to the disturbance types and locations predicted in step one. Out of bag (OOB) predictions from RF showed that across the ten scenes, overall agreement was highest when only causal agent was considered (avg=80%, min=69%, max=86%), and was lowest when both agent and year (within ±1 of the reference date) were required to be correct (avg=71%, min=56%, max=80%). Across scene omission and commission errors for fire and stable forest classes were mostly around 10% to 20%, respectively. Harvests were also modeled well, as five of nine test scenes had error rates <26%. Accuracy of the wind and stress classes were much more variable with model errors ranging from 24% to 88%. The years assigned by the rule-based model were reasonably accurate, as 88% of all disturbances were assigned a year that fell within ±2years of the reference date. Fire disturbances were assigned the correct year 78% of the time, followed by harvest (69%) and conversion (54%). Although 17% and 63% of wind and stress disturbances were under-estimated by 5 or more years, the impact on overall accuracy was nominal given these two classes only accounted for roughly 5% of all disturbances. Our results also revealed that causal agent models summarized to broader disturbed/not disturbed classes were as accurate as models specifically constructed to predict binary disturbance, thus there appears to be no advantage to modeling disturbance prior to assigning causality. A relative evaluation of mean decrease in accuracy from RF showed that although a wide range of predictor variables contributed to the successful modeling of causal agents and stable forest (e.g. patch metrics, forest occurrence, and topography), disturbance variables (e.g. MTBS) and spectral change metrics (e.g. absolute and relative magnitude) were by far the most important. Modeled causality maps and annual disturbance rates were examined and found to be in good agreement with existing literature and other published data sets. Lastly, results are used to make recommendations for mapping forest disturbance agents nationally across the U.S."
+}
 
+@article{HEALEY2018717,
+title = "Mapping forest change using stacked generalization: An ensemble approach",
+journal = "Remote Sensing of Environment",
+volume = "204",
+pages = "717 - 728",
+year = "2018",
+issn = "0034-4257",
+doi = "https://doi.org/10.1016/j.rse.2017.09.029",
+url = "http://www.sciencedirect.com/science/article/pii/S0034425717304418",
+author = "Sean P. Healey and Warren B. Cohen and Zhiqiang Yang and C. Kenneth Brewer and Evan B. Brooks and Noel Gorelick and Alexander J. Hernandez and Chengquan Huang and M. Joseph Hughes and Robert E. Kennedy and Thomas R. Loveland and Gretchen G. Moisen and Todd A. Schroeder and Stephen V. Stehman and James E. Vogelmann and Curtis E. Woodcock and Limin Yang and Zhe Zhu",
+keywords = "Multiple classifier systems, Landsat, Change detection, Ensemble",
+abstract = "The ever-increasing volume and accessibility of remote sensing data has spawned many alternative approaches for mapping important environmental features and processes. For example, there are several viable but highly varied strategies for using time series of Landsat imagery to detect changes in forest cover. Performance among algorithms varies across complex natural systems, and it is reasonable to ask if aggregating the strengths of an ensemble of classifiers might result in increased overall accuracy. Relatively simple rules have been used in the past to aggregate classifications among remotely sensed maps (e.g. using majority predictions), and in other fields, empirical models have been used to create situationally specific algorithm weights. The latter process, called “stacked generalization” (or “stacking”), typically uses a parametric model for the fusion of algorithm outputs. We tested the performance of several leading forest disturbance detection algorithms against ensembles of the outputs of those same algorithms based upon stacking using both parametric and Random Forests-based fusion rules. Stacking using a Random Forests model cut omission and commission error rates in half in many cases in relation to individual change detection algorithms, and cut error rates by one quarter compared to more conventional parametric stacking. Stacking also offers two auxiliary benefits: alignment of outputs to the precise definitions built into a particular set of empirical calibration data; and, outputs which may be adjusted such that map class totals match independent estimates of change in each year. In general, ensemble predictions improve when new inputs are added that are both informative and uncorrelated with existing ensemble components. As increased use of cloud-based computing makes ensemble mapping methods more accessible, the most useful new algorithms may be those that specialize in providing spectral, temporal, or thematic information not already available through members of existing ensembles."
+}
 
+@article{BULLOCK2019111165,
+title = "Improved change monitoring using an ensemble of time series algorithms",
+journal = "Remote Sensing of Environment",
+pages = "111165",
+year = "2019",
+issn = "0034-4257",
+doi = "https://doi.org/10.1016/j.rse.2019.04.018",
+url = "http://www.sciencedirect.com/science/article/pii/S0034425719301634",
+author = "Eric L. Bullock and Curtis E. Woodcock and Christopher E. Holden",
+keywords = "Change detection, Time series analysis, Landsat, Structural break detection, Land cover monitoring",
+abstract = "An ensemble of time series algorithms improves land change monitoring. The methodology combines the Continuous Change Detection and Classification (CCDC; Zhu & Woodcock, 2014) and Cumulative Sum of Residuals (CUSUM) algorithms for break detection and the Chow Test (Chow, 1960) for removing false positives (or breaks in time series not representing land change). The algorithms included are based on fundamentally different approaches to change detection and therefore offer unique advantages. The ensemble, or the combination of the three algorithms, was applied to 3 Landsat scenes in the United States and the results were assessed based on their ability to correctly discern structural breaks from stable time periods. The CUSUM test was shown to detect significant breaks 84.18% of the time and the Chow Test correctly removed breaks in 87.4% of the breaks analyzed. The ensemble produced results with lower frequency of errors of omission and commission (Type-I and Type-II errors) than a single algorithm approach. These results indicate that using a combination of break detection algorithms can be an improvement over typical approaches that utilize only one algorithm."
+}
 
+@Article{Breiman2001,
+author="Breiman, Leo",
+title="Random Forests",
+journal="Machine Learning",
+year="2001",
+month="Oct",
+day="01",
+volume="45",
+number="1",
+pages="5--32",
+abstract="Random forests are a combination of tree predictors such that each tree depends on the values of a random vector sampled independently and with the same distribution for all trees in the forest. The generalization error for forests converges a.s. to a limit as the number of trees in the forest becomes large. The generalization error of a forest of tree classifiers depends on the strength of the individual trees in the forest and the correlation between them. Using a random selection of features to split each node yields error rates that compare favorably to Adaboost (Y. Freund {\&} R. Schapire, Machine Learning: Proceedings of the Thirteenth International conference, ***, 148--156), but are more robust with respect to noise. Internal estimates monitor error, strength, and correlation and these are used to show the response to increasing the number of features used in the splitting. Internal estimates are also used to measure variable importance. These ideas are also applicable to regression.",
+issn="1573-0565",
+doi="10.1023/A:1010933404324",
+url="https://doi.org/10.1023/A:1010933404324"
+}
+
+@article{WANG2019474,
+title = "Mapping tropical disturbed forests using multi-decadal 30 m optical satellite imagery",
+journal = "Remote Sensing of Environment",
+volume = "221",
+pages = "474 - 488",
+year = "2019",
+issn = "0034-4257",
+doi = "https://doi.org/10.1016/j.rse.2018.11.028",
+url = "http://www.sciencedirect.com/science/article/pii/S0034425718305376",
+author = "Yunxia Wang and Guy Ziv and Marcos Adami and Edward Mitchard and Sarah A. Batterman and Wolfgang Buermann and Beatriz Schwantes Marimon and Ben Hur Marimon Junior and Simone Matias Reis and Domingos Rodrigues and David Galbraith",
+keywords = "Mato Grosso, Forest disturbance, Post-deforestation regrowth, Forest degradation",
+abstract = "Tropical disturbed forests play an important role in global carbon sequestration due to their rapid post-disturbance biomass accumulation rates. However, the accurate estimation of the carbon sequestration capacity of disturbed forests is still challenging due to large uncertainties in their spatial distribution. Using Google Earth Engine (GEE), we developed a novel approach to map cumulative disturbed forest areas based on the 27-year time-series of Landsat surface reflectance imagery. This approach integrates single date features with temporal characteristics from six time-series trajectories (two Landsat shortwave infrared bands and four vegetation indices) using a random forest machine learning classification algorithm. We demonstrated the feasibility of this method to map disturbed forests in three different forest ecoregions (seasonal, moist and dry forest) in Mato Grosso, Brazil, and found that the overall mapping accuracy was high, ranging from 81.3% for moist forest to 86.1% for seasonal forest. According to our classification, dry forest ecoregion experienced the most severe disturbances with 41% of forests being disturbed by 2010, followed by seasonal forest and moist forest ecoregions. We further separated disturbed forests into degraded old-growth forests and post-deforestation regrowth forests based on an existing post-deforestation land use map (TerraClass) and found that the area of degraded old-growth forests was up to 62% larger than the extent of post-deforestation regrowth forests, with 18% of old-growth forests actually being degraded. Application of this new classification approach to other tropical areas will provide a better constraint on the spatial extent of disturbed forest areas in Tropics and ultimately towards a better understanding of their importance in the global carbon cycle."
+}
