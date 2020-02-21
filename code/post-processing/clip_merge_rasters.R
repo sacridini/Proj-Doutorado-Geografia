@@ -11,13 +11,16 @@ ltr_rasters <- list.files(paste0(raster_folder, ltr_analysis_folder), pattern = 
 voronoi_vectors <- list.files("/media/eduardo/data/Doutorado/vector/voronoi_splits", pattern = "*.shp", full.names = TRUE)
 vector_names <- list.files("/media/eduardo/data/Doutorado/vector/voronoi_splits", pattern = "*.shp")
 
-for(i in 1:length(ltr_rasters))
-{
+if (!dir.exists(paste0(raster_folder, ltr_analysis_folder, "clip"))) {
+  dir.create(paste0(raster_folder, ltr_analysis_folder, "clip"))
+}
+
+for(i in 1:length(ltr_rasters)) {
   output_name <- paste0(gsub(pattern = "\\.shp$", "", vector_names[[i]]), "_clip.tif")
   system(paste0("gdalwarp -cutline ",
                 voronoi_vectors[[i]],
                 " -crop_to_cutline ",
-                ltr_rasters[[i]],
+                ltr_rasters[[i]], " ",
                 raster_folder, ltr_analysis_folder, "/clip/", output_name ,
                 " -co BIGTIFF=YES -wm 2000 -co COMPRESS=DEFLATE -multi -wo NUM_THREADS=ALL_CPUS"))
 }
@@ -27,8 +30,7 @@ for(i in 1:length(ltr_rasters))
 print("Reclassify: 0 to NA")
 clip_path <- list.files(raster_folder, ltr_analysis_folder, "/clip", pattern = "*.tif", full.names = TRUE)
 
-for(i in 1:length(clip_path))
-{
+for(i in 1:length(clip_path)) {
   output_name <- paste0(gsub(pattern = "\\.tif$", "", clip_path[[i]]), "_na.tif")
   gdalUtils::gdal_translate(src_dataset = clip_path[[i]],
                             a_nodata = 0,
@@ -48,7 +50,7 @@ print("Creating Mosaic")
 system(paste0("gdal_translate -of GTiff -ot UInt16 -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 -co BIGTIFF=YES -a_srs epsg:4326 ",
               raster_folder, ltr_analysis_folder, "/clip/mosaic.vrt ",
               raster_folder, ltr_analysis_folder, "/clip/mosaic.tif"))
-    
+
 
 # Clip by MA Shapefile ----------------------------------------------------
 print("Clipping the mosaic using the MA Shapefile")
