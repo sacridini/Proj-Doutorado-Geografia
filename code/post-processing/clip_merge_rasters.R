@@ -3,7 +3,7 @@ library(raster)
 library(gdalUtils)
 
 ltr_analysis_folder <- "ltgee_loss_greatest"
-raster_folder <- "/media/eduardo/data/Doutorado/raster/"
+raster_folder <- "/home/iis_backup/doutorado/raster"
 
 # Clip Raster -------------------------------------------------------------
 print("Clipping the rasters using the voronoi vectors")
