@@ -2,14 +2,15 @@
 library(raster)
 library(gdalUtils)
 
-ltr_analysis_folder <- "ltgee_loss_greatest"
-raster_folder <- "/home/iis_backup/doutorado/raster"
+ltr_analysis_folder <- "ltgee_loss_greatest_2018/"
+raster_folder <- "/home/iis_backup/doutorado/raster/"
+polygon_folter <- "/home/iis_backup/doutorado/vector/voronoi_splits/"
 
 # Clip Raster -------------------------------------------------------------
 print("Clipping the rasters using the voronoi vectors")
 ltr_rasters <- list.files(paste0(raster_folder, ltr_analysis_folder), pattern = "*.tif", full.names = TRUE)
-voronoi_vectors <- list.files("/media/eduardo/data/Doutorado/vector/voronoi_splits", pattern = "*.shp", full.names = TRUE)
-vector_names <- list.files("/media/eduardo/data/Doutorado/vector/voronoi_splits", pattern = "*.shp")
+voronoi_vectors <- list.files(polygon_folter, pattern = "*.shp", full.names = TRUE)
+vector_names <- list.files(polygon_folter, pattern = "*.shp")
 
 if (!dir.exists(paste0(raster_folder, ltr_analysis_folder, "clip"))) {
   dir.create(paste0(raster_folder, ltr_analysis_folder, "clip"))
@@ -28,7 +29,7 @@ for(i in 1:length(ltr_rasters)) {
 
 # Zero to NA --------------------------------------------------------------
 print("Reclassify: 0 to NA")
-clip_path <- list.files(raster_folder, ltr_analysis_folder, "/clip", pattern = "*.tif", full.names = TRUE)
+clip_path <- list.files(paste0(raster_folder, ltr_analysis_folder, "/clip"), pattern = "*.tif", full.names = TRUE)
 
 for(i in 1:length(clip_path)) {
   output_name <- paste0(gsub(pattern = "\\.tif$", "", clip_path[[i]]), "_na.tif")
