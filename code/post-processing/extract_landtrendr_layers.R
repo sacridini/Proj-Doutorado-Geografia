@@ -18,27 +18,27 @@ for (img in raster_files) {
     if (i == 1) {
       layer_type = "yod"
       print(paste0("Extraindo Layer : ", name_without_ext, "_", layer_type))
-      writeRaster(ltgee_layer, paste0(name_without_ext, "_", layer_type,".tif"), format = "GTiff", dataType="INT2S", options="COMPRESS=LZW", overwrite=TRUE)
+      writeRaster(ltgee_layer, paste0(name_without_ext, "_", layer_type,".tif"), format = "GTiff", datatype="INT2S", options="COMPRESS=LZW", overwrite=TRUE)
     } else if (i == 2) {
       layer_type = "magnitude"
       print(paste0("Extraindo Layer : ", name_without_ext, "_", layer_type))
-      writeRaster(ltgee_layer, paste0(name_without_ext, "_", layer_type,".tif"), format = "GTiff", dataType="INT2S", options="COMPRESS=LZW", overwrite=TRUE)
+      writeRaster(ltgee_layer, paste0(name_without_ext, "_", layer_type,".tif"), format = "GTiff", datatype="INT2S", options="COMPRESS=LZW", overwrite=TRUE)
     } else if (i == 3) {
       layer_type = "duration"
       print(paste0("Extraindo Layer : ", name_without_ext, "_", layer_type))
-      writeRaster(ltgee_layer, paste0(name_without_ext, "_", layer_type,".tif"), format = "GTiff", dataType="INT2S", options="COMPRESS=LZW", overwrite=TRUE)
+      writeRaster(ltgee_layer, paste0(name_without_ext, "_", layer_type,".tif"), format = "GTiff", datatype="INT2S", options="COMPRESS=LZW", overwrite=TRUE)
     } else if (i == 4) {
       layer_type = "preval"
       print(paste0("Extraindo Layer : ", name_without_ext, "_", layer_type))
-      writeRaster(ltgee_layer, paste0(name_without_ext, "_", layer_type,".tif"), format = "GTiff", dataType="INT2S", options="COMPRESS=LZW", overwrite=TRUE)
+      writeRaster(ltgee_layer, paste0(name_without_ext, "_", layer_type,".tif"), format = "GTiff", datatype="INT2S", options="COMPRESS=LZW", overwrite=TRUE)
     } else if (i == 5) {
       layer_type = "rate"
       print(paste0("Extraindo Layer : ", name_without_ext, "_", layer_type))
-      writeRaster(ltgee_layer, paste0(name_without_ext, "_", layer_type,".tif"), format = "GTiff", dataType="INT2S", options="COMPRESS=LZW", overwrite=TRUE)
+      writeRaster(ltgee_layer, paste0(name_without_ext, "_", layer_type,".tif"), format = "GTiff", datatype="INT2S", options="COMPRESS=LZW", overwrite=TRUE)
     } else {
       layer_type = "dsnr"
       print(paste0("Extraindo Layer : ", name_without_ext, "_", layer_type))
-      writeRaster(ltgee_layer, paste0(name_without_ext, "_", layer_type,".tif"), format = "GTiff", dataType="INT2S", options="COMPRESS=LZW", overwrite=TRUE)
+      writeRaster(ltgee_layer, paste0(name_without_ext, "_", layer_type,".tif"), format = "GTiff", datatype="INT2S", options="COMPRESS=LZW", overwrite=TRUE)
     }
   }
 }
