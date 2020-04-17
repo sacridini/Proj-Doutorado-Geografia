@@ -45,7 +45,7 @@ for(i in 1:length(clip_path)) {
 # Create VRT --------------------------------------------------------------
 print("Creating VRT")
 setwd(paste0(raster_folder, ltr_analysis_folder, "clip/"))
-system(paste0("gdalbuildvrt -a_srs 'EPSG:4326' -overwrite ", raster_folder, ltr_analysis_folder, "clip/mosaic.vrt *na.tif"))
+system(paste0("gdalbuildvrt -a_srs 'EPSG:4326' -overwrite ", raster_folder, ltr_analysis_folder, "clip/mosaic.vrt *na.tif "))
 
 # Create Mosaic -----------------------------------------------------------
 print("Creating Mosaic")
@@ -57,7 +57,7 @@ system(paste0("gdal_translate -of GTiff -ot UInt16 -co COMPRESS=DEFLATE -co PRED
 # Clip by MA Shapefile ----------------------------------------------------
 print("Clipping the mosaic using the MA Shapefile")
 system(paste0("gdalwarp -cutline ",
-              "/media/eduardo/data/Doutorado/vector/mata_atlantica_limite.shp",
+              "/home/iis_backup/doutorado/vector/mata_atlantica/mata_atlantica.shp",
               " -crop_to_cutline ",
               raster_folder, ltr_analysis_folder, "/clip/mosaic.tif ",
               raster_folder, ltr_analysis_folder, "/clip/mosaic_clip.tif",
