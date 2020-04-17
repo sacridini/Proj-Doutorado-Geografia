@@ -4,13 +4,13 @@ library(gdalUtils)
 
 ltr_analysis_folder <- "ltgee_loss_greatest_2018/"
 raster_folder <- "/home/iis_backup/doutorado/raster/"
-polygon_folter <- "/home/iis_backup/doutorado/vector/voronoi_splits/"
+polygon_folter <- "/home/iis_backup/doutorado/vector/"
 
 # Clip Raster -------------------------------------------------------------
 print("Clipping the rasters using the voronoi vectors")
 ltr_rasters <- list.files(paste0(raster_folder, ltr_analysis_folder), pattern = "*.tif", full.names = TRUE)
-voronoi_vectors <- list.files(polygon_folter, pattern = "*.shp", full.names = TRUE)
-vector_names <- list.files(polygon_folter, pattern = "*.shp")
+voronoi_vectors <- list.files(paste0(polygon_folter, "voronoi_splits/"), pattern = "*.shp", full.names = TRUE)
+vector_names <- list.files(paste0(polygon_folter, "voronoi_splits/"), pattern = "*.shp")
 
 if (!dir.exists(paste0(raster_folder, ltr_analysis_folder, "clip"))) {
   dir.create(paste0(raster_folder, ltr_analysis_folder, "clip"))
@@ -57,7 +57,7 @@ system(paste0("gdal_translate -of GTiff -ot UInt16 -co COMPRESS=DEFLATE -co PRED
 # Clip by MA Shapefile ----------------------------------------------------
 print("Clipping the mosaic using the MA Shapefile")
 system(paste0("gdalwarp -cutline ",
-              "/home/iis_backup/doutorado/vector/mata_atlantica/mata_atlantica.shp",
+              polygon_folter, "mata_atlantica/mata_atlantica.shp",
               " -crop_to_cutline ",
               raster_folder, ltr_analysis_folder, "/clip/mosaic.tif ",
               raster_folder, ltr_analysis_folder, "/clip/mosaic_clip.tif",
