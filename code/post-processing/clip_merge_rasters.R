@@ -44,7 +44,8 @@ for(i in 1:length(clip_path)) {
 
 # Create VRT --------------------------------------------------------------
 print("Creating VRT")
-system(paste0("gdalbuildvrt ", raster_folder, ltr_analysis_folder, "/clip/mosaic.vrt *na.tif -a_srs \"EPSG:4326\""))
+setwd(paste0(raster_folder, ltr_analysis_folder, "clip/"))
+system(paste0("gdalbuildvrt -a_srs 'EPSG:4326' -overwrite ", raster_folder, ltr_analysis_folder, "clip/mosaic.vrt *na.tif"))
 
 # Create Mosaic -----------------------------------------------------------
 print("Creating Mosaic")
