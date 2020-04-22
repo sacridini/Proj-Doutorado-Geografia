@@ -2,7 +2,7 @@
 library(raster)
 library(gdalUtils)
 
-ltr_analysis_folder <- "ltgee_loss_greatest_2018/"
+ltr_analysis_folder <- "ltgee_gain_greatest_2018_seg6/"
 raster_folder <- "/home/iis_backup/doutorado/raster/"
 polygon_folter <- "/home/iis_backup/doutorado/vector/"
 
