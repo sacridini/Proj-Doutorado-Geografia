@@ -1,8 +1,11 @@
 # Setup -------------------------------------------------------------------
 library(raster)
 library(gdalUtils)
+library(doParallel)
+library(foreach)
 
-ltr_analysis_folder <- "ltgee_gain_greatest_2018_seg6/"
+
+ltr_analysis_folder <- "ltgee_loss_greatest_2018_seg6/"
 raster_folder <- "/home/iis_backup/doutorado/raster/"
 polygon_folter <- "/home/iis_backup/doutorado/vector/"
 
@@ -16,7 +19,7 @@ if (!dir.exists(paste0(raster_folder, ltr_analysis_folder, "clip"))) {
   dir.create(paste0(raster_folder, ltr_analysis_folder, "clip"))
 }
 
-for(i in 1:length(ltr_rasters)) {
+for (i in 1:length(ltr_rasters)) {
   output_name <- paste0(gsub(pattern = "\\.shp$", "", vector_names[[i]]), "_clip.tif")
   system(paste0("gdalwarp -cutline ",
                 voronoi_vectors[[i]],
