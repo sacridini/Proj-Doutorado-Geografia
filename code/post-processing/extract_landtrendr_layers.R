@@ -4,7 +4,7 @@ options(warn=0)
 
 library(raster)
 
-path <- paste0("/home/iis_backup/doutorado/raster/ltgee_gain_greatest_2018_seg6/clip/")
+path <- paste0("/home/iis_backup/doutorado/raster/ltgee_loss_greatest_2018_seg6/mosaics/")
 raster_files = list.files(path, pattern = "*mosaic_clip.tif")
 setwd(path)
 
