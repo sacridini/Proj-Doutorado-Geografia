@@ -1,8 +1,8 @@
 library(raster)
-library(foreach)
-library(doParallel)
+# library(foreach)
+# library(doParallel)
 
-ltr_layer <- "~/doutorado/raster/ltgee_gain_greatest_2018_seg6/mosaics/mosaic_clip_yod.tif"
+ltr_layer <- "~/doutorado/raster/ltgee_loss_greatest_2018_seg6/mosaics/mosaic_clip_preval.tif"
 r1 <- raster(ltr_layer)
 files <- list.files("~/doutorado/raster/mapbiomas41/bin_masks/", full.names = TRUE)
 
@@ -20,5 +20,5 @@ for (i in 1:length(files)) {
   r1 <- raster::mask(r1, r2)
 }
 
-writeRaster(r1, "~/doutorado/raster/ltgee_gain_greatest_2018_seg6/mosaics/mosaic_yod_final.tif", options = "COMPRESS=DEFLATE")
+writeRaster(r1, "~/doutorado/raster/ltgee_loss_greatest_2018_seg6/mosaics/mosaic_preval_final.tif", options = "COMPRESS=DEFLATE")
 # parallel::stopCluster(cl)
