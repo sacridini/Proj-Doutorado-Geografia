@@ -4,7 +4,7 @@ options(warn=0)
 
 library(raster)
 
-path <- paste0("/home/iis_backup/doutorado/raster/ltgee_loss_greatest_2018_seg6/mosaics/")
+path <- paste0("/home/iis_backup/doutorado/raster/ltgee_loss_greatest_2018_seg12/mosaics/")
 raster_files = list.files(path, pattern = "*mosaic_clip.tif")
 setwd(path)
 
@@ -22,7 +22,7 @@ for (img in raster_files) {
     } else if (i == 2) {
       layer_type = "magnitude"
       print(paste0("Extraindo Layer : ", name_without_ext, "_", layer_type))
-      writeRaster(ltgee_layer, paste0(name_without_ext, "_", layer_type,".tif"), format = "GTiff", datatype="INT2S", options="COMPRESS=LZW", overwrite=TRUE)
+      writeRaster(ltgee_layer, paste0(name_without_ext, "_", layer_type,".tif"), format = "GTiff", options="COMPRESS=LZW", overwrite=TRUE)
     } else if (i == 3) {
       layer_type = "duration"
       print(paste0("Extraindo Layer : ", name_without_ext, "_", layer_type))
@@ -30,15 +30,15 @@ for (img in raster_files) {
     } else if (i == 4) {
       layer_type = "preval"
       print(paste0("Extraindo Layer : ", name_without_ext, "_", layer_type))
-      writeRaster(ltgee_layer, paste0(name_without_ext, "_", layer_type,".tif"), format = "GTiff", datatype="INT2S", options="COMPRESS=LZW", overwrite=TRUE)
+      writeRaster(ltgee_layer, paste0(name_without_ext, "_", layer_type,".tif"), format = "GTiff", options="COMPRESS=LZW", overwrite=TRUE)
     } else if (i == 5) {
       layer_type = "rate"
       print(paste0("Extraindo Layer : ", name_without_ext, "_", layer_type))
-      writeRaster(ltgee_layer, paste0(name_without_ext, "_", layer_type,".tif"), format = "GTiff", datatype="INT2S", options="COMPRESS=LZW", overwrite=TRUE)
+      writeRaster(ltgee_layer, paste0(name_without_ext, "_", layer_type,".tif"), format = "GTiff", options="COMPRESS=LZW", overwrite=TRUE)
     } else {
       layer_type = "dsnr"
       print(paste0("Extraindo Layer : ", name_without_ext, "_", layer_type))
-      writeRaster(ltgee_layer, paste0(name_without_ext, "_", layer_type,".tif"), format = "GTiff", datatype="INT2S", options="COMPRESS=LZW", overwrite=TRUE)
+      writeRaster(ltgee_layer, paste0(name_without_ext, "_", layer_type,".tif"), format = "GTiff", options="COMPRESS=LZW", overwrite=TRUE)
     }
   }
 }

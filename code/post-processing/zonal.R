@@ -1,5 +1,5 @@
 library(raster)
 r <- raster("~/doutorado/raster/ma_mask.tif")
-ltr_dur <- raster("~/doutorado/raster/ltgee_gain_greatest_2018_seg6/mosaics/mosaic_clip_duration.tif")
-z_dur_mean <- raster::zonal(ltr_dur, r, "mean")
+ltr <- raster("~/doutorado/raster/ltgee_gain_greatest_2018_seg6/mosaics/mosaic_clip_magnitude.tif")
+z_dur_mean <- raster::zonal(ltr, r, "mean")
 print(z_dur_mean)

@@ -1,11 +1,9 @@
 # Setup -------------------------------------------------------------------
 library(raster)
 library(gdalUtils)
-library(doParallel)
-library(foreach)
 
 
-ltr_analysis_folder <- "ltgee_loss_greatest_2018_seg6/"
+ltr_analysis_folder <- "ltgee_loss_greatest_2018_seg12/"
 raster_folder <- "/home/iis_backup/doutorado/raster/"
 polygon_folter <- "/home/iis_backup/doutorado/vector/"
 
@@ -60,9 +58,9 @@ system(paste0("gdal_translate -of GTiff -ot UInt16 -co COMPRESS=DEFLATE -co PRED
 # Clip by MA Shapefile ----------------------------------------------------
 print("Clipping the mosaic using the MA Shapefile")
 system(paste0("gdalwarp -cutline ",
-              polygon_folter, "mata_atlantica/mata_atlantica.shp",
+              polygon_folter, "mata_atlantica/ma_mapbiomas_shape.shp",
               " -crop_to_cutline ",
-              raster_folder, ltr_analysis_folder, "/clip/mosaic.tif ",
-              raster_folder, ltr_analysis_folder, "/clip/mosaic_clip.tif",
+              raster_folder, ltr_analysis_folder, "/mosaics/mosaic.tif ",
+              raster_folder, ltr_analysis_folder, "/mosaics/mosaic_clip.tif",
               " -co BIGTIFF=YES -wm 2000 -co COMPRESS=DEFLATE -multi -wo NUM_THREADS=ALL_CPUS ",
               " --config GDALWARP_IGNORE_BAD_CUTLINE YES"))
