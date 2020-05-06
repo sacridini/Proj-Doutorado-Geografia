@@ -1,0 +1,4 @@
+-- zonal_mag_loss_seg6 - as primeiras estatisticas são referentes ao raster "mosaic_magnitude_final.tif", já os outros gt200, gt100, etc são referentes ao raster filtrado com "forest_prod_mask.tif" e reclassificados com vamores maiores que (gt) 200, 100, etc... (update - os campos _fprod_ são referentes ao raster "forest_prod_mask.tif" sem nenhuma reclassificação)
+
+
+
