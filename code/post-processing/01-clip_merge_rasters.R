@@ -46,11 +46,11 @@ for(i in 1:length(clip_path)) {
 # Create VRT --------------------------------------------------------------
 print("Creating VRT")
 setwd(paste0(raster_folder, ltr_analysis_folder, "clip/"))
-system(paste0("gdalbuildvrt -a_srs 'EPSG:4326' -overwrite ", raster_folder, ltr_analysis_folder, "clip/mosaic.vrt *na.tif "))
+system(paste0("gdalbuildvrt -overwrite ", raster_folder, ltr_analysis_folder, "clip/mosaic.vrt *na.tif "))
 
 # Create Mosaic -----------------------------------------------------------
 print("Creating Mosaic")
-system(paste0("gdal_translate -of GTiff -ot UInt16 -co COMPRESS=DEFLATE -co PREDICTOR=2 -co ZLEVEL=9 -co BIGTIFF=YES -a_srs epsg:4326 ",
+system(paste0("gdal_translate -of GTiff -ot UInt16 -co COMPRESS=DEFLATE -co BIGTIFF=YES",
               raster_folder, ltr_analysis_folder, "/clip/mosaic.vrt ",
               raster_folder, ltr_analysis_folder, "/clip/mosaic.tif"))
 
