@@ -6,8 +6,8 @@ values_est <- for_est$median
 values <- c(values_omb, values_est)
 
 
-names_omb <- rep("omb", 11)
-names_est <- rep("est", 11)
+names_omb <- rep("omb", length(values_omb))
+names_est <- rep("est", length(values_est))
 names <- c(names_omb, names_est) 
 df <- data.frame(names, values)
 plot(values ~ names, df)
