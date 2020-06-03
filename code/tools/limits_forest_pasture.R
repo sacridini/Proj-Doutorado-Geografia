@@ -1,6 +1,7 @@
 library(raster)
 
-vecs <- list.files("~/doutorado/limites_past_vs_for", pattern = "*.shp", full.names = TRUE)
+project_path <- "~/doutorado/limites_past_vs_for/estacionaria"
+vecs <- list.files(project_path, pattern = "*.shp", full.names = TRUE)
 bin_forest_mapbiomas <- "~/doutorado/raster/mapbiomas41/bin_forest/bin_forest_sum_reclass.tif"
 bin_pasture_mapbiomas <- "~/doutorado/raster/mapbiomas41/bin_pasture/bin_pasture_sum_reclass.tif"
 
@@ -52,8 +53,8 @@ for(i in 1:length(vecs)) {
 df_stats <- data.frame(matrix(ncol = 6, nrow = 0))
 colnames(df_stats) <- c("id", "mean", "median", "max", "min", "sd")
 
-forest_rasters <- list.files("~/doutorado/limites_past_vs_for", pattern = "*forest_final.tif$", full.names = TRUE)
-pasture_rasters <- list.files("~/doutorado/limites_past_vs_for", pattern = "*pasture_final.tif$", full.names = TRUE)
+forest_rasters <- list.files(project_path, pattern = "*forest_final.tif$", full.names = TRUE)
+pasture_rasters <- list.files(project_path, pattern = "*pasture_final.tif$", full.names = TRUE)
 
 # Forest
 df_stats_forest <- data.frame()
@@ -80,3 +81,13 @@ for(i in 1:length(pasture_rasters)) {
                            "sd" = raster::cellStats(r, stats::sd))
   df_stats_pasture <- rbind(df_stats_pasture, cell_stats)
 }
+
+# Difference
+df_stats_diff <- df_stats_forest - df_stats_pasture
+diff_mean <- stats::median(df_stats_forest$median - df_stats_pasture$median)
+message(paste0("Dierença Média.: ", diff_mean))
+
+message("Exportando tabelas...")
+write.csv(df_stats_forest, paste0(project_path, "forest_stats.csv"))
+write.csv(df_stats_pasture, paste0(project_path, "pasture_stats.csv"))
+message("Processo concluído")
