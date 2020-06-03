@@ -1,14 +1,26 @@
+# Optional
+rm(list = ls())
+gc()
+
 library(raster)
 
-project_path <- "~/doutorado/limites_past_vs_for/estacionaria"
+start_time <- Sys.time()
+
+veg_type <- "estacionaria"
+project_path <- paste0("~/doutorado/limites_past_vs_for/", veg_type, "/")
+setwd(project_path)
+
+# Creating mask shapefile using the rasters extent ---------------------
+system(paste0("parallel gdaltindex {.}.shp {} ::: *.tif"))
+
+# Loading files
 vecs <- list.files(project_path, pattern = "*.shp", full.names = TRUE)
 bin_forest_mapbiomas <- "~/doutorado/raster/mapbiomas41/bin_forest/bin_forest_sum_reclass.tif"
 bin_pasture_mapbiomas <- "~/doutorado/raster/mapbiomas41/bin_pasture/bin_pasture_sum_reclass.tif"
 
 
 # Crop and set NA values --------------------------------------------------
-
-# Forest
+message("Masking and removing NA from forest rasters")
 for(i in 1:length(vecs)) {
   raster_out_filename <- paste0(gsub(pattern = "\\.shp$", "", vecs[i]), "_clip_forest.tif")
   system(paste0("gdalwarp -cutline ", vecs[i], " -crop_to_cutline ", bin_forest_mapbiomas, " ", raster_out_filename, " -co COMPRESS=DEFLATE"))
@@ -16,7 +28,7 @@ for(i in 1:length(vecs)) {
   system(paste0("gdal_translate -a_nodata 0 ", raster_out_filename, " ", raster_out_filename_na, " -co COMPRESS=DEFLATE"))
 }
 
-# Pasture
+message("Masking and removing NA from pasture rasters")
 for(i in 1:length(vecs)) {
   raster_out_filename <- paste0(gsub(pattern = "\\.shp$", "", vecs[i]), "_clip_pasture.tif")
   system(paste0("gdalwarp -cutline ", vecs[i], " -crop_to_cutline ", bin_pasture_mapbiomas, " ", raster_out_filename, " -co COMPRESS=DEFLATE"))
@@ -83,7 +95,7 @@ for(i in 1:length(pasture_rasters)) {
 }
 
 # Difference
-df_stats_diff <- df_stats_forest - df_stats_pasture
+(df_stats_diff <- df_stats_forest - df_stats_pasture)
 diff_mean <- stats::median(df_stats_forest$median - df_stats_pasture$median)
 message(paste0("Dierença Média.: ", diff_mean))
 
@@ -91,3 +103,6 @@ message("Exportando tabelas...")
 write.csv(df_stats_forest, paste0(project_path, "forest_stats.csv"))
 write.csv(df_stats_pasture, paste0(project_path, "pasture_stats.csv"))
 message("Processo concluído")
+
+end_time <- Sys.time()
+end_time - start_time
