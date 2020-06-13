@@ -17,9 +17,9 @@ values <- c(values_for, values_past)
 names_omb <- rep("omb", length(values_omb_for))
 names_est <- rep("est", length(values_est_for))
 names <- c(names_omb, names_est) 
-df <- data.frame(names, values)
-plot(values ~ names, df, xlab = "Vegetation Type", ylab = "NDVI Values")
-vegtype_anova <- aov(values ~ names, data = df)
+df <- data.frame(names, values_past)
+plot(values_past ~ names, df, xlab = "Vegetation Type", ylab = "NDVI Values")
+vegtype_anova <- aov(values_past ~ names, data = df)
 summary(vegtype_anova)
 
 new_df <- data.frame(vegtype = names,
@@ -29,3 +29,5 @@ ggplot(new_df, aes(x = forest, y = pasture)) +
   geom_point() + 
   theme_bw() + 
   geom_smooth()
+
+# stats::median(new_df[new_df$vegtype == "omb", ]$forest) - stats::median(new_df[new_df$vegtype == "omb", ]$pasture)
