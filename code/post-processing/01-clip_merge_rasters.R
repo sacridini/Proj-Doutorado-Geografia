@@ -3,7 +3,7 @@ library(raster)
 library(gdalUtils)
 
 
-ltr_analysis_folder <- "ltgee_loss_greatest_2018_seg12/"
+ltr_analysis_folder <- "gain_mag_gt200_dur_gt4_preval_gt400_2018"
 raster_folder <- "/home/iis_backup/doutorado/raster/"
 polygon_folter <- "/home/iis_backup/doutorado/vector/"
 
@@ -13,8 +13,8 @@ ltr_rasters <- list.files(paste0(raster_folder, ltr_analysis_folder), pattern = 
 voronoi_vectors <- list.files(paste0(polygon_folter, "voronoi_splits/"), pattern = "*.shp", full.names = TRUE)
 vector_names <- list.files(paste0(polygon_folter, "voronoi_splits/"), pattern = "*.shp")
 
-if (!dir.exists(paste0(raster_folder, ltr_analysis_folder, "clip"))) {
-  dir.create(paste0(raster_folder, ltr_analysis_folder, "clip"))
+if (!dir.exists(paste0(raster_folder, ltr_analysis_folder, "/clip"))) {
+  dir.create(paste0(raster_folder, ltr_analysis_folder, "/clip"))
 }
 
 for (i in 1:length(ltr_rasters)) {
@@ -45,12 +45,12 @@ for(i in 1:length(clip_path)) {
 
 # Create VRT --------------------------------------------------------------
 print("Creating VRT")
-setwd(paste0(raster_folder, ltr_analysis_folder, "clip/"))
-system(paste0("gdalbuildvrt -overwrite ", raster_folder, ltr_analysis_folder, "clip/mosaic.vrt *na.tif "))
+setwd(paste0(raster_folder, ltr_analysis_folder, "/clip"))
+system(paste0("gdalbuildvrt -overwrite ", raster_folder, ltr_analysis_folder, "/clip/mosaic.vrt *na.tif "))
 
 # Create Mosaic -----------------------------------------------------------
 print("Creating Mosaic")
-system(paste0("gdal_translate -of GTiff -ot UInt16 -co COMPRESS=DEFLATE -co BIGTIFF=YES",
+system(paste0("gdal_translate -of GTiff -ot UInt16 -co COMPRESS=DEFLATE -co BIGTIFF=YES ",
               raster_folder, ltr_analysis_folder, "/clip/mosaic.vrt ",
               raster_folder, ltr_analysis_folder, "/clip/mosaic.tif"))
 
