@@ -58,7 +58,7 @@ system(paste0("gdal_translate -of GTiff -ot UInt16 -co COMPRESS=DEFLATE -co BIGT
 # Clip by MA Shapefile ----------------------------------------------------
 print("Clipping the mosaic using the MA Shapefile")
 system(paste0("gdalwarp -cutline ",
-              polygon_folter, "mata_atlantica/ma_mapbiomas_shape.shp",
+              polygon_folter, "/mata_atlantica/ma_mapbiomas_shape_fx_diss.shp",
               " -crop_to_cutline ",
               raster_folder, ltr_analysis_folder, "/mosaics/mosaic.tif ",
               raster_folder, ltr_analysis_folder, "/mosaics/mosaic_clip.tif",
