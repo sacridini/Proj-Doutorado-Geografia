@@ -4,7 +4,7 @@ options(warn=0)
 
 library(raster)
 
-path <- paste0("/home/iis_backup/doutorado/raster/ltgee_loss_greatest_2018_seg12/mosaics/")
+path <- paste0("/home/iis_backup/doutorado/raster/gain_mag_gt200_dur_gt4_preval_gt400_2018/mosaics/")
 raster_files = list.files(path, pattern = "*mosaic_clip.tif")
 setwd(path)
 
@@ -42,7 +42,3 @@ for (img in raster_files) {
     }
   }
 }
-
-
-
-
