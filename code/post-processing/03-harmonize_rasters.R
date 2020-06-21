@@ -6,7 +6,7 @@ setwd(files_path)
 files_to_process = list.files(files_path)
 base_vector_path <- "~/doutorado/vector/mata_atlantica/ma_mask_fixed.shp"
 
-cl = makeCluster(3, outfile = "")
+cl = makeCluster(2, outfile = "")
 registerDoParallel(cl)
 
 foreach (f = files_to_process[1:length(files_to_process)]) %dopar% {

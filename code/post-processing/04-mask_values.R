@@ -1,6 +1,6 @@
 library(raster)
 
-ltr_layer <- "~/doutorado/raster/gain_mag_gt200_dur_gt4_preval_gt400_2018/mosaics/mosaic_clip_magnitude.tif"
+ltr_layer <- "~/doutorado/raster/gain_mag_gt200_dur_gt4_preval_gt400_2018/mosaics/mosaic_magnitude.tif"
 r1 <- raster(ltr_layer)
 files <- list.files("~/doutorado/raster/mapbiomas41/bin_masks", full.names = TRUE)
 
