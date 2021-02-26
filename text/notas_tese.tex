@@ -4,7 +4,7 @@
 
 \graphicspath{{images/}}
 
-\title{Notas da Tese}
+\title{Notas da Tese - Monitoramento de Distúrbios Florestais na Mata Atlântica Brasileira. Análise das dinâmicas ocorridas de 1985 à 2018.}
 \author{Eduardo Ribeiro Lacerda }
 \date{Criado em: Fevereiro 2019}
 
@@ -15,13 +15,32 @@
 \section{Ideias Sobre a Estrutura da Tese}
 \begin{itemize}
     \item A tese deverá ter 3 capítulos.
+    
     \item O primeiro capítulo deverá ser o elaborado para a matéria de campos temáticos que faz uma revisão sobre os métodos mais atuais de análise de séries temporais aplicadas ao estudo de degradação florestal.
+    
     \item O segundo capítulo deverá ser sobre o Landtrendr em si. Deverá fazer uma breve explicação sobre as capacidades da ferramenta, apresentar a área de estudo, mostrar os parâmetros escolhidos (de preferência de forma referenciável), mostrar os resultados de acordo com os parâmetros escolhidos e finalmente os resultados com a validação no timesync.
-    \item O terceiro capítulo provavelmente deve ser sobre as análises decorrentes da junção dos dois métodos de análise da paisagem. O capítulo deverá possuir análises pós cruzamento com base de dados consagradas sobre a mata atlântica e novas problematizações. Os dois primeiros capítulos servirão de base para o terceiro.  
+    
+    \item O terceiro capítulo provavelmente deve ser sobre as análises decorrentes da junção dos dois métodos de análise da paisagem. O capítulo deverá possuir análises pós cruzamento com base de dados consagradas sobre a mata atlântica e novas problematizações. Os dois primeiros capítulos servirão de base para o terceiro. 
+    
     \item Será possível separar posteriormente o que é restauração e regeneração natural? (utilizar os dados do PACTO?)
 \end{itemize}
 
-\subsection{Possíveis perguntas a serem respondidas pós análise}
+\subsection{Estrutura da Tese}
+
+\begin{itemize}
+    \item Objetivos Gerais 
+    
+    \item Objetivos Específicos
+    
+    \item Material de Campos Temáticos
+    
+    \item Área de Estudo
+    
+    \item Texto entre cap.2 (random forest) e cap.3 explicando os resultados ruins da aplicação do random forest para o resto da mata atlântica. Citar o artigo da Hanna Meyer explicando a perda de qualidade da classificação no espaço. Seria necessário criar uma máscara muito mais complexa por conta da quantidade de amostras e complexidade do modelo.
+    
+\end{itemize}
+
+\section{Possíveis perguntas a serem respondidas pós análise}
 \begin{itemize}
     \item Como as unidades de preservação existentes da MA se comportaram ao longo dos 33 anos? (Parque Nacional da Serra da Bocaina, Parque Nacional da Serra dos Órgãos...)
     \item Como as APPs em especial se comportaram ao longo do mesmo período?
@@ -31,6 +50,13 @@
     \item Quais as áreas com maior taxa (rate) de mudança (tanto para perda como ganho)? 
     \item Análise de perdas e ganhos de acordo com os municípios
     \item Analisar as perdas e ganhos nos corredores ecológicos central e da serra do mar. 
+\end{itemize}
+
+\section{Objetivos}
+\begin{itemize}
+    \item Verificar se o Landtrendr consegue identificar com alta precisão mudanças ocorridas ao longo dos 34 anos da série.
+    
+    \item Verificar se o resultado da metodologia consegue boa performance mesmo considerando a aplicação do algoritmo em diferentes fitofisionomias utilizando um mesmo conjunto de parâmetros.
 \end{itemize}
 
 \section{Anotações Aleatórias}
