@@ -2,29 +2,22 @@ var roi = ee.FeatureCollection("users/elacerda/bhrsj"),
     af_samples = ee.FeatureCollection("users/elacerda/samples_forest_sj"),
     ltr_samples = ee.FeatureCollection("users/elacerda/ltr_loss_samples"),
     other_samples = ee.FeatureCollection("users/elacerda/other_samples"),
-    img_ts = ee.Image("users/elacerda/bhrsj_ts"),
-    centroids = ee.FeatureCollection("users/elacerda/ma_path_rows_centroids"),
-    pathrows = ee.FeatureCollection("users/elacerda/ma_path_rows");
+    img_ts = ee.Image("users/elacerda/bhrsj_ts");
 
 var geet = require('users/elacerda/geet:geet'); 
 
-var coords = centroids.geometry().coordinates();
-var points_size = centroids.size().getInfo();
-var centroid_info = centroids.getInfo();
-
 for (var i = 0; i < 3; i++) {
-  switch(i) {
-    case 0:
-      af_samples = af_samples.map(function(feature) { return feature.set('class', i); });
-    case 1:
-      ltr_samples = ltr_samples.map(function(feature) { return feature.set('class', i); });
-    case 2:
-      other_samples = other_samples.map(function(feature) { return feature.set('class', i); });
+  if (i == 0) {
+    af_samples = af_samples.map(function(feature) { return feature.set('class', i); });
+  } else if (i == 1) {
+    ltr_samples = ltr_samples.map(function(feature) { return feature.set('class', i); });
+  } else if (i == 2) {
+    other_samples = other_samples.map(function(feature) { return feature.set('class', i); });
   }
 }
 
 var samplesfc = af_samples.merge(ltr_samples).merge(other_samples);
-
+print(samplesfc)
 var bands = [];
 for (var i = 0; i < 32; i++) {
   if (i === 0) {
@@ -50,29 +43,34 @@ for (var i = 0; i < 32; i++) {
   }
 }
 
-var merge_bands = function(image, previous) {
-  return ee.Image(previous).addBands(image);
-};
 
-for (var i = 0; i < 2; i++) {
-  var aoi = ee.Geometry.Point(coords.get(i));
-  var ls_timeseries = geet.build_annual_landsat_timeseries(aoi);
-  var ts_final = ls_timeseries.iterate(merge_bands, ee.Image([]));
-  var imgClass = geet.rf(ee.Image(ts_final), bands, samplesfc, 'class', 100, 30, 0.7);
-  var output_name = 'ma_invariant_for_'
-      + (centroid_info.features[i].properties.PATH).toString() + "_" 
-      + (centroid_info.features[i].properties.ROW).toString();
-  var region = aoi.buffer(100000).bounds();
-  var exportImg = imgClass.clip(region).unmask(0).short();
-  Export.image.toDrive({
-    image: exportImg, 
-    description: output_name, 
-    folder: 'ee', 
-    fileNamePrefix: output_name, 
-    region: region, 
-    scale: 30, 
-    crs: 'EPSG:4326', 
-    maxPixels: 1e13
-  });
-  Map.addLayer(imgClass)
-}
+// var imgClass = geet.rf(ee.Image(img_ts), bands, samplesfc, 'class', 100, 30, 0.7);
+
+var input_features = ee.Image(img_ts).sampleRegions({
+  collection: samplesfc,
+  properties: ['class'],
+  scale: 30
+});
+
+var classifier_final = ee.Classifier.smileRandomForest(100).train({
+  features: input_features,
+  classProperty: 'class',
+  inputProperties: bands
+});
+
+var imgClass = ee.Image(img_ts).classify(classifier_final);
+
+Map.addLayer(imgClass);
+
+Export.image.toDrive({
+  image: imgClass.unmask(4).clip(roi), 
+  description: "imgClass", 
+  folder: 'ee', 
+  fileNamePrefix: "imgClass", 
+  region: roi,
+  scale: 30, 
+  crs: 'EPSG:4326', 
+  maxPixels: 1e13
+});
+
+
