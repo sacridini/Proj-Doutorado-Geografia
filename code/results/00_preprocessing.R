@@ -13,13 +13,13 @@ terra::writeRaster(gain_dur, "~/doutorado/testes/gain/gain_dur_gt3.tif",  wopt=l
 
 # Resample of gain_seg_6_masked18_zeros (preprocessing) -------------------
 gain_seg_6_original <- terra::rast("~/doutorado/testes/loss/gain_seg6_masked18_zeros.tif")
-gain_seg_6_resampled <- terra::resample(gain_seg_6_original, loss, method = 'near',
+gain_seg_6_resampled <- terra::resample(gain_seg_6_original, mb_85, method = 'near',
                                         filename = "~/doutorado/testes/loss/gain_seg6_masked18_zeros_resampled.tif",
                                         wopt=list(gdal=c("COMPRESS=DEFLATE")))
 
 # Resample of gain_seg_6_dur_gt4 (preprocessing) -------------------
 gain_seg_6_dur_gt4 <- terra::rast("~/doutorado/testes/gain/gain_seg6_masked18_dur_gt4.tif")
-gain_seg_6_resampled <- terra::resample(gain_seg_6_original, loss, method = 'near',
+gain_seg_6_resampled <- terra::resample(gain_seg_6_dur_gt4, mb_85, method = 'near',
                                         filename = "~/doutorado/testes/gain/gain_seg6_masked18_dur_gt4_resampled.tif",
                                         wopt=list(gdal=c("COMPRESS=DEFLATE")))
 
