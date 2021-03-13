@@ -10,5 +10,6 @@ bin_rasters_subset <- append(bin_rasters_subset, names(bin_rasters)[!grepl("eq1"
 for (r in bin_rasters_subset) {
   message(paste0("Processing: ", names(bin_rasters[[r]])))
   result <- bin_rasters[[r]] * dur
-  terra::writeRaster(result, paste0("~/doutorado/testes/loss/finais/dur/", names(bin_rasters[[r]]), "_dur.tif"), wopt=list(gdal=c("COMPRESS=DEFLATE")))
+  terra::writeRaster(result, paste0("~/doutorado/testes/loss/finais/dur/", names(bin_rasters[[r]]), "_dur.tif"),
+                     wopt=list(gdal=c("COMPRESS=DEFLATE")))
 }
