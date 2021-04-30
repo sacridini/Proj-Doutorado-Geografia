@@ -1,3 +1,7 @@
+# add area(square meters), area (square kilometers) and proportional area (prop_area = pixel count * 900 / UF total area in square meters)
+# columns to all vector data inside zonal stats folder
+# 900 = 30x30m landsat resolution
+
 library(sf)
 library(units)
 
@@ -13,4 +17,4 @@ calc_area <- function(path, format) {
 }
 
 calc_area("~/doutorado/testes/loss/finais/albers/zonal_stats/", "*.gpkg")
-# plot(loss_masked85_maskedGain["prop_loss"])
+# plot(loss_masked85_maskedGain["prop_loss"])TT
