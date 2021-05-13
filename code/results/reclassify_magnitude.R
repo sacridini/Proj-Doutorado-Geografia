@@ -22,4 +22,10 @@ magnitude[magnitude > 200] <- NA
 f200 <- freq(magnitude)
 sum(f200[,3])
 
+results_df <- data.frame(f800 = f800,
+                         f600 = f600,
+                         f400 = f400,
+                         f300 = f300,
+                         f200 = f200)
 
+write.csv(results_df, "~/doutorado/testes/loss/finais/loss_masked85_maskedGain_albers_magnitude_classes.csv", sep = ",", row.names = FALSE)
