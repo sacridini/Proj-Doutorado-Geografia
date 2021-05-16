@@ -1,26 +1,21 @@
 library(terra)
 
-magnitude <- terra::rast("~/doutorado/testes/loss/finais/albers/loss_masked85_maskedGain_albers.tif")
+magnitude <- terra::rast("~/doutorado/testes/gain/finais/albers/gain_seg6_masked18_dur_gt4_inv_for_albers.tif")
 
-magnitude[magnitude > 800] <- NA
-f800 <- freq(magnitude)
+m <- c(0, 200, 1,
+       200, 300, 2,
+       300, 400, 3,
+       400, 600, 4,
+       600, 800, 5,
+       800, 2000, 6)
+reclass_table <- matrix(m, ncol = 3, byrow = TRUE)
+reclass <- terra::classify(magnitude, reclass_table, include.lowest = TRUE)
 
-magnitude[magnitude > 600] <- NA
-f600 <- freq(magnitude)
+terra::writeRaster(reclass, "~/doutorado/testes/gain/finais/albers/analysis_by_class/gain_seg6_masked18_dur_gt4_inv_for_albers_reclass.tif",
+                   wopt=list(gdal=c("COMPRESS=DEFLATE")))
 
-magnitude[magnitude > 400] <- NA
-f400 <- freq(magnitude)
-
-magnitude[magnitude > 300] <- NA
-f300 <- freq(magnitude)
-
-magnitude[magnitude > 200] <- NA
-f200 <- freq(magnitude)
-
-results_df <- data.frame(f800 = sum(f800[,3]),
-                         f600 = sum(f600[,3]),
-                         f400 = sum(f400[,3]),
-                         f300 = sum(f300[,3]),
-                         f200 = sum(f200[,3]))
-
-write.csv(results_df, "~/doutorado/testes/loss/finais/loss_masked85_maskedGain_albers_magnitude_classes.csv", sep = ",", row.names = FALSE)
+f <- freq(reclass)
+f_df <- as.data.frame(f)
+f_df$class <- c("0-200", "200-300", "300-400", "400-600", "600-800", "800-")
+write.csv(f_df, "~/doutorado/testes/gain/finais/albers/analysis_by_class/gain_seg6_masked18_dur_gt4_inv_for_albers.csv",
+          sep = ",", row.names = FALSE)
