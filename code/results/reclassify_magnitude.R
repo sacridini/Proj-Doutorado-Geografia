@@ -1,7 +1,7 @@
 library(terra)
 
 type <- "loss"
-file_name <- "loss_masked85_maskedGain_albers.tif"
+file_name <- "loss_masked85_maskedGain_dur_neq1_mag_albers"
 
 magnitude <- terra::rast(paste0("~/doutorado/testes/", type, "/finais/albers/", tools::file_path_sans_ext(file_name), ".tif"))
 
