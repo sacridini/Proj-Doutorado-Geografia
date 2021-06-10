@@ -291,7 +291,55 @@ Através dos testes realizados neste trabalho podemos verificar que a metodologi
 Máscaras de áreas invariantes como a gerada pelo algoritmo de aprendizado de máquina poderão servir, não só como parâmetros para estudos aplicados à conservação, mas também como máscaras para a limpeza de dados indesejados em resultados obtidos por algoritmos de detecção de mudanças como o Landtrendr e outros.
 
 \newpage
+% \section{Long-term (1985 – 2018) monitoring of forest cover changes in the Atlantic Forest using Landtrendr algorithm}
+\section{Monitoramento de longo prazo (1985 – 2018) das mudanças florestais na Mata Atlântica utilizando o algoritmo Landtrendr}
+\subsection{Introdução}
+Introdução.
+
+\subsection{Materiais e Métodos}
+\subsubsection{Área de estudo}
+O estudo abrange toda a área do bioma da Mata Atlântica brasileira, que possui atualmente uma área total de aproximadamente 1.1 Mkm2 ou 110 Mha. O bioma está presente em 15 estados brasileiros e é onde se localiza grande parte da atividade econômica e população do pais. Atualmente, vivem na Mata Atlântica cerca de 72\% da população brasileira (IBGE, 2014), o que em parte explica o fato de hoje apenas cerca de 12\% de sua cobertura natural ter persistido.. O bioma ainda possui 75,6\% das espécies ameaçadas e endêmicas do Brasil, o que o torna um dos mais prioritários para conservação no país. Além disso, estima-se que entre 43\% e 45\% do total de espécies de plantas e vertebrados sejam restritas a esse bioma.
+
+Segundo SCARANO, 2014, na época da chegada dos portugueses no Brasil, a Mata Atlântica cobria cerca de 1,5 milhões de quilômetros quadrados, estendendo-se ao longo de 3 mil quilômetros da costa brasileira - do Rio Grande do Sul ao Rio Grande do Norte - e penetrando pelo interior, cruzando São Paulo, Minas Gerais e Mato Grosso do Sul até as fronteiras da Argentina e do Paraguai. Cerca de 500 anos depois, esse extenso e representativo bioma abriga mais de 100 milhões de pessoas, cerca de 1/4 das quais ainda vivem na pobreza. (SCARANO, 2014).
+
+Segundo o projeto Mapbiomas, a área total de florestas no bioma em 1985 era de X e em 2018 de X. Já a área de florestas que não sofreram mudanças significativas (pseudo-invariantes) durante o período de 1985 até 2018 foi de aproximadamente 21.4Mha. Deste total, somente  30\% da vegetação nativa remanescente está protegida legalmente através de unidades de conservação.
+
+% Apesar dos importantes avanços obtidos nesta agenda na última década – como a restauração de aproximadamente 1,4 milhões de hectares entre 2011 e 2020 – muito ainda precisa ser feito \citep{CROUZEILLES2019}
+
+\subsubsection{Dados de entrada}
+Para este estudo foram utilizadas todas as imagens Landsat 5, 7 e 8 disponíveis entre 1985 e 2018 ao longo das 88 cenas Landsat necessárias para cobrir todos os 110 Mha de extensão do bioma. Todas as imagens utilizadas são da coleção \emph{surface reflectance} e passaram por processo de harmonização para evitar acúmulo de ruídos. As séries temporais foram criadas utilizando uma função própria do Landtrendr.
+
+
+\subsubsection{Método de análise}
+A análise das trajetórias foi feita utilizando o algoritmo Landtrendr em sua versão para a plataforma Google Earth Engine (GEE) \citep{Kennedy2018}. As vantagens da implementação do algoritmo no GEE em relação a sua versão original em ENVI/IDL está na possibilidade de sua aplicação em áreas extensas. Além disso, a versão para GEE elimina grande parte dos desafios técnicos presentes em sua implementação clássica. No entanto, apesar do ganho significativo no tempo de processamento quando comparado a sua versão em IDL, o Landtrendr GEE também apresenta algumas limitações. Uma das maiores está na limitação na extensão da análise para apenas uma imagem Landsat por vez. A plataforma apresentou erros sistemáticos quando foi requisitada para processar análises para toda a Mata Atlântica de uma só vez, por exemplo. Com isso, o processamento teve de ser feito em etapas. 
+
+Com isso, as etapas tiveram de ser divididas por cenas Landsat, neste caso, 88 cenas. Como o resultado do algoritmo é dado de forma separada por cena, foi necessário juntar todas as camadas geradas em uma única em uma etapa extra de pós-processamento. Devido a ruídos presentes nas bordas das imagens Landsat e a sobreposição natural entre imagens diferentes, nem todos os pixels presentes nas bordas apresentaram resultados similares. Juntar todos as 88 camadas de resultados em uma se tornou um desafio e só foi possível através criação de polígonos de voronoi \citep{Okabe}, o que possibilitou utilizarmos somente as áreas mais próximas do centro das camadas geradas pelo algoritmo. 
+
+Os polígonos de voronoi foram gerados através da extração dos centroides dos polígonos delimitadores das cenas Landsat e posteriormente utilizados para a criação dos polígonos com as áreas centrais. Após a geração dos polígonos de voronoi, o mesmos foram utilizados para recordar os resultados de forma a limpar possíveis sobreposições. Após o recorte, todas as imagens foram agregadas para toda extensão do bioma e separadas banda a banda para análise posterior.
+
+% Mapa duplo com shapefiles dos pathrows e com os voronoi (?)
+
+Tanto resultados para o cenário de perda quanto de ganho foram gerados com o objetivo de detectar supressões e processos de degradação como também de restauração e regeneração da floresta. Para este estudo, o Landtrendr foi aplicado utilizando todos seus parâmetros padrões.
+
+\subsubsection{Processamento dos cenários de ganho}
+Para o cenário de ganho, todos os parâmetros padrão do algoritmo foram mantidos sem nenhum tipo de restrição. Cenários de magnitude, valor prévio, ano de detecção, duração e taxa forma gerados e posteriormente pós-processados para limpeza de ruídos ou para retirada de valores indesejados. 
+
+Primeiramente, foi gerado uma máscara com todas as áreas pseudo-invariantes entre os anos da análise (1985 - 2018) com o intuito de limpar detecções de mudança muito pequenas. Além disso, foram mascarados também todos os eventos com duração menor ou igual a 4 anos, já que não gostaríamos de incorporar eventos ainda muito recentes que poderiam ser identificados como falsos eventos de mudança. O valor mínimo de 5 anos para eventos de ganho ajuda a identificar apenas eventos mais longos que tiveram tempo de apresentar respostas espectrais significativas de recuperação. Com 5 anos a vegetação já passa a apresentar um estágio sucessional característico de floresta secundária inicial. 
+
+\subsubsection{Processamento dos cenários de perda}
+Assim como o cenário de ganho, o processamento do cenário de perda utilizou todos os parâmetros padrões do algoritmo sem nenhum tipo de restrição com o objetivo de realizar limpezas nos resultados obtidos em uma etapa de pós-processamento.
+
+No caso das perdas, 
+
+\subsubsection{Validação}
+
+\subsubsection{Resultados}
+
+
+\newpage
 \bibliographystyle{abbrv}
 %\bibliographystyle{apalike}
 \bibliography{bibliography.bib}
 \end{document}
+
+    
