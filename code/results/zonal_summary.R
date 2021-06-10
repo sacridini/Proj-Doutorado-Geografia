@@ -6,6 +6,11 @@ gain_seg6_masked18_dur_gt4_inv_for_albers <-
   terra::vect("~/doutorado/testes/gain/finais/albers/zonal_stats/gain_seg6_masked18_dur_gt4_inv_for_albers.gpkg")
 summary(gain_seg6_masked18_dur_gt4_inv_for_albers)
 
+# gain_seg6_masked18_dur_gt4_inv_for_bin_dur_albers -----------------------
+gain_seg6_masked18_dur_gt4_inv_for_bin_dur_albers <-
+  terra::vect("~/doutorado/testes/gain/finais/albers/zonal_stats/gain_seg6_masked18_dur_gt4_inv_for_bin_dur_albers.gpkg")
+summary(gain_seg6_masked18_dur_gt4_inv_for_bin_dur_albers)
+
 # gain_seg6_masked18_dur_gt4_inv_for_yod_albers ---------------------------
 gain_seg6_masked18_dur_gt4_inv_for_yod_albers <-
   terra::vect("~/doutorado/testes/gain/finais/albers/zonal_stats/gain_seg6_masked18_dur_gt4_inv_for_yod_albers.gpkg")
