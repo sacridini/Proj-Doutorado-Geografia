@@ -62,4 +62,13 @@ loss_masked85_maskedGain_dur_neq1_yod_albers <-
 summary(loss_masked85_maskedGain_dur_neq1_yod_albers)
 
 
+# loss_masked85_maskedGain_rate_albers ------------------------------------
+loss_masked85_maskedGain_rate_albers <-
+  terra::vect("~/doutorado/testes/loss/finais/albers/zonal_stats/loss_masked85_maskedGain_rate_albers.gpkg")
+summary(loss_masked85_maskedGain_rate_albers)
 
+
+# loss_masked85_maskedGain_yod_albers -------------------------------------
+loss_masked85_maskedGain_yod_albers <-
+  terra::vect("~/doutorado/testes/loss/finais/albers/zonal_stats/loss_masked85_maskedGain_yod_albers.gpkg")
+summary(loss_masked85_maskedGain_yod_albers)
