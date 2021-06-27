@@ -15,7 +15,7 @@
 
 %\bibliography{literature}
 
-\title{Monitoramento de Distúrbios Florestais na Mata Atlântica Brasileira. Análise das dinâmicas ocorridas de 1985 à 2018.}
+\title{Monitoramento de Distúrbios Florestais na Mata Atlântica Brasileira. Análise das dinâmicas ocorridas entre 1985 e 2018.}
 \author{Eduardo Ribeiro Lacerda}
 \date{}
 %\date{\today}
@@ -29,6 +29,48 @@
 \newpage
 \listoffigures
 
+\newpage
+
+\section{Introdução}
+
+\subsection{Questionamentos e objetivos da pesquisa}
+Os questionamentos motivadores da pesquisa foram:
+\begin{itemize}
+    \item Como um algoritmo como o Landtrendr, inicialmente desenvolvido e utilizado para detecção de mudanças em ambientes de floresta temperada poderia ser utilizado para identificar com alta precisão mudanças ocorridas em uma paisagem complexa como a presente na Mata Atlântica brasileira?
+    
+    \item O aplicação da metodologia consegue boa performance geral e/ou em diferentes fitofisionomias considerando a aplicação do algoritmo com um mesmo conjunto de parâmetros?
+    
+    \item Quais as áreas com maior quantidade de perda e ganho de floresta?
+    
+    \item Como as unidades de preservação existentes da Mata Atlântica se comportaram ao longo dos anos? (ex. Parque Nacional da Serra da Bocaina, Parque Nacional da Serra dos Órgãos, etc)
+    
+    \item Como os estados e municípios se comportaram ao longo da série temporal? Quais deles ganharam mais do que perderam floresta?
+    
+    \item Quais os anos com maior quantidade de perda e ganho de floresta?
+    
+    \item Quais as áreas com maior taxa de mudança tanto para perda como ganho de vegetação? 
+    
+    \item Qual a idade das florestas secundárias do bioma? 
+\end{itemize}
+
+\subsection{Objetivos Específicos}
+\begin{itemize}
+    \item Definição do período, seleção das imagens e criação da composição da série temporal Landsat a ser utilizada;
+    
+    \item Compatibilização das imagens utilizadas de acordo com características geométricas e radiométricas com o intuito de evitar possíveis ruídos;
+    
+    \item Definição dos parâmetros e do índice espectral para a execução do processo de segmentação temporal utilizando o algoritmo Landtrendr;
+    
+    \item Desenvolvimento do código na plataforma Google Earth Engine para a execução do algoritmo em todas as cenas que englobam o bioma da Mata Atlântica brasileira;
+    
+    \item Mapeamento das trajetórias florestais compatível com a escala 1:100.000 através da criação de mapas de detecção de magnitude, ano de início da mudança, duração e taxa de mudança;
+    
+    \item Conversão dos dados matriciais gerados em dados vetoriais com intuito de identificar áreas com maior nível de ocorrência de perdas e ganhos de acordo com divisões políticas e geoecológicas;
+    
+    \item Mapeamento da idade da floresta secundária;
+    
+    \item Avaliação da acurácia dos produtos gerados. Avaliar o desempenho do algoritmo em ambientes de florestas tropicais com alto nível de complexidade ecológica.
+\end{itemize}
 \newpage
 
 \section{Perspectivas sobre a Utilização de Algoritmos para o Processamento de Séries Temporais no Estudo de Distúrbios Florestais}
