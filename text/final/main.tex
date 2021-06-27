@@ -15,7 +15,7 @@
 
 %\bibliography{literature}
 
-\title{Monitoramento de Distúrbios Florestais na Mata Atlântica Brasileira. Análise das dinâmicas ocorridas entre 1985 e 2018.}
+\title{Monitoramento de Longo Prazo (1985 - 2018) das Mudanças Florestais na Mata Atlântica Brasileira Utilizando Algoritmo de Detecção de Mudança Baseado em Trajetórias}
 \author{Eduardo Ribeiro Lacerda}
 \date{}
 %\date{\today}
@@ -32,6 +32,14 @@
 \newpage
 
 \section{Introdução}
+A busca por um melhor entendimento dos processos e dinâmicas ocorridas na paisagem passa necessariamente por uma melhor compreensão do tempo (GREGORY). 
+A aplicação de técnicas de sensoriamento remoto em séries temporais ao longo das últimas décadas contribuíram para que o avanço da detecção de supressões florestais, sejam as relacionados a processos antrópicos, como a processos naturais, fossem utilizadas como subsídio ao desenvolvimento e a aplicação de políticas públicas conservacionistas e restaurativas. Os esforços pelo monitoramento são multi-escalares, mostrando que a aplicação de técnicas de sensoriamento remoto podem ser utilizadas como subsídio a projetos locais \citep{rs12111815}, regionais \citep{Vancutsemeabe1603, silva_junior_brazilian_2021, brandt_unexpectedly_2020}, nacionais \citep{rs12111790} e até mesmo globais \citep{Hansen850, crowther_mapping_2015, POTAPOV2021112165}. A produção desses insumos contribuem diretamente, por exemplo, para o desenvolvimento de cooperações internacionais viáveis foquem em políticas compensatórias visando a redução dos efeitos da mudança climática. 
+
+No entanto, detectar mudanças na paisagem comparando mapas de uso e cobertura a partir de classificações prévias, tendem a propagar erros e a possuírem custo de produção elevado como o caso de projetos governamentais como o realizado pelo IBGE \citep{ibge2020} ou projetos independentes como o Mapbiomas \citep{Souza2019}. O aumento na disponibilidade de imagens prontas para processamento  \citep{rs12030426} em plataformas como o Google Earth Engine facilitaram a aplicação de abordagens que buscam diminuir custos e facilitar o desenvolvimento de produtos no qual o foco está na compreensão de processos tanto de curta quanto de longa duração.
+
+Ao longo dos últimos 10 anos, algumas soluções começaram a ser desenvolvidas com o intuito de suprir esta demanda. Algoritmos de detecção de mudança em séries temporais como o Landtrendr foram desenvolvidas e aplicadas inicialmente em ambientes de florestas temperadas \citep{KENNEDY2012117}. Desde as primeiras versões do algoritmo até hoje, muitas aplicações foram desenvolvidas em diversas áreas como: distúrbios florestais \citep{rs9050479, rs12223720}, mudanças em áreas urbanas \citep{rs12182883, rs13132438}, distúrbios causados por incêndios \citep{rs12091499, rs12233942}, mineração \citep{rs12101612, rs12142235}, distúrbios em áreas de proteção \citep{rs13091800}, detecção de mudanças ou abandonos de áreas de produção agrícola \citep{YIN201812, rs11101234, KOLECKA2021112340, DARA201849}, entre outros.
+
+Alguns trabalhos em âmbito nacional também foram realizados e buscaram aplicar o algoritmo em áreas tropicais com o objetivo de entender seu comportamento em ambientes de maior diversidade ecológica. No entanto, todos os trabalhos focaram em contextos locais ou espacialmente limitados já que só puderam utilizar a primeira versão do algoritmo, ainda desenvolvido em linguagem proprietária IDL e com processamento exclusivo em ambiente offline, o que limitou significativamente a aplicação do mesmo para áreas extensas. O primeiro trabalho se deu aplicando o algoritmo em áreas de várzea na floresta amazônica \citep{FRAGAL2016} e depois no contexto de Mata Atlântica em escala municipal \citep{Zebende2020} e estadual \citep{Weckmuller2019}. A partir da implementação do algoritmo na plataforma Google Earth Engine, a utilização do mesmo pode ser democratizada e possivelmente ampliada para extensões de terra maiores ao mesmo tempo que diminuiu o custo de produção do mapeamento, já que todo o processamento pesado passou a ser feito de forma gratuita e centralizada em um servidor online.
 
 \subsection{Questionamentos e objetivos da pesquisa}
 Os questionamentos motivadores da pesquisa foram:
