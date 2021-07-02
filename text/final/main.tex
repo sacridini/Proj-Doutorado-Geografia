@@ -387,7 +387,7 @@ Os polígonos de voronoi foram gerados através da extração dos centroides dos
 
 Tanto resultados para o cenário de perda quanto de ganho foram gerados com o objetivo de detectar supressões e processos de degradação como também de restauração e regeneração da floresta. Para este estudo, o Landtrendr foi aplicado utilizando todos seus parâmetros padrões. O tipo de eventos (perda ou ganho) foram organizados de acordo com seu maior evento (\textit{Greatest Loss / Greatest Gain}).
 
-Toda a etapa de pós-processamento dos dados gerados pelo Landtrendr no GEE foi desenvolvida utilizando ferramentas \textit{open source} como o QGIS \citep{QGIS_software}, GDAL \citep{gdal}, e a linguagem de programação R \citep{Rsoftware} utilizando os pacotes Raster \citep{raster}, Terra \cite{terra}, gdalUtils \citep{gdalutils} e o MLR \citep{mlr}.
+Toda a etapa de pós-processamento dos dados gerados pelo Landtrendr no GEE foi desenvolvida em ambiente \textit{offline} utilizando ferramentas \textit{open source} como o QGIS \citep{QGIS_software}, GDAL \citep{gdal}, e a linguagem de programação R \citep{Rsoftware} utilizando os pacotes Raster \citep{raster}, Terra \cite{terra}, gdalUtils \citep{gdalutils} e o MLR \citep{mlr}.
 
 \subsubsection{Processamento dos cenários de ganho}
 \hspace{13pt} Para o cenário de ganho, todos os parâmetros padrão do algoritmo foram mantidos sem nenhum tipo de restrição. Cenários de magnitude (\textit{magnitude}), valor prévio (\textit{previous value}), ano de detecção (\textit{year of detection}), duração (\textit{duration}) e taxa (\textit{rate}) forma gerados e posteriormente pós-processados para limpeza de ruídos ou para retirada de valores indesejados. 
@@ -401,10 +401,15 @@ No caso das perdas, criou-se uma máscara para garantir que o Landtrendr fosse c
 
 Diferentemente dos dados de ganho, os dados de perda tem como característica importante a grande variabilidade na duração dos eventos. Sendo assim, utilizou-se a camada de duração para gerar, além das camadas de perda gerais, camadas de perda com duração igual a um ano e camadas com duração superior à um ano. Esta diferenciação é importante para que possamos identificar eventos de perda rápida, sejam eles de natureza antrópica ou natural, normalmente associados à cortes rasos ou queimadas. 
 
-\subsubsection{Validação}
+% \subsubsection{Validação}
 
-\subsubsection{Resultados}
+\subsection{Resultados e Discussões}
 
+\subsubsection{Os eventos de perda na Mata Atlântica}
+\subsubsection{Os eventos de ganho na Mata Atlântica}
+\subsubsection{A idade das florestas secundárias da Mata Atlântica}
+
+\subsection{Conclusões}
 
 \newpage
 \bibliographystyle{abbrv}
