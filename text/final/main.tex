@@ -11,7 +11,7 @@
 \usepackage{float} % force to render figures where i need
 \usepackage[table]{xcolor} % add color to tables
 \usepackage[nottoc,numbib]{tocbibind} % add bibliography to the table of contents
-
+\usepackage[toc,page]{appendix} % add appendix
 \setlength{\parindent}{15pt} % add paragraph space
 
 \begin{document}
@@ -435,6 +435,21 @@ Diferentemente dos dados de ganho, os dados de perda tem como característica im
 \subsection{Resultados e Discussões}
 
 \subsubsection{Os eventos de perda na Mata Atlântica}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/heatmap_loss_masked85_maskedgain.png}
+    \caption{Todos os eventos de perda na Mata Atlântica entre 1985 e 2018.}
+    \label{fig:heat_loss_masked85_maskedgain}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/heatmap_loss_eq1_neq1.png}
+    \caption{Mapas com os eventos de perda entre 1985 e 2018 tanto com duração igual a 1 quanto somente maiores que 1.}
+    \label{fig:heat_loss_eq1_neq1}
+\end{figure}
+
 \subsubsection{Os eventos de ganho na Mata Atlântica}
 \subsubsection{A idade das florestas secundárias da Mata Atlântica}
 
@@ -444,6 +459,119 @@ Diferentemente dos dados de ganho, os dados de perda tem como característica im
 \bibliographystyle{abbrv}
 %\bibliographystyle{apalike}
 \bibliography{bibliography.bib}
+
+\newpage
+\begin{appendices}
+\section{Total de área perdida ano a ano por estado}
+
+\hspace{13pt} Os gráficos a seguir mostram os anos que mais houveram perda de área para cada estado presente no bioma.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/loss_graphics/Alagoas_loss_eq1.png}
+    \caption{Perda de área por ano em Alagoas}
+    \label{fig:loss_alagoas}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/loss_graphics/Bahia_loss_eq1.png}
+    \caption{Perda de área por ano na Bahia}
+    \label{fig:loss_bahia}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/loss_graphics/Espírito Santo_loss_eq1.png}
+    \caption{Perda de área por ano no Espírito Santo}
+    \label{fig:loss_espirito_santo}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/loss_graphics/Goiás_loss_eq1.png}
+    \caption{Perda de área por ano em Goiás}
+    \label{fig:loss_goias}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/loss_graphics/Mato Grosso do Sul_loss_eq1.png}
+    \caption{Perda de área por ano no Mato Grosso do Sul}
+    \label{fig:loss_mato_grosso_sul}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/loss_graphics/Minas Gerais_loss_eq1.png}
+    \caption{Perdas em Alagoas}
+    \label{fig:loss_alagoas}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/loss_graphics/Paraíba_loss_eq1.png}
+    \caption{Perdas em Alagoas}
+    \label{fig:loss_alagoas}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/loss_graphics/Paraná_loss_eq1.png}
+    \caption{Perdas em Alagoas}
+    \label{fig:loss_alagoas}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/loss_graphics/Pernambuco_loss_eq1.png}
+    \caption{Perdas em Alagoas}
+    \label{fig:loss_alagoas}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/loss_graphics/Rio de Janeiro_loss_eq1.png}
+    \caption{Perdas em Alagoas}
+    \label{fig:loss_alagoas}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/loss_graphics/Rio Grande do Norte_loss_eq1.png}
+    \caption{Perdas em Alagoas}
+    \label{fig:loss_alagoas}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/loss_graphics/Rio Grande do Sul_loss_eq1.png}
+    \caption{Perdas em Alagoas}
+    \label{fig:loss_alagoas}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/loss_graphics/Santa Catarina_loss_eq1.png}
+    \caption{Perdas em Alagoas}
+    \label{fig:loss_alagoas}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/loss_graphics/São Paulo_loss_eq1.png}
+    \caption{Perdas em Alagoas}
+    \label{fig:loss_alagoas}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/loss_graphics/Sergipe_loss_eq1.png}
+    \caption{Perdas em Alagoas}
+    \label{fig:loss_alagoas}
+\end{figure}
+
+\end{appendices}
 \end{document}
 
     
