@@ -11,7 +11,8 @@
 \usepackage{float} % force to render figures where i need
 \usepackage[table]{xcolor} % add color to tables
 \usepackage[nottoc,numbib]{tocbibind} % add bibliography to the table of contents
-\usepackage[toc,page]{appendix} % add appendix
+% \usepackage[toc,page]{appendix} % add appendix
+
 \setlength{\parindent}{15pt} % add paragraph space
 
 \begin{document}
@@ -46,10 +47,10 @@
 \input{sections/state_of_the_art}
 \newpage
 
-\input{sections/pseudo_invariant}
+\input{sections/landtrendr}
 \newpage
 
-\input{sections/landtrendr}
+\input{sections/pseudo_invariant}
 \newpage
 
 \bibliographystyle{abbrv}
@@ -58,5 +59,8 @@
 
 \newpage
 \input{sections/apendice_loss_graph}
+
+\newpage
+\input{sections/apendice_gain_graph}
 
 \end{document}

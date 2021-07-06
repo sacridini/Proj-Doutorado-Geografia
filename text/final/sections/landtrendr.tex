@@ -9,7 +9,7 @@
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=.5]{images/mata_atlantica_thin.png}
+    \includegraphics[scale=.5]{images/mata_atlantica.png}
     \caption{Área de Estudo - Mata Atlântica brasileira}
     \label{fig:mata_atlantica}
 \end{figure}
@@ -37,7 +37,7 @@ Com isso, as etapas tiveram de ser divididas por cenas Landsat, neste caso, 88 c
     \label{fig:pathrow_centroids}
 \end{figure}
 
-Os polígonos de voronoi foram gerados através da extração dos centroides dos polígonos delimitadores das cenas Landsat e posteriormente utilizados para a criação dos polígonos com as áreas centrais (Figura \ref{fig:voronoi_ma}). Após a geração dos polígonos de voronoi, o mesmos foram utilizados para recordar os resultados de forma a limpar possíveis sobreposições. Após o recorte, todas as imagens foram agregadas para toda extensão do bioma e separadas banda a banda para análise posterior.
+Os polígonos de voronoi foram gerados através da extração dos centroides dos polígonos delimitadores das cenas Landsat e posteriormente utilizados para a criação dos polígonos com as áreas centrais (Figura \ref{fig:voronoi_ma}). Após a geração dos polígonos de voronoi, os mesmos foram utilizados para recordar os resultados de forma a limpar possíveis sobreposições. Após o recorte, todas as imagens foram agregadas para toda extensão do bioma e separadas banda a banda para análise posterior.
 
 \begin{figure}[H]
     \centering
@@ -46,7 +46,16 @@ Os polígonos de voronoi foram gerados através da extração dos centroides dos
     \label{fig:voronoi_ma}
 \end{figure}
 
-Tanto resultados para o cenário de perda quanto de ganho foram gerados com o objetivo de detectar supressões e processos de degradação como também de restauração e regeneração da floresta. Para este estudo, o Landtrendr foi aplicado utilizando todos seus parâmetros padrões. O tipo de eventos (perda ou ganho) foram organizados de acordo com seu maior evento (\textit{Greatest Loss / Greatest Gain}).
+O algoritmo Landtrendr trabalha analisando os valores pixel a pixel para toda a composição de imagens visando criar segmentos e assim identificando trajetórias (Figura \ref{fig:landtrendr_graph}). O Landtrendr pode gerar métricas tanto para distúrbios de perda como de ganho, além de detectar mudanças que ocorreram de forma lenta ou rápida, possibilitando também o cálculo da duração dos eventos segmentados previamente gerando não só dados contínuos como discretos como a duração e o ano da detecção. Podemos analisar, portanto, a história do pixel em questão, neste caso, sob uma perspectiva meso-escalar das florestas de Mata Atlântica. Apesar de receber as bandas padrões do satélite Landsat como dado de entrada, o algoritmo utiliza apenas um único índice para realizar a etapa de segmentação temporal. Alguns índices já bem estabelecidos estão implementados na ferramenta como o NDVI (\textit{Normalized Difference Vegetation Index}), o EVI (\textit{Enhanced vegetation index}), o NDMI (\textit{Normalized Difference Moisture Index}) e o NBR (\textit{Normalized Burn Ratio}). É possível também utilizar uma das próprias bandas do satélite para realizar as análises, como a banda do vermelho ou o SWIR (\textit{Short-wave infrared}). Apesar de bandas como o NBR e NDMI mostrarem bons resultados em regiões de floresta temperada, testes realizados em florestas tropicais mostraram que índices como o NDVI apresentam resultados superiores. Sendo assim, para este estudo, o processo de segmentação temporal foi realizada utilizando o NDVI como banda base.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=.8]{images/landtrendr_graphic.png}
+    \caption{Segmentação temporal do pixel pelo algoritmo Landtrendr.}
+    \label{fig:landtrendr_graph}
+\end{figure}
+
+Tanto resultados para o cenário de perda quanto de ganho foram gerados com o objetivo de detectar supressões e processos de degradação como também de restauração e regeneração da floresta. Para este estudo, o Landtrendr foi aplicado utilizando todos seus parâmetros padrões. O tipo de eventos (perda ou ganho) foram organizados de acordo com seu maior evento/segmento (\textit{Greatest Loss / Greatest Gain}).
 
 Toda a etapa de pós-processamento dos dados gerados pelo Landtrendr no GEE foi desenvolvida em ambiente \textit{offline} utilizando ferramentas \textit{open source} como o QGIS \citep{QGIS_software}, GDAL \citep{gdal}, e a linguagem de programação R \citep{Rsoftware} utilizando os pacotes Raster \citep{raster}, Terra \cite{terra}, gdalUtils \citep{gdalutils} e o MLR \citep{mlr}.
 
@@ -82,7 +91,29 @@ Diferentemente dos dados de ganho, os dados de perda tem como característica im
     \label{fig:heat_loss_eq1_neq1}
 \end{figure}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/mun_loss_mun_masked85_maskedgain.png}
+    \caption{Todos os eventos de perda na Mata Atlântica entre 1985 e 2018 por município. Os valores representam o número de pixels que tiveram alguma detecção de perda.}
+    \label{fig:mun_loss_masked85_maskedgain}
+\end{figure}
+
 \subsubsection{Os eventos de ganho na Mata Atlântica}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/heatmap_gain_masked18_dur_gt4_inv_for.png}
+    \caption{Mapas com os eventos de ganho entre 1985 e 2018.}
+    \label{fig:heat_gain}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/mun_gain_seg6_masked18_dur_gt4_inv_for.png}
+    \caption{Mapas com os eventos de ganho entre 1985 e 2018 por município. Os valores representam o número de pixels que tiveram alguma detecção de ganho.}
+    \label{fig:mun_gain}
+\end{figure}
+
 \subsubsection{A idade das florestas secundárias da Mata Atlântica}
 
 \subsection{Conclusões}
