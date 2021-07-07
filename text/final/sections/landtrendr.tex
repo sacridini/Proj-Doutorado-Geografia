@@ -46,7 +46,7 @@ Os polígonos de voronoi foram gerados através da extração dos centroides dos
     \label{fig:voronoi_ma}
 \end{figure}
 
-O algoritmo Landtrendr trabalha analisando os valores pixel a pixel para toda a composição de imagens visando criar segmentos e assim identificando trajetórias (Figura \ref{fig:landtrendr_graph}). O Landtrendr pode gerar métricas tanto para distúrbios de perda como de ganho, além de detectar mudanças que ocorreram de forma lenta ou rápida, possibilitando também o cálculo da duração dos eventos segmentados previamente gerando não só dados contínuos como discretos como a duração e o ano da detecção. Podemos analisar, portanto, a história do pixel em questão, neste caso, sob uma perspectiva meso-escalar das florestas de Mata Atlântica. Apesar de receber as bandas padrões do satélite Landsat como dado de entrada, o algoritmo utiliza apenas um único índice para realizar a etapa de segmentação temporal. Alguns índices já bem estabelecidos estão implementados na ferramenta como o NDVI (\textit{Normalized Difference Vegetation Index}), o EVI (\textit{Enhanced vegetation index}), o NDMI (\textit{Normalized Difference Moisture Index}) e o NBR (\textit{Normalized Burn Ratio}). É possível também utilizar uma das próprias bandas do satélite para realizar as análises, como a banda do vermelho ou o SWIR (\textit{Short-wave infrared}). Apesar de bandas como o NBR e NDMI mostrarem bons resultados em regiões de floresta temperada, testes realizados em florestas tropicais mostraram que índices como o NDVI apresentam resultados superiores. Sendo assim, para este estudo, o processo de segmentação temporal foi realizada utilizando o NDVI como banda base.
+O algoritmo Landtrendr trabalha analisando os valores pixel a pixel para toda a composição de imagens visando criar segmentos e assim identificando trajetórias (Figura \ref{fig:landtrendr_graph}). O Landtrendr pode gerar métricas tanto para distúrbios de perda como de ganho, além de detectar mudanças que ocorreram de forma lenta ou rápida, possibilitando também o cálculo da duração dos eventos segmentados previamente gerando não só dados contínuos como discretos como a duração e o ano da detecção. Podemos analisar, portanto, a história do pixel em questão, neste caso, sob uma perspectiva meso-escalar das florestas de Mata Atlântica. Apesar de receber as bandas padrões do satélite Landsat como dado de entrada, o algoritmo utiliza apenas um único índice para realizar a etapa de segmentação temporal. Alguns índices já bem estabelecidos estão implementados na ferramenta como o NDVI (\textit{Normalized Difference Vegetation Index}), o EVI (\textit{Enhanced vegetation index}), o NDMI (\textit{Normalized Difference Moisture Index}) e o NBR (\textit{Normalized Burn Ratio}). É possível também utilizar uma das próprias bandas do satélite para realizar as análises, como a banda do vermelho ou o SWIR (\textit{Short-wave infrared}). Apesar de bandas como o NBR e NDMI mostrarem bons resultados em regiões de floresta temperada, testes realizados em florestas tropicais mostraram que índices como o NDVI apresentam resultados superiores \citep{zebende2019}. Sendo assim, para este estudo, o processo de segmentação temporal foi realizado utilizando o NDVI como banda base.
 
 \begin{figure}[h!]
     \centering
@@ -75,7 +75,19 @@ Diferentemente dos dados de ganho, os dados de perda tem como característica im
 
 \subsection{Resultados e Discussões}
 
+\hspace{13pt} Os resultados para os cenários de perda e ganho foram agregados para abranger em um único arquivo todo o bioma. Com isso, foi possível com compilar os resultados transformando os arquivos matriciais em arquivos vetoriais. Essa transformação foi necessária para facilitar a visualização através de mapas de calor (\textit{heatmaps}) como os que veremos posteriormente. Os resultados foram transformados para um sistema de referência de área igual ideal para grandes extensões. Neste caso foi utilizado a projeção de Albers, mais especificamente a \textit{South America Albers Equal Area Conic} (ESRI: 102003). 
+
 \subsubsection{Os eventos de perda na Mata Atlântica}
+
+\hspace{13pt} Somando-se todos os eventos de perda detectados pelo algoritmo após as filtragens necessárias, houveram ao longo de todos os anos da análise 61.167.796 de pixels com uma perda média de magnitude de 225 ou diminuição de 0.225 no índice NDVI. Isso equivale a uma área total de pouco mais de 55 mil $ km^2 $ de florestas que sofreram perdas significativas no bioma e que não foram recuperadas após a supressão.
+
+De forma geral, pode se dizer que um evento de perda com magnitude igual ou superior a 200 tem alta probabilidade de ser considerado um evento de perda significativa a ponto de representar uma mudança estrutural na cobertura da terra e uma consequente mudança de classe em mapas de uso e cobertura. Este número foi encontrado através de testes estatísticos realizados com o intuito de entender diferenças espectrais entre áreas de floresta e pasto utilizando o índice NDVI como base. 
+
+Os testes foram realizados tanto para áreas de florestas ombrófilas quanto estacionárias por representarem as duas maiores fitofisionomias encontradas no bioma. Cem amostras foram coletadas para cada fitofisionomia de floresta como também para áreas de pasto. O valor médio de NDVI encontrado para áreas de floresta estacionária foi de 0.80 e ombrófila de 0.86. Já para áreas de pasto o valor médio foi de 0.61. Ou seja, uma diferença média de mais de 0.2 ou mais de 200 de magnitude entre áreas florestadas e de pasto. Comparando-se as médias das amostras de floresta ombrófila com amostras de pasto o p-valor obtido foi de 1.599e-11, já para a comparação com as amostras de florestas estacionárias o valor do teste-t foi de 2.495e-7. Ou seja, independente da fitofisionomia, ambas as situações apresentaram diferença estatisticamente significativa em suas médias.
+
+No entanto, este valor de limiar encontrado não foi utilizado como máscara para as análises de perda devido a um alto desvio padrão encontrado nos valores de magnitude (média de 123). Foi observado que muitas áreas que já apresentavam um certo grau de degradação já faziam a transição para pasto com evento de magnitude próximas de 150. Para não excluirmos estas áreas do resultado, optou-se por utilizar apenas máscaras baseadas em camadas previamente geradas pelo projeto Mapbiomas como descrito na sessão 3.2.5.
+
+O resultado mais abrangente envolvendo todos os eventos de perda do bioma pode ser visualizado na (Figura \ref{fig:heat_loss_masked85_maskedgain}). A maior aglomeração de eventos de perda está localizada principalmente entre os estados do Paraná e Santa Catarina e no estado da Bahia. Nos outros estados o mapa de calor mostra uma distribuição mais homogênea dos eventos ao longo do território. 
 
 \begin{figure}[H]
     \centering
@@ -84,11 +96,45 @@ Diferentemente dos dados de ganho, os dados de perda tem como característica im
     \label{fig:heat_loss_masked85_maskedgain}
 \end{figure}
 
+Quando a divisão das detecções é feita de acordo com eventos de curta duração (um ano) e longos (maiores que um ano), verificamos que o padrão espacial das aglomerações (\textit{clusters}) se mantém semelhante com apenas algumas variações (Figura \ref{fig:heat_loss_eq1_neq1}). Os eventos de curta duração tendem a se localizar mais na fronteira entre Paraná e Santa Catarina, enquanto os de longa aconteceram com maior frequência na região central do Paraná, sul/norte da Bahia e norte de Pernambuco. Dos mais de 61 milhões de eventos detectados ou 55 mil $ km^2 $, cerca de 27.5 milhões foram eventos de curta duração, o que significa uma área aproximada de 25 mil $ km^2 $. Os outros 33.7 milhões de eventos tiveram duração maior que um ano, o que totalizou aproximadamente 30.4 mil $ km^2 $.
+
+Já quando a divisão é feita por estados (Figura \ref{fig:estados_loss_masked85_maskedgain}), verificamos que estados como Minas Gerais possuem um número grande de eventos que estão distribuídos de forma homogênea pelo território, assim como Bahia e São Paulo. Vemos que apesar do maior \textit{cluster} de perdas estar localizado entre Paraná e Santa Catarina, a maior quantidade de eventos está no estado do Paraná. 
+
 \begin{figure}[H]
     \centering
     \includegraphics[scale=.5]{images/heatmap_loss_eq1_neq1.png}
     \caption{Mapas com os eventos de perda entre 1985 e 2018 tanto com duração igual a 1 quanto somente maiores que 1.}
     \label{fig:heat_loss_eq1_neq1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/estados_loss_masked85_maskedGain.png}
+    \caption{Todos os eventos de perda na Mata Atlântica entre 1985 e 2018 por estado. Os valores representam o número de pixels que tiveram alguma detecção de perda.}
+    \label{fig:estados_loss_masked85_maskedgain}
+\end{figure}
+
+Ao considerar o número de eventos de acordo com a área de cada estado, verificamos que estados como Santa Catarina e Bahia se destacam mostrando o maior proporção de perdas ao longo dos 33 anos seguido de Pernambuco, Paraná e Sergipe (Figura \ref{fig:estados_loss_proporcional}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/estado_loss_proporcional.png}
+    \caption{Mapas com os eventos de perda entre 1985 e 2018 classificado de acordo com a proporção de área de cada estado.}
+    \label{fig:estados_loss_proporcional}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/estados_loss_masked85_maskedGain_eq1.png}
+    \caption{Todos os eventos de perda rápida (duração igual a 1) na Mata Atlântica entre 1985 e 2018 por estado. Os valores representam o número de pixels que tiveram alguma detecção de perda.}
+    \label{fig:estados_loss_masked85_maskedgain_eq1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/estados_loss_masked85_maskedGain_neq1.png}
+    \caption{Todos os eventos de perda longa (duração maior que 1) na Mata Atlântica entre 1985 e 2018 por estado. Os valores representam o número de pixels que tiveram alguma detecção de perda.}
+    \label{fig:estados_loss_masked85_maskedgain_neq1}
 \end{figure}
 
 \begin{figure}[H]
@@ -105,6 +151,13 @@ Diferentemente dos dados de ganho, os dados de perda tem como característica im
     \includegraphics[scale=.5]{images/heatmap_gain_masked18_dur_gt4_inv_for.png}
     \caption{Mapas com os eventos de ganho entre 1985 e 2018.}
     \label{fig:heat_gain}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=.5]{images/estados_gain_seg6_masked18_dur_gt4_inv_for.png}
+    \caption{Mapas com os eventos de ganho entre 1985 e 2018 por estado. Os valores representam o número de pixels que tiveram alguma detecção de ganho.}
+    \label{fig:estados_gain}
 \end{figure}
 
 \begin{figure}[H]
