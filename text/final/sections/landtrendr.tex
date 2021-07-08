@@ -60,9 +60,16 @@ Tanto resultados para o cenário de perda quanto de ganho foram gerados com o ob
 Toda a etapa de pós-processamento dos dados gerados pelo Landtrendr no GEE foi desenvolvida em ambiente \textit{offline} utilizando ferramentas \textit{open source} como o QGIS \citep{QGIS_software}, GDAL \citep{gdal}, e a linguagem de programação R \citep{Rsoftware} utilizando os pacotes Raster \citep{raster}, Terra \cite{terra}, gdalUtils \citep{gdalutils} e o MLR \citep{mlr}.
 
 \subsubsection{Processamento dos cenários de ganho}
+
 \hspace{13pt} Para o cenário de ganho, todos os parâmetros padrão do algoritmo foram mantidos sem nenhum tipo de restrição. Cenários de magnitude (\textit{magnitude}), valor prévio (\textit{previous value}), ano de detecção (\textit{year of detection}), duração (\textit{duration}) e taxa (\textit{rate}) forma gerados e posteriormente pós-processados para limpeza de ruídos ou para retirada de valores indesejados. 
 
-Primeiramente, foi gerado uma máscara com todas as áreas pseudo-invariantes entre os anos da análise (1985 - 2018) com o intuito de limpar detecções de mudança muito pequenas. Além disso, foram mascarados todos os eventos com duração menor ou igual a 4 anos, já que não gostaríamos de incorporar eventos ainda muito recentes que poderiam ser identificados como falsos eventos de mudança. O valor mínimo de 5 anos para eventos de ganho ajuda a identificar apenas eventos mais longos que tiveram tempo de apresentar respostas espectrais significativas de recuperação. Com 5 anos a vegetação já passa a apresentar um estágio sucessional característico de floresta secundária inicial \citep{Chazdon2014}. 
+Primeiramente, foi gerado uma máscara com todas as áreas pseudo-invariantes entre os anos da análise (1985 - 2018) com o intuito de limpar detecções de mudança muito pequenas. Esta máscara representa todos os pixels que não tiveram nenhum tipo de mudança significativa durante todos os anos da análise, ou seja, áreas que em 1985 já eram consideradas floresta e que se mantiveram praticamente iguais até 2018. 
+
+Inicialmente esta máscara foi desenvolvida utilizando composições de imagens Landsat considerando todos os anos da análise e posteriormente classificadas com o algoritmo Random Forest implementado no pacote MLR \citep{mlr}. No entanto, apesar de apresentar resultados promissores quando a aplicada no mapeamento da Bacia Hidrográfica do Rio São João, acabou demonstrando problemas quando extrapolada para o resto do bioma e se mostrou uma técnica altamente custosa tanto em tempo de processamento como no tempo de preparação dos dados. Todo o processo de desenvolvimento desta máscara é detalhada no capítulo 4 deste trabalho. Apesar de não ter sido utilizada como variável neste estudo, a técnica apresentada pode ser de extrema valia quando aplicada em áreas não tão extensas quanto neste caso específico.
+
+Sendo assim, uma nova máscara alternativa teve de ser gerada. Camadas de resultado do projeto Mapbiomas foram utilizadas como uma \textit{proxy}. Todas as imagens classificadas para o bioma foram reclassificadas ano a ano em formato binário (floresta [1] e não-floresta [0]) e posteriormente multiplicadas entre si. Um \textit{raster} final binário foi então gerado, onde os pixels com valor 1 representavam áreas que permaneceram como floresta durante todos os anos do estudo e 0 todos os outros, incluindo todas as outras classes. Esta máscara evitou que muitos eventos pudessem ser classificados como ganho apesar de terem baixa magnitude já que representavam apenas um processo natural nas florestas já existentes. Somente pixels da classe floresta (classe número 3) da série 4.1 foram utilizados. Pixels de classes como floresta plantada foram excluídos assim como o todas as outras.
+
+Além disso, foram mascarados todos os eventos com duração menor ou igual a 4 anos, já que não gostaríamos de incorporar eventos ainda muito recentes que poderiam ser identificados como falsos eventos de mudança. O valor mínimo de 5 anos para eventos de ganho ajuda a identificar apenas eventos mais longos que tiveram tempo de apresentar respostas espectrais significativas de recuperação. Com 5 anos a vegetação já passa a apresentar um estágio sucessional característico de floresta secundária inicial \citep{Chazdon2014}. 
 
 \subsubsection{Processamento dos cenários de perda}
 \hspace{13pt} Assim como o cenário de ganho, o processamento do cenário de perda utilizou todos os parâmetros padrões do algoritmo sem nenhum tipo de restrição com o objetivo de realizar limpezas nos resultados obtidos apenas em uma etapa de pós-processamento. Os mesmos cenários de magnitude (\textit{magnitude}), valor prévio (\textit{previous value}), ano de detecção (\textit{year of detection}), duração (\textit{duration}) e taxa (\textit{rate}) forma gerados.
@@ -123,6 +130,43 @@ Ao considerar o número de eventos de acordo com a área de cada estado, verific
     \label{fig:estados_loss_proporcional}
 \end{figure}
 
+Como visto previamente no mapa de \textit{clusters}, os eventos de perda de curta duração tendem a se concentrar principalmente no Paraná e Santa Catarina quando analisados sob divisões políticas (Figura \ref{fig:estados_loss_masked85_maskedgain_eq1}). Já os de longa duração, se concentram em estados como o Paraná e Bahia, seguido de Minas Gerais, Santa Catarina e São Paulo (Figura \ref{fig:estados_loss_masked85_maskedgain_neq1}).
+
+Quando realizamos a divisão por municípios (Figura \ref{fig:mun_loss_masked85_maskedgain}), o padrão espacial similar ao \textit{heatmap} da Figura \ref{fig:heat_loss_masked85_maskedgain}, mas demonstra como eventos que anteriormente estavam aparentemente distribuídos de forma mais homogênea, se agrupam quando classificados por município. As aglomerações ainda permanecem ocorrendo principalmente em estados como Paraná, Santa Catarina e Bahia, mas podemos observar municípios em outros estados que concentraram um maior número de perda como em Iguatemi no Mato Grosso do Sul ou em Águas Vermelhas em Minas Gerais. A lista completa com todos os 3078 municípios pertencentes ao bioma pode ser acessado neste link \url{https://github.com/sacridini/municipios_perdas_ganhos}.
+
+\begin{table}[h!]
+    \centering
+    \rowcolors{2}{red!50!yellow!30}{green!40!yellow!10}
+    % \footnotesize
+    \begin{tabular}{|c | c | c|}
+    \hline
+                    Nome & Eventos & UF \\
+            Porto Seguro & 444892 & BA \\
+           Prudentópolis & 425340 & PR \\
+              Ortigueira & 373635 & PR \\
+ Coronel Domingos Soares & 367051 & PR \\
+                Belmonte & 333728 & BA \\
+               Itamaraju & 329167 & BA \\
+              Guarapuava & 314087 & PR \\
+     Santa Cruz Cabrália & 296493 & BA \\
+                   Prado & 283573 & BA \\
+             Canavieiras & 279240 & BA \\
+    Rio Bonito do Iguaçu & 271232 & PR \\
+                  Pinhão & 270471 & PR \\
+            Encruzilhada & 264281 & BA \\
+                 Reserva & 263798 & PR \\
+                Bituruna & 262246 & PR \\
+                  Tibagi & 253448 & PR \\
+                   Mafra & 251392 & SC \\
+           Santa Cecília & 246603 & SC \\
+              Itaiópolis & 246205 & SC \\
+              Guaratinga & 241392 & BA \\
+    \hline
+    \end{tabular}
+    \caption{Os vinte municípios com maior número de eventos de perda}
+    \label{tab:mun_loss}
+\end{table}
+
 \begin{figure}[H]
     \centering
     \includegraphics[scale=.5]{images/estados_loss_masked85_maskedGain_eq1.png}
@@ -133,7 +177,7 @@ Ao considerar o número de eventos de acordo com a área de cada estado, verific
 \begin{figure}[H]
     \centering
     \includegraphics[scale=.5]{images/estados_loss_masked85_maskedGain_neq1.png}
-    \caption{Todos os eventos de perda longa (duração maior que 1) na Mata Atlântica entre 1985 e 2018 por estado. Os valores representam o número de pixels que tiveram alguma detecção de perda.}
+    \caption{Todos os eventos de perda longa (duração maior que 1) na Mata Atlântica entre 1985 e 2018 por estado.}
     \label{fig:estados_loss_masked85_maskedgain_neq1}
 \end{figure}
 
@@ -144,7 +188,13 @@ Ao considerar o número de eventos de acordo com a área de cada estado, verific
     \label{fig:mun_loss_masked85_maskedgain}
 \end{figure}
 
+Seja através dos mapas de calor, ou divisões por municípios ou estados, podemos observar que os eventos de perda na Mata Atlântica brasileira ocorre de forma aglomerada em certas regiões. Apesar de termos registrado eventos de perda em todos os tipos de fitofisionomias, parece ter havido uma predominância de eventos em florestas ombrófilas densas principalmente por conta das perdas detectadas no Paraná, Santa Catarina e Bahia.
+
 \subsubsection{Os eventos de ganho na Mata Atlântica}
+
+\hspace{13pt} Somando-se todos os eventos de ganho detectados pelo algoritmo e após as filtragens necessárias, houveram ao longo de todos os anos da análise 68.869.908 de pixels com um ganho médio de 197 ou aumento de 0.197 no índice NDVI. Isso equivale a uma área total de aproximadamente 62 mil $ km^2 $ de florestas que sofreram ganhos significativos. Como discutido na sessão 3.2.4, áreas de florestas pseudo-invariantes não foram consideradas, sendo assim, esta área representa um ganho real de área verde dentro do bioma. 
+
+Na Figura \ref{fig:heat_gain}, podemos ver que o ganho de áreas no bioma de deu de forma bem mais homogênea que as áreas de perda. Apenas alguns pontos de aglomeração podem ser visualizados como no sul do Rio Grande do Sul, Espírito Santo, sul de Pernambuco, São Paulo e Minas Gerais.
 
 \begin{figure}[H]
     \centering
@@ -152,6 +202,8 @@ Ao considerar o número de eventos de acordo com a área de cada estado, verific
     \caption{Mapas com os eventos de ganho entre 1985 e 2018.}
     \label{fig:heat_gain}
 \end{figure}
+
+Quando analisamos por estado, verificamos que Paraná e Minas Gerais dominam na quantidade total de eventos, seguido de São Paulo, Santa Catarina e Bahia (Figura \ref{fig:estados_gain}). Ao dividir o número de eventos pela área de cada estado vemos que o concentração ocorre principalmente em Santa Catarina e Bahia, seguida de Sergipe, Rio Grande do Sul e Espírito Santo (Figura \ref{fig:estados_gain_proporcional}).
 
 \begin{figure}[H]
     \centering
@@ -162,11 +214,64 @@ Ao considerar o número de eventos de acordo com a área de cada estado, verific
 
 \begin{figure}[H]
     \centering
+    \includegraphics[scale=.5]{images/estado_gain_proporcional.png}
+    \caption{Mapas com os eventos de ganho entre 1985 e 2018 classificado de acordo com a proporção de área de cada estado.}
+    \label{fig:estados_gain_proporcional}
+\end{figure}
+
+Já quando realizamos a análise por município, assim como no cenário de perdas, conseguimos perceber uma maior aglomeração em municípios em estados que tiveram baixa taxa de eventos como o Rio de Janeiro (Figura \ref{fig:mun_gain}). A lista de municípios com a maior quantidade de eventos se mostrou um pouco mais heterogênea que a do cenário de perdas (Tabela \ref{tab:mun_gain}). 
+
+\begin{figure}[H]
+    \centering
     \includegraphics[scale=.5]{images/mun_gain_seg6_masked18_dur_gt4_inv_for.png}
     \caption{Mapas com os eventos de ganho entre 1985 e 2018 por município. Os valores representam o número de pixels que tiveram alguma detecção de ganho.}
     \label{fig:mun_gain}
 \end{figure}
 
-\subsubsection{A idade das florestas secundárias da Mata Atlântica}
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{red!50!yellow!30}{green!40!yellow!10}
+    % \footnotesize
+    \begin{tabular}{|c | c | c|}
+    \hline
+                            Nome & Eventos & UF \\
+                Porto Seguro & 381321 & BA \\ 
+                       Prado & 337864 & BA \\
+                Jequitinhonha & 309792 & MG \\
+        Santa Cruz Cabrália & 243153 & BA \\
+                    Linhares & 241735 & ES \\
+                      Almenara & 235791 & MG \\
+              Prudentópolis & 231492 & PR \\
+                    Belmonte & 228173 & BA \\
+                  Guarapuava & 225197 & PR \\
+                  Ortigueira & 218987 & PR \\
+                  Entre Rios & 203945 & BA \\
+                   Cruz Machado & 196431 & PR \\
+            Domingos Martins & 182013 & ES \\
+                 Juiz de Fora & 181554 & MG \\
+                   Esplanada & 181265 & BA \\
+                      Mariana & 177423 & MG \\
+               Teófilo Otoni & 176573 & MG \\
+                      Tibagi & 175646 & PR \\
+  São Sebastião do Paraíso & 175471 & MG \\
+                   Caravelas & 174156 & BA \\
+    \hline
+    \end{tabular}
+    \caption{Os vinte municípios com maior número de eventos de perda}
+    \label{tab:mun_gain}
+\end{table}
 
-\subsection{Conclusões}
+
+
+
+\subsection{Discussões finais e conclusão}
+
+\hspace{13pt} Percebemos que o algoritmo apresentou uma boa resposta quando aplicado a contextos de floresta tropical. Mesmo utilizando o Landtrendr com um mesmo conjunto de parâmetros em fitofisionomias que apresentam respostas espectrais com comportamento médio estatisticamente diferentes, o resultado aparentou ser bastante satisfatório. Ainda será necessário realizar um processo de validação nos resultados obtidos para entender melhor o grau e confiança desses resultados.
+
+Apesar da facilidade de uso do Landtrendr em plataformas como o GEE, não se pode dizer que a aplicação do algoritmo é trivial, já que o mesmo possui um custo de processamento elevado mesmo na plataforma do Google. Esta característica acaba gerando a necessidade de códigos um pouco mais complexos, uma capacidade de armazenamento maior e um tempo total de processamento relativamente alto. No entanto, quando comparado a técnicas mais tradicionais, a utilização da técnica ainda apresenta benefícios significativos. Todo o trabalho de pré-processamento e criação de composições processadas como dado de entrada é feito com apenas uma única função, e a escolha dos parâmetros pode ser feita de forma rápida tanto dentro da plataforma como em aplicativos web criados especialmente para a realização de testes. 
+
+Os testes prévios são essenciais, já que o bom resultado do algoritmo está diretamente ligado aos parâmetros utilizados e principalmente a banda/índice que é processada para identificar as mudanças. Estudos mais recentes buscaram entender o comportamento do algoritmo em relação as bandas utilizadas e também houve o desenvolvimento e adição de uma nova camada gerada pelo algoritmo além das camadas de resultado já tradicionais chamada DSNR (\textit{Disturbance Signal-to-Noise Ratio}) \citep{COHEN2018131}. Com camadas como a DSNR, as difenreças encontradas na aplicação do algoritmo em áreas temperadas e tropicais fica ainda mais clara. 
+
+Já para o processo de validação será necessário a utilização da ferramenta TimeSync \citep{COHEN20102911}, desenvolvida pelo mesmo grupo de pesquisadores do Landtrendr. A validação utilizando o TimeSync infelizmente ainda é pouco otimizada e necessita de muitas dependências externas para seu funcionamento. No entanto, ainda é a melhor ferramenta de validação de séries temporais. Algumas áreas em diferentes fitofisionomias serão utilizadas para a coleta de amostras e posteriormente processadas na plataforma.
+
+Muitas perguntas já puderam ser respondidas através dessa análise, mas outras ainda precisam ser entendidas. Além da validação que servirá de base para a compreensão real da viabilidade da aplicação do algoritmo em ambientes tropicais extensos, ainda será necessário realizar outras análises como o comportamento das unidades de conservação do bioma, assim como o cálculo da idade das florestas secundárias no bioma. 
