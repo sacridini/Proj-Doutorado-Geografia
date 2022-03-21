@@ -21,7 +21,7 @@ Sendo assim, o presente trabalho buscou elaborar uma alternativa a esta técnica
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=.5]{images/bhrsj_v2.png}
+    \includegraphics[scale=.5]{images/bhrsj_v2.pdf}
     \caption{O valor de biomassa chegou a ser ainda menor do que quando a maior perda foi registrada.}
     \label{fig:bhrsj}
 \end{figure}
@@ -95,7 +95,7 @@ Blue + Green + Red + NIR + SW1 + SW2 + NDVI, NDWI + NDMI + SAVI + TC &  0.839872
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=.4]{images/fluxograma.jpg}
+    \includegraphics[scale=.4]{images/fluxograma.pdf}
     \caption{Fluxograma demonstrando o processo de validação cruzada. Todo o processo foi repetido para cada combinação de banda utilizada no estudo, totalizando 24 processos independentes.}
     \label{fig:fluxograma}
 \end{figure}
@@ -110,7 +110,7 @@ Observa-se que a melhor combinação de bandas para o processo de classificaçã
 
 \begin{figure}[h!]
     \centering
-    \includegraphics[scale=.5]{images/bhrsj_class_final.png}
+    \includegraphics[scale=.5]{images/bhrsj_class_final.pdf}
     \caption{Classificação final gerada no Google Earth Engine (Classificação final)}
     \label{fig:bhrsj_class_final}
 \end{figure}
@@ -145,7 +145,7 @@ Para este processo de validação final utilizamos a ferramenta TimeSync \citep{
 
 O TimeSync funciona de forma integrada com o GEE e também necessita do software Access da Microsoft para armazenar as coordenadas de cada ponto a ser validado. A validação do TimeSync é feita de forma visual através da interface gráfica do programa.
 
-Foram coletados para a etapa de validação no TimeSync trezentos pontos para cada uma das classes. Os pixels mapeados apenas pelo Mapbiomas tiveram uma taxa de acerto de 55\%, enquanto os pixels mapeados pelo Random Forest tiveram uma taxa de acerto de 76\%. Já os pixels mapeados por ambos tiveram um acerto de 97\%. Logo após, um último teste foi realizado considerando outras trezentas amostras do mapa final gerado pela nova metodologia, mas considerando apenas os pixels que foram classificados como floresta invariante, resultado em uma taxa de acerto final de 91,7\%. Todos os resultados, amostras, imagens, arquivos vetoriais, códigos e materiais para validação utilizados neste trabalho estão disponíveis para visualização e possível replicação através deste link: https://github.com/sacridini/florestas\_invariantes\_random\_forest.
+Foram coletados para a etapa de validação no TimeSync trezentos pontos para cada uma das classes. Os pixels mapeados apenas pelo Mapbiomas tiveram uma taxa de acerto de 55\%, enquanto os pixels mapeados pelo Random Forest tiveram uma taxa de acerto de 76\%. Já os pixels mapeados por ambos tiveram um acerto de 97\%. Logo após, um último teste foi realizado considerando outras trezentas amostras do mapa final gerado pela nova metodologia, mas considerando apenas os pixels que foram classificados como floresta invariante, resultado em uma taxa de acerto final de 91,7\%. Todos os resultados, amostras, imagens, arquivos vetoriais, códigos e materiais para validação utilizados neste trabalho estão disponíveis para visualização e possível replicação através deste link: \url{https://github.com/sacridini/florestas\_invariantes\_random\_forest}.
 
 \subsection{Conclusões}
 
