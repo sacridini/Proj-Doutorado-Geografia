@@ -33,15 +33,13 @@ O foco foi gerar tanto cenários de perda de vegetação quanto de ganho ao long
 \addcontentsline{toc}{subsection}{Questionamentos motivadores}
 Os questionamentos motivadores da pesquisa foram:
 \begin{itemize}
-    \item Como um algoritmo como o Landtrendr, inicialmente desenvolvido e utilizado para detecção de mudanças em ambientes de floresta temperada poderia ser utilizado para identificar com alta precisão mudanças ocorridas em uma paisagem complexa como a presente na Mata Atlântica brasileira?
+    \item Como um algoritmo como o Landtrendr, inicialmente desenvolvido e utilizado para detecção de mudanças em ambientes de floresta temperada poderia ser utilizado para identificar mudanças ocorridas em uma paisagem complexa como a presente na Mata Atlântica? 
     
-    \item A aplicação da metodologia consegue boa performance geral e/ou em diferentes fitofisionomias considerando a aplicação do algoritmo com um mesmo conjunto de parâmetros?
+    \item Uma metodologia baseada na utilização do algoritmo conseguiria boa performance geral considerando as diferentes fitofisionomias presentes na Mata Atlântica?
     
-    \item Quais áreas tiveram maior taxa de perda e ganho de floresta ao longo das últimas três décadas? 
+    \item Como se distribuem as perdas e os ganhos de floresta no bioma ao longo das últimas três décadas? 
     
-    \item Como as unidades de conservação existentes da Mata Atlântica se comportaram ao longo dos anos? (ex. Parque Nacional da Serra da Bocaina, Parque Nacional da Serra dos Órgãos, etc)
-    
-    \item Como os municípios se caracterizaram neste período em termos de perda e ganho de floresta?
+    % \item Como as unidades de conservação existentes da Mata Atlântica se comportaram ao longo dos anos? (ex. Parque Nacional da Serra da Bocaina, Parque Nacional da Serra dos Órgãos, etc)
 \end{itemize}
 
 \subsection*{Objetivos Gerais}
@@ -52,15 +50,17 @@ Os questionamentos motivadores da pesquisa foram:
 \addcontentsline{toc}{subsection}{Objetivos Específicos}
 \begin{enumerate}
 
-    \item Estruturação da base de dados
+    \item Estruturação de uma metodologia para análise de mudanças em áreas de floresta tropical
     
     \begin{itemize}
         \item Definição do período, seleção das imagens e criação da composição da série temporal Landsat a ser utilizada;
         
-        \item Compatibilização das imagens utilizadas de acordo com características geométricas e radiométricas com o intuito de evitar possíveis ruídos;
+        \item Estruturação de um fluxo de trabalho ótimo para o processamento dos dados através do desenvolvimento de software com objetivo de garantir a replicabilidade dos processos;
+        
+        % \item Compatibilização das imagens utilizadas de acordo com características geométricas e radiométricas com o intuito de evitar possíveis ruídos;
     \end{itemize}
     
-    \item Processamento dos dados utilizando o Landtrendr
+    \item Detecção das mudanças através do mapeamento e classificação das trajetórias
     
     \begin{itemize}
         \item Definição dos parâmetros e do índice espectral para a execução do processo de segmentação temporal utilizando o algoritmo Landtrendr;
@@ -72,7 +72,11 @@ Os questionamentos motivadores da pesquisa foram:
         \item Avaliação da acurácia dos produtos gerados. Avaliar o desempenho do algoritmo em ambientes de florestas tropicais com alto nível de complexidade ecológica.
     \end{itemize}
     
-    \item Análise dos resultados para a Mata Atlântica
+    \item Análise da distribuição das mudanças no bioma da Mata Atlântica no período de 1985 até 2018
+    
+    \begin{itemize}
+        \item Análise qualitativa através da criação de mapas de calor;
+    \end{itemize}
 
     \begin{itemize}
         \item Conversão dos dados matriciais gerados em dados vetoriais com intuito de identificar áreas com maior nível de ocorrência de perdas e ganhos de acordo com divisões políticas e geoecológicas;

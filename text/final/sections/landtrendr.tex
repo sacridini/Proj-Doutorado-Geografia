@@ -21,9 +21,9 @@
 
 \section{Uso do algoritmo Landtrendr em larga escala no contexto tropical: Um estudo de caso na Mata Atlântica entre os anos de 1985 e 2018}
 
-\begin{abstract}
-    abstract
-\end{abstract}
+% \begin{abstract}
+%     abstract
+% \end{abstract}
 
 \subsection{Introdução}
 \hspace{13pt} A disponibilização de forma gratuita de imagens Landsat ao longo dos anos possibilitou um aumento significativo no número de estudos em diversas áreas ao redor do mundo \citep{ZHU2019382, WULDER20122}. Já o surgimento recente de ferramentas de processamento paralelo na nuvem como o Google Earth Engine \citep{GORELICK201718} vem possibilitando agora uma ampliação tanto da área dos estudos quanto também na densidade de cenas, ou seja, na quantidade de imagens Landsat processadas para um único local, o que significa um maior desenvolvimento nas análises temporais.
@@ -68,7 +68,27 @@ Segundo o projeto Mapbiomas \citep{Souza2019}, a área total de florestas no bio
 % Apesar dos importantes avanços obtidos nesta agenda na última década – como a restauração de aproximadamente 1,4 milhões de hectares entre 2011 e 2020 – muito ainda precisa ser feito \citep{CROUZEILLES2019}
 
 \subsubsection{Dados de entrada}
-\hspace{13pt} Para o mapeamento do bioma consideramos um intervalo anual que compreendeu todos os anos de 1985 até 2018 utilizando imagens do satélite Landsat das séries 5, 7 e 8. A escolha desse período de análise se deu por conta do início da captura de dados em 1 de março de 1984 pelo satélite Landsat 5 e consequente disponibilidade de dados pela comunidade científica para o mesmo período, o que facilitou a verificação e validação dos resultados. Para cobrir todos os 110 Mha do bioma foi necessário a compilação e processamento de 88 cenas Landsat, cada cena cobrindo os 33 anos da análise com cerca de 23 imagens por ano, o que dá algo em torno de aproximadamente 67 mil imagens, o que representa quase 2.5x toda a quantidade de imagens Landsat utilizada em estudos no continente sul americano nos últimos 50 anos \citep{Hemati2021}. Se considerarmos que cada uma dessas imagens utilizadas possui pelo menos 7 bandas, chegamos a um cubo multidimensional de quase meio milhão de bandas. Um processamento que sem dúvidas só seria possível com o advento das tecnologias já citadas.
+\hspace{13pt} Para o mapeamento do bioma consideramos um intervalo anual que compreendeu todos os anos de 1985 até 2018 utilizando imagens do satélite Landsat das séries 5, 7 e 8. A escolha desse período de análise se deu por conta do início da captura de dados em 1 de março de 1984 pelo satélite Landsat 5 e consequente disponibilidade de dados pela comunidade científica para o mesmo período, o que facilitou a verificação e validação dos resultados. Para cobrir todos os \~110 Mha do bioma foi necessário a compilação e processamento de 88 cenas Landsat. Se considerarmos que para cada cena que engloba os 33 anos da análise temos uma média de 23 imagens por ano, temos um total de aproximadamente 67 mil imagens, o que representaria quase 2.5x toda a quantidade de imagens Landsat utilizada em estudos no continente sul americano nos últimos 50 anos \citep{Hemati2021}. Se considerarmos ainda que cada uma dessas imagens utilizadas possui pelo menos 7 bandas, chegamos a um cubo multidimensional de quase meio milhão de bandas. Um processamento que sem dúvidas só seria possível com o advento das tecnologias já citadas. No entanto, a distribuição da quantidade de imagens disponíveis para uso para a série Landsat ao longo dos 33 anos não é uniforme, como mostra a figura \ref{fig:landsat_count_per_year_mean}. Já a quantidade real de imagens utilizadas por ano pode ser visto na figura \ref{fig:landsat_count_per_year}.
+
+\begin{landscape}
+\begin{figure}[!h]
+   \centering
+    %\includegraphics[width=1.0\textwidth]{Image.eps}
+    \includegraphics[height=0.85\textheight]{images/landsat_count_per_year_mean.pdf}
+    \caption{Média da quantidade de imagens disponíveis por ano considerando toda as cenas necessárias para o mapeamento da Mata Atlântica}
+    \label{fig:landsat_count_per_year_mean}
+\end{figure}
+\end{landscape}
+
+\begin{landscape}
+\begin{figure}[!h]
+   \centering
+    %\includegraphics[width=1.0\textwidth]{Image.eps}
+    \includegraphics[height=0.85\textheight]{images/landsat_count_per_year.pdf}
+    \caption{Quantidade total de imagens disponíveis por ano considerando toda as cenas necessárias para o mapeamento da Mata Atlântica}
+    \label{fig:landsat_count_per_year}
+\end{figure}
+\end{landscape}
 
 Todas as imagens utilizadas são da coleção \emph{surface reflectance}, o que significa que já possuem correção geométrica, radiométrica e possuem valor físico referente a superfície terrestre. Além disso, as imagens passaram por processo de harmonização para evitar acúmulo de ruídos e também de remoção de nuvens e sombras. Todos os processamentos para a composição das séries temporais foram feitos utilizando funções internas do próprio Landtrendr, o que facilitou em muito toda a etapa de preparação dos dados.
 
@@ -117,7 +137,7 @@ O algoritmo Landtrendr trabalha analisando os valores pixel a pixel para toda a 
 
 A escolha do índice a ser utilizado é parte importante do processo já que essa escolha pode influenciar na precisão do processo de identificação das mudanças de acordo com o que se está tentando detectar. O índice NBR, tradicional no monitoramento de queimadas vem mostrando excelentes resultados na detecção de mudanças em áreas de florestas temperadas, com resultados superiores a índices mais tradicionais como o próprio NDVI ou o EVI.
 
-Em áreas tropicais, o uso de índices com o NDVI ainda é predominante \citep{zebende2019, FRAGAL2016}, mas devido a variabilidade na qualidade dos resultados de acordo com a banda ou índice utilizado, o algoritmo fornece como uma das camadas resultantes de cada análise realizada uma banda extra chamada CSNR (\textit{Change Signal to Noise Ratio}), que oferece uma métrica para entender qual banda pode ser ideal para cada tipo de região estudada. Como a mesma só pode ser gerada após a execução do algoritmo, é recomendado que o algoritmo seja primeiro executado para uma mesma área teste diversas vezes utilizando bandas e índices diferentes para cada rodada. Bandas/índices que obtiverem maior valor médio geral na camada CSNR possuem menor quantidade de erro associada ao processo de detecção de mudanças.
+Em áreas tropicais, o uso de índices com o NDVI ainda é predominante \citep{zebende2019, FRAGAL2016}, mas devido a variabilidade na qualidade dos resultados de acordo com a banda ou índice utilizado, o algoritmo fornece como uma das camadas resultantes de cada análise realizada uma banda extra chamada CSNR (\textit{Change Signal to Noise Ratio}), que oferece uma métrica para entender qual banda pode ser ideal para cada tipo de região estudada. Antes chamada de DSNR (\textit{Disturbance Signal to Noise Ratio}), o CSNR é calculado ao dividir o valor obtido pelo sinal da mudança pelo ruído calculado pelo RMSE \citep{COHEN2018131}. Como o CSNR só pode ser gerado após a execução do algoritmo, é recomendado que o algoritmo seja primeiro executado para uma mesma área teste diversas vezes utilizando bandas e índices diferentes para cada rodada. Bandas/índices que obtiverem maior valor médio geral na camada CSNR possuem menor quantidade de erro associada ao processo de detecção de mudanças.
 
 Sendo assim, o teste com a banda CSNR foi realizado para as 13 bandas/índices (Azul, Verde, Vermelho, NIR, SWIR, Tasseled Cap Brightness/Greenness/Wetness, NBR, NBRz, NDVI, EVI e NDMI) presentes no algoritmo para cada uma das fitofisionomias estudadas no bioma neste estudo (Tabela \ref{tab:csnr_results}). 
 
@@ -200,7 +220,29 @@ Posterior aos resultados obtidos pelo algoritmo, toda a etapa de pós-processame
 
 \subsubsection{Processamento dos cenários de ganho}
 
-\hspace{13pt} Para o cenário de ganho, todos os parâmetros padrão do algoritmo foram mantidos sem nenhum tipo de restrição. Ou seja, \textit{Max Segments} \textbf{6}, \textit{Spike Threshold} \textbf{0.9}, \textit{Vertex Count Overshoot} \textbf{3}, \textit{Prevent One Year Recovery} \textbf{true}, \textit{Recovery Threshold} \textbf{0.25}, \textit{p-value Threshold} \textbf{0.05}, \textit{Best Model Proportion} \textbf{0.75} e \textit{Min Observations Needed} \textbf{6}. Cenários de magnitude (\textit{magnitude}), valor prévio (\textit{previous value}), ano de detecção (\textit{year of detection}), duração (\textit{duration}) e taxa (\textit{rate}) foram gerados e posteriormente pós-processados para limpeza de ruídos e para retirada de valores indesejados. 
+\hspace{13pt} Para o cenário de ganho, a maior parte dos valores para os parâmetros de execução do algoritmo foram mantidos com exceção do \textit{preventOneYearRecovery} que foi modificado para \textbf{True} com intuito de evitar falsas detecções devido a ruídos na série e também o \textit{bestModelProportion} que foi modificado de 1.25 para 0.75 já que o primeiro valor normalmente produz resultados muito ruins e o último é mais consistente com muitos dos estudos de caso publicados \citep{HISLOP2019188, SHIMIZU201999, YANG2018353, DEMARZO2021102310, GELABERT2021112521, MURILLOSANDOVAL2021102283, YE2021101221, rs12101612, f11030362, land9010027, senf_mapping_2021} (Tabela \ref{tab:ltr_gain_params}). Cenários de magnitude (\textit{magnitude}), valor prévio (\textit{previous value}), ano de detecção (\textit{year of detection}), duração (\textit{duration}) e taxa (\textit{rate}) foram gerados e posteriormente pós-processados para limpeza de ruídos e para retirada de valores indesejados. 
+
+\begin{table}[h!]
+    \centering
+    \rowcolors{2}{red!50!yellow!30}{green!40!yellow!10}
+    % \footnotesize
+    \begin{tabular}{| c | c | c | c |}
+    \hline
+            Input & Type & Earth Engine default & Used \\
+            timeSeries & ImageCollection & user-specified & NDVI \\
+            maxSegments & Integer & 6 & 6 \\
+            spikeThreshold & Float & 0.9 & 0.9 \\
+            vertexCountOvershoot & Integer & 3 & 3 \\
+            preventOneYearRecovery & Boolean & False & True \\
+            recoveryThreshold & Float & 0.25 & 0.25 \\
+            pvalThreshold & Float & 0.05 & 0.05 \\
+            bestModelProportion & Float & 1.25 & 0.75 \\
+            minObservationsNeeded & Integer & 6 & 6 \\
+    \hline
+    \end{tabular}
+    \caption{Valores utilizados para os parâmetros do Landtrendr para executar os cenários de ganho.}
+    \label{tab:ltr_gain_params}
+\end{table}
 
 Primeiramente, foi gerado uma máscara com todas as áreas pseudo-invariantes entre os anos da análise (1985 - 2018) com o intuito de limpar detecções de mudança muito pequenas. Esta máscara representa todos os pixels que não tiveram nenhum tipo de mudança significativa durante todos os anos da análise, ou seja, áreas que em 1985 já eram consideradas floresta e que se mantiveram praticamente iguais até 2018 (Figura \ref{fig:flowchart_ganho}). 
 
@@ -220,7 +262,7 @@ Além disso, foram mascarados todos os eventos com duração menor ou igual a 4 
 % figura para ilustrar?
 
 \subsubsection{Processamento dos cenários de perda}
-\hspace{13pt} Assim como o cenário de ganho, o processamento do cenário de perda utilizou todos os parâmetros padrões do algoritmo sem nenhum tipo de restrição com o objetivo de realizar limpezas nos resultados obtidos apenas na etapa de pós-processamento. Os mesmos cenários de magnitude (\textit{magnitude}), valor prévio (\textit{previous value}), ano de detecção (\textit{year of detection}), duração (\textit{duration}) e taxa (\textit{rate}) também foram gerados.
+\hspace{13pt} Assim como o cenário de ganho, o processamento do cenário de perda utilizou a maior parte dos parâmetros padrões do algoritmo sem nenhum tipo de restrição com o objetivo de realizar limpezas nos resultados obtidos apenas na etapa de pós-processamento. Os mesmos cenários de magnitude (\textit{magnitude}), valor prévio (\textit{previous value}), ano de detecção (\textit{year of detection}), duração (\textit{duration}) e taxa (\textit{rate}) também foram gerados.
 
 No caso das perdas, diferente do cenário de ganho, criou-se uma máscara para garantir que o Landtrendr fosse capaz de detectar mudanças de perda apenas em áreas que foram classificadas como floresta pelo projeto Mapbiomas no ano de 1985. Essa máscara ajudou na não seleção de áreas que nem mesmo tinham sido classificadas como florestas mas que sofreram algum tipo de perda com magnitude grande o suficiente para ser detectada pelo algoritmo. Além disso, uma outra máscara foi gerada para excluir áreas que apesar de terem sido mapeadas em 1985 como floresta e terem sofrido algum tipo de perda significativa, sofreram algum processo de restauração ou regeneração natural ao longo dos anos. Sendo assim, o resultado final para o dado de perdas visou somente a seleção de áreas que tiveram floresta, mas que perderam essa vegetação e não apresentaram nenhum processo de recuperação significativa posterior (Figura \ref{fig:flowchart_perda}).
 
@@ -274,7 +316,7 @@ O TimeSync possui uma interface gráfica  apropriada para a visualização de to
     \label{fig:loss_22_bhrsj_imgs}
 \end{figure}
 
-Desde a implementação do Landtrendr no GEE, o TimeSync ainda possui scripts em Python que visam facilitar a exportação de séries temporais do GEE para um ambiente \textit{offline}. Esta etapa é essencial, já que diferente da versão para ENVI/IDL do Landtrendr, no GEE, toda a etapa de preparação dos dados de entrada e de seu processamento são feitos na nuvem de forma quase que automática pelo próprio algoritmo. Como a validação tem de ser feita em ambiente \textit{offline}, é necessário baixar a série inteira ou pedaços da mesma para a realização deste processo. 
+Desde a implementação do Landtrendr no GEE, o TimeSync possui scripts em Python que visam facilitar a exportação de séries temporais do GEE para um ambiente \textit{offline}. Esta etapa é essencial, já que diferente da versão para ENVI/IDL do Landtrendr, no GEE, toda a etapa de preparação dos dados de entrada e de seu processamento são feitos na nuvem de forma quase que automática pelo próprio algoritmo. Como a validação tem de ser feita em ambiente \textit{offline}, é necessário baixar a série inteira ou pedaços da mesma para a realização deste processo. 
 
 No caso da validação de uma área extensa como a da Mata Atlântica, apenas pedaços da série foram exportados já que o processo de exportação de toda a área seria muito demorado, custando algumas horas para a exportação de áreas com apenas algumas centenas de $ km^2 $. Devemos considerar também que a exportação de toda a série para uma área extensa em resolução espacial de 30m necessitaria de excessivo espaço para armazenamento, sendo incoerente com a proposta inicial de processamento de grande escala e com baixo custo. 
 Sendo assim, uma área de teste foi escolhida para cada fitofisionomia estudada.

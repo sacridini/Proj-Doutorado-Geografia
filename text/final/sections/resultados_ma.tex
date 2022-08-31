@@ -16,9 +16,9 @@
 
 \section{Análise de longo prazo (1985 – 2018) das mudanças florestais na Mata Atlântica utilizando o algoritmo Landtrendr}
 
-\begin{abstract}
-    abstract
-\end{abstract}
+% \begin{abstract}
+%     abstract
+% \end{abstract}
 
 \subsection{Introdução}
 \hspace{13pt} Estamos na década da restauração (2020 - 2030), e o desafio para alcançar as metas são enormes. A Mata Atlântica, como uma das regiões mais biodiversas do mundo \citep{REZENDE2018208}, tem papel importante nesse desafio. Movimentos como a criação do Pacto pela Mata Atlântica em 2009 visando a restauração de 15 Mha de áreas degradadas até 2050, servem para mostrar a importância que o bioma tem para a conservação da parte considerável da biodiversidade mundial com suas quase 16 mil espécies de plantas e mais de 2 mil espécies de vertebrados \citep{scarano2014}.  
@@ -95,6 +95,32 @@ Ao considerar o número de eventos de acordo com a área de cada estado, verific
     \caption{Mapa com a proporção dos eventos de perda entre 1985 e 2018 classificado de acordo com a área total de floresta em 1985.}
     \label{fig:prop_loss}
 \end{figure}
+
+Já quando analisamos a proporção de área perdida dentro das unidades de conservação (UC) presente no bioma, percebemos que muitos eventos foram detectados durante a década de 1990. A tabela \ref{tab:uc_loss} mostra as dez unidades com maior quantidade de perda no bioma, a proporção de área de floresta perdida entre 1985 e 2018 em relação a área total da UC, o ano de criação da unidade e a média do YOD (\textit{Year of Detection}), ou seja, a média do ano de detecção dos eventos de maior perda detectado dentro das UCs. Esta coluna serve como parâmetro para entender se, em média, os eventos de mudança foram detectados antes ou depois da criação da UC. A UC com maior proporção de área perdida foi o Parque Nacional do Alto Cariri no estado da Bahia, que teve a maior parte dos seus eventos de perda detectados antes de sua criação em 2010.
+
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{red!50!yellow!30}{green!40!yellow!10}
+    % \footnotesize
+    \begin{tabular}{|c | c | c | c | c|}
+    \hline
+            Unidade de Conservação & UF & \% área perdida & Ano Criação & Média YOD \\
+                PARNA do Alto Cariri & BA & 0.14 & 2010 & 1994 \\ 
+                PARNA do Monte Pascoal & BA & 0.13 & 1961 & 1996 \\
+                FLONA de Passo Fundo & RS & 0.13 & 1968 & 1992 \\
+                ARIE Serra da Abelha & SC & 0.10 & 1990 & 1997 \\
+                RESEX do Mandira & SP & 0.09 & 2002 & 1992 \\
+                ESEC de Murici & AL & 0.09 & 2001 & 1991 \\
+                FLONA de Canela & RS & 0.09 & 1968 & 1996 \\
+                FLONA de São Francisco de Paula & RS & 0.08 & 1968 & 1994 \\
+                FLONA de Assungui & PR & 0.07 & 1968 & 2004 \\
+                FLONA de Caçador & SC & 0.07 & 1968 & 1995 \\
+    \hline
+    \end{tabular}
+    \caption{As dez unidades de conservação com maior proporção de área perdida.}
+    \label{tab:uc_loss}
+\end{table}
+
 
 Como visto previamente no mapa de \textit{clusters}, os eventos de perda de curta duração tendem a se concentrar principalmente no Paraná e Santa Catarina quando analisados sob divisões políticas (Figura \ref{fig:estados_loss_masked85_maskedgain_eq1}). Já os de longa duração, se concentram em estados como o Paraná e Bahia, seguido de Minas Gerais, Santa Catarina e São Paulo (Figura \ref{fig:estados_loss_masked85_maskedgain_neq1}).
 
@@ -247,7 +273,32 @@ Quando analisamos por estado, verificamos que Paraná e Minas Gerais dominam na 
     \label{fig:prop_gain}
 \end{figure}
 
-Já quando realizamos a análise por município, assim como no cenário de perdas, conseguimos perceber uma maior aglomeração em municípios em estados que tiveram baixa taxa de eventos como o Rio de Janeiro (Figura \ref{fig:mun_gain}). A lista de municípios com a maior quantidade de eventos se mostrou um pouco mais heterogênea que a do cenário de perdas (Tabela \ref{tab:mun_gain}). 
+Ao analisar a proporção de área ganha dentro das unidades de conservação (UC) presente no bioma, percebemos que, como esperado, a proporção de área ganha dentro das unidades é muito mais significativa que as de perda. Diferente dos cenário de perda, aqui encontramos a média dos anos de início do ganho próximos do início da década de 1990, enquanto na perda a média tende mais para a segunda metade da década ou até mesmo os anos 2000 (Tabela \ref{tab:uc_gain}). 
+
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{red!50!yellow!30}{green!40!yellow!10}
+    % \footnotesize
+    \begin{tabular}{|c | c | c | c | c|}
+    \hline
+            Unidade de Conservação & UF & \% de ganho de área  & Ano Criação & Média YOD \\
+                PARNA do Descobrimento & BA & 0.64 & 1999 & 1991 \\ 
+                REBIO do Córrego Grande & ES & 0.53 & 1989 & 1989 \\
+                ESEC de Aracuri-Esmeralda & RS & 0.44 & 1981 & 1993 \\
+                FLONA de Nísia Floresta & RN & 0.43 & 2001 & 1990 \\
+                FLONA do Rio Preto & ES & 0.34 & 1990 & 1989 \\
+                FLONA de Lorena & SP & 0.23 & 2001 & 1991 \\
+                PARNA de Monte Pascoal & BA & 0.22 & 1961 & 1991 \\
+                FLONA de Ipanema de Paula & SP & 0.21 & 1992 & 1989 \\
+                PARNA do Pau Brasil & BA & 0.18 & 1999 & 1991 \\
+                REBIO de Sooretama & ES & 0.17 & 1982 & 1989 \\
+    \hline
+    \end{tabular}
+    \caption{As dez unidades de conservação com maior proporção de ganho de área.}
+    \label{tab:uc_gain}
+\end{table}
+
+Já quando realizamos a análise de ganho por município, assim como no cenário de perdas, conseguimos perceber uma maior aglomeração em municípios em estados que tiveram baixa taxa de eventos como o Rio de Janeiro (Figura \ref{fig:mun_gain}). A lista de municípios com a maior quantidade de eventos se mostrou um pouco mais heterogênea que a do cenário de perdas (Tabela \ref{tab:mun_gain}). 
 
 \begin{figure}[H]
     \centering
@@ -289,7 +340,6 @@ Já quando realizamos a análise por município, assim como no cenário de perda
     \label{tab:mun_gain}
 \end{table}
 
-
 Ao analisar o ano de detecção dos ganhos agregando através das décadas, percebemos que grande parte dos estados tiveram seus ganhos iniciados na década de 1990 com exceção de Sergipe, que apresentou recuperações na década de 1980 (Figura \ref{fig:zonal_gain_yod_byclass}). Ao subdividirmos a análise por municípios, percebemos a presença de recuperações mais recentes espalhadas principalmente em São Paulo, Paraná, Mato Grosso e Minas Gerais. Eventos mais antigos iniciados na década de 1980 também são maioria em alguns municípios em Santa Catarina, São Paulo e Bahia, mas ainda sim, em menor quantidade (Figura \ref{fig:zonal_mun_gain_yod_byclass}).  
 
 \begin{figure}[H]
@@ -324,23 +374,17 @@ Já o grau de declividade para os cenários de ganho permaneceu similar ao cená
     \label{fig:slope_gain_byMun}
 \end{figure}
 
-
 \subsection{Conclusão}
 
 \hspace{13pt} O estudo da paisagem através da análise de séries temporais de imagens orbitais se mostrou essencial para o melhor entendimento dos processos ocorridos em uma região tão importante como a Mata Atlântica. Mesmo sendo um dos biomas mais estudados do pais, a compreensão dos processos de mudança do uso e cobertura do solo através de uma representação visual e a possibilidade da quantificação dos processos só passaram a ser viáveis recentemente. O trabalho apresentou resultados que podem contribuir com projetos de análise e monitoramento do bioma, assim como estudos futuros sobre as mudanças ocorridas nos últimos mais de 30 anos. 
 
 O algoritmo Landtrendr e sua implementação na plataforma Google Earth Engine se mostrou robusto o suficiente para analisar áreas extensas como a do bioma e seus 15 estados com altíssimo rendimento de velocidade de processamento. Ademais, o algoritmo apresentou alto rendimento ao apresentar resultados com acurácia global de 87\% e índice kappa de 0.8. O uso da ferramenta através de \textit{templates} possui ainda capacidade de ampliar sua utilização para públicos ainda maiores e certamente de sua aplicação em ambientes tropicais com qualidade similar aos estudos em áreas temperadas, onde originalmente foi desenvolvido, testado e aplicado.
 
-Atualmente, o bioma mais ganha do que perde vegetação. Grande parte dos eventos de ganho podem ser considerados antigos, iniciados ainda na década de 1990, mas como foi possível observar, existe boa parte do território com áreas de floresta secundária mais recentes, com menos de 20 anos de existência. No geral, foram detectados na última década mais eventos de ganho (11,667 km2) do que de perda (8,796 km2). Estados como o do Paraná e de Santa Catarina tiveram ao mesmo tempo uma boa quantidade de eventos de ganho quanto também de perda com idade similar, o que demonstra alta dinâmica na mudança do uso e cobertura na região.
-
-% falar sobre o slope
-
-Percebemos que o algoritmo apresentou uma boa resposta quando aplicado a contextos de floresta tropical. Mesmo utilizando o Landtrendr com um mesmo conjunto de parâmetros em fitofisionomias que apresentam respostas espectrais com comportamento médio estatisticamente diferentes, o resultado aparentou ser bastante satisfatório. Ainda será necessário realizar um processo de validação nos resultados obtidos para entender melhor o grau e confiança desses resultados.
-
 Apesar da facilidade de uso do Landtrendr em plataformas como o GEE, não se pode dizer que a aplicação do algoritmo é trivial, já que o mesmo possui um custo de processamento elevado mesmo na plataforma do Google. Esta característica acaba gerando a necessidade de códigos um pouco mais complexos, uma capacidade de armazenamento maior e um tempo total de processamento relativamente alto. No entanto, quando comparado a técnicas mais tradicionais, a utilização da técnica ainda apresenta benefícios significativos. Todo o trabalho de pré-processamento e criação de composições processadas como dado de entrada é feito com apenas uma única função, e a escolha dos parâmetros pode ser feita de forma rápida tanto dentro da plataforma como em aplicativos web criados especialmente para a realização de testes. 
 
-Os testes prévios são essenciais, já que o bom resultado do algoritmo está diretamente ligado aos parâmetros utilizados e principalmente a banda/índice que é processada para identificar as mudanças. Estudos mais recentes buscaram entender o comportamento do algoritmo em relação as bandas utilizadas e também houve o desenvolvimento e adição de uma nova camada gerada pelo algoritmo além das camadas de resultado já tradicionais chamada DSNR (\textit{Disturbance Signal-to-Noise Ratio}) \citep{COHEN2018131}. Com camadas como a DSNR, as difenreças encontradas na aplicação do algoritmo em áreas temperadas e tropicais fica ainda mais clara. 
+Quanto aos resultados obtidos, os resultados mostraram um bioma com mais ganhos do que perdas de áreas florestadas. Grande parte dos eventos de ganho podem ser considerados antigos, iniciados ainda na década de 1990, mas como foi possível observar, existe boa parte do território com áreas de floresta secundária mais recentes, com menos de 20 anos de existência. No geral, foram detectados na última década mais eventos de ganho (11,667 km2) do que de perda (8,796 km2). Estados como o do Paraná e de Santa Catarina tiveram ao mesmo tempo uma boa quantidade de eventos de ganho quanto também de perda com idade similar, o que demonstra alta dinâmica na mudança do uso e cobertura na região.
 
-Já para o processo de validação será necessário a utilização da ferramenta TimeSync \citep{COHEN20102911}, desenvolvida pelo mesmo grupo de pesquisadores do Landtrendr. A validação utilizando o TimeSync infelizmente ainda é pouco otimizada e necessita de muitas dependências externas para seu funcionamento. No entanto, ainda é a melhor ferramenta de validação de séries temporais. Algumas áreas em diferentes fitofisionomias serão utilizadas para a coleta de amostras e posteriormente processadas na plataforma.
+Grande parte dos eventos foram detectados em áreas com declividade considerada íngreme em todo o bioma. Isso pode ser um indicativo de disputas por terras em regiões menos estabelecidas. Já grande parte da região sul, centro-oeste e nordeste, declividades mais baixas foram majoritárias, o que pode significar mudanças em remanescentes já altamente fragmentados existentes nas planícies com presença de áreas cultivadas. Outro resultado significativo foi a dominância de eventos de mudança em áreas mais elevadas que a média principalmente no sudeste, o que pode ser indicativo de uma maior mudança em áreas chave para importantes para a manutenção de bacias hidrográficas e outros serviços ecossistêmicos.
 
-Muitas perguntas já puderam ser respondidas através dessa análise, mas outras ainda precisam ser entendidas. Além da validação que servirá de base para a compreensão real da viabilidade da aplicação do algoritmo em ambientes tropicais extensos, ainda será necessário realizar outras análises como o comportamento das unidades de conservação do bioma, assim como o cálculo da idade das florestas secundárias no bioma. \citep{Brooks2014} 
+Este trabalho teve como objetivo utilizar o algoritmo Landtrendr para contribuir para um maior entendimento sobre o bioma da Mata Atlântica e consequentemente para programas e projetos de conservação e restauração de uma região que é um \textit{hotspot} de biodiversidade. O espaço temporal escolhido também possui sua importância devido a sua relevância social e política, vide que representa um momento chave de reestabelecimento da democracia brasileira. O bioma foi o primeiro a ser colonizado e povoado, possui até hoje a maior quantidade da população nacional e um das paisagens mais fragmentadas dentre todos os biomas. No entanto, como os resultados indicam, é um bioma que pode representar a esperança necessária para a conservação e restauração que o pais precisa como busca para um desenvolvimento, de fato, sustentável. 
+

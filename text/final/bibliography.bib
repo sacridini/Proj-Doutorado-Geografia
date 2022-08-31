@@ -1612,3 +1612,160 @@ abstract = {The Shuttle Radar Topography Mission produced the most complete, hig
 year = {2007}
 }
 
+@article{HISLOP2019188,
+title = {A fusion approach to forest disturbance mapping using time series ensemble techniques},
+journal = {Remote Sensing of Environment},
+volume = {221},
+pages = {188-197},
+year = {2019},
+issn = {0034-4257},
+doi = {https://doi.org/10.1016/j.rse.2018.11.025},
+url = {https://www.sciencedirect.com/science/article/pii/S0034425718305340},
+author = {Samuel Hislop and Simon Jones and Mariela Soto-Berelov and Andrew Skidmore and Andrew Haywood and Trung H. Nguyen},
+keywords = {Landsat time series, Forest disturbance, Random Forests, Ensembles},
+abstract = {Time series analysis of Landsat data is widely used for assessing forest change at the large-area scale. Various change detection algorithms have been proposed, each employing different techniques to characterise abrupt disturbance events and longer term trends. However, results can vary significantly, depending on the algorithm, parameters and the spectral index (or indices) chosen. This mismatch in results has led to researchers hypothesizing that an ensemble based approach may increase accuracy. In this study we assess two change detection algorithms (LandTrendr and the R package strucchange), each with three indices (the Normalized Difference Vegetation Index or NDVI, the Normalized Burn Ratio or NBR, and Tasseled Cap Wetness or TCW). We test their ability to detect abrupt disturbances in sclerophyll forests over a 29 year time period, and subsequently evaluate a number of ensembles, using simple fusion rules and Random Forests models. A total of 4087 manually interpreted reference pixels, sampled from 9 million ha of forest, were used for training and validation. In addition, we assess the effects of priming the Random Forests classifier with confusing cases (commission errors from the time series algorithms). Our results clearly show that ensembles combining multiple change detection techniques out-perform any one method. Our most accurate Random Forests model, using an ensemble of all 6 algorithm outputs, along with 3 bi-temporal change rasters (change in NBR, NDVI and TCW), had an overall error rate of 7%, compared with the most accurate single algorithm/index approach (LandTrendr with NBR), which had an overall error of 21%. Our findings also indicate that acceptable results (14% error) can be achieved without the use of traditional change detection algorithms, by using robust reference data and Random Forests classification. However, by priming the classifier with confusing cases informed by the change detection algorithms, commission errors decreased substantially, at the expense of slight increases in omission errors. In fact, a Random Forests ensemble, using the primed training data and only 3 bi-temporal change rasters, was more accurate than any one individual algorithm, with an overall error of 11%. By including some additional metrics derived from Landsat time series (e.g. 2 year changes and overall means) this error was further reduced to 8%. Given that most change detection algorithms have large processing requirements, this suggests that algorithms can be applied to a sample of pixels only, for the sole purpose of training a machine learning classifier. We demonstrate the feasibility of this previously unexplored approach, by creating annual disturbance maps over a large area of forest (9 million ha) and long time period (29 years).}
+}
+
+@article{SHIMIZU201999,
+title = {A comprehensive evaluation of disturbance agent classification approaches: Strengths of ensemble classification, multiple indices, spatio-temporal variables, and direct prediction},
+journal = {ISPRS Journal of Photogrammetry and Remote Sensing},
+volume = {158},
+pages = {99-112},
+year = {2019},
+issn = {0924-2716},
+doi = {https://doi.org/10.1016/j.isprsjprs.2019.10.004},
+url = {https://www.sciencedirect.com/science/article/pii/S0924271619302412},
+author = {Katsuto Shimizu and Tetsuji Ota and Nobuya Mizoue and Shigejiro Yoshida},
+keywords = {Landsat, Time series, Tropical seasonal forest, Causal agent},
+abstract = {Landsat time series images are used for the detection of forest disturbance and the classification of causal agents. Various studies have classified disturbance agents with respect to forest disturbance detected using Landsat time series images. However, the accuracy of the finally classified disturbance agents in different approaches is rarely evaluated. In this study, we investigated the effectiveness of using ensemble classification, and multiple spectral and spatio-temporal information for the accuracy of the classification of disturbance agents in two-stage prediction (i.e., disturbance agents are classified with respect to the detected disturbance) and direct prediction (i.e., disturbance agents are directly classified from Landsat temporal information). Predictor variables were derived from the results of the trajectory-based temporal segmentation of five spectral indices using an annual Landsat time series (2000–2018). We compared six approaches of classifying disturbance agents. For two-stage prediction, we investigated four disturbance detection approaches: threshold-based detection with a single spectral index, random forest (RF) model with a single spectral index, RF model with multiple spectral indices, and RF model with spatio-temporal variables. The detected disturbance pixels were aggregated to disturbance patches and classified into disturbance agents. For direct prediction, two RF models one with only temporal variables and the other with spatio-temporal variables were constructed to classify pixel-based disturbance agents. The overall accuracy of the RF model using spatio-temporal variables for direct prediction was 92.4% and significantly higher than that of the RF model for two-stage prediction (90.9%). The use of an RF model based only on a single spectral index in disturbance detection was not effective for improving accuracy compared with threshold-based detection; however, the use of an RF model based on multiple spectral indices in disturbance detection improved the accuracy of the final classification of disturbance agents. Introducing spatial variables in RF models was effective for improving the overall classification accuracy in pixel-based direct prediction. However, it was not necessary in two-stage prediction because of spatial information contained in the patches. Although a spatially discontinuous appearance was observed for the RF model for directly classifying disturbance agents, this could be an alternative approach to two-stage prediction when considering the relative classification performance and simplicity of implementation.}
+}
+
+@article{YANG2018353,
+title = {Detecting the dynamics of vegetation disturbance and recovery in surface mining area via Landsat imagery and LandTrendr algorithm},
+journal = {Journal of Cleaner Production},
+volume = {178},
+pages = {353-362},
+year = {2018},
+issn = {0959-6526},
+doi = {https://doi.org/10.1016/j.jclepro.2018.01.050},
+url = {https://www.sciencedirect.com/science/article/pii/S0959652618300611},
+author = {Yongjun Yang and Peter D. Erskine and Alex M. Lechner and David Mulligan and Shaoliang Zhang and Zhenyu Wang},
+keywords = {Environmental assessment, Land cover change, Remote sensing, Mining, Rehabilitation, Cumulative D/R ratio},
+abstract = {The vegetation cover dynamics such as the spatial extent and pattern of disturbance and recovery are necessary information in mining regulation and environmental sustainability assessment. The acquisition and further analysis of these dynamics are hampered due to that the vegetation cover in mining area changes both spatially and temporally. This paper aims to assess the capability of LandTrendr algorithm and Landsat imagery in surface mining area to detect the vegetation change and characterize the historical dynamics. Curragh coal mine site in Australia was taken as an illustrative application. The spatial extent, change pattern and attributes of vegetation disturbance and recovery during 1989–2014 were detected and mapped. The overall accuracy for disturbance and recovery classification are 85.21% and 86.59% respectively. The results show that more than 2982 ha out of 4573 ha of disturbed land in entire Curragh had been covered by vegetation, while 95% of the oldest part of the operation (Central Curragh) has been seeded and rehabilitated. The average value of cumulative Disturbance to Recovery ratio for entire Curragh mine site was about 59%. This suggests that the Curragh mine has been complying with mining legislation by undertaking progressive rehabilitation and vegetation establishment efforts. The advantage of LandTrendr is that it relies on free data from Landsat archive and has straightforward operating procedures. It can provide environmental assessment and rehabilitation with serviceable data including raster maps, yearly data, cumulative Disturbance to Recovery ratio and change attributes. The LandTrendr algorithm and Landsat imagery could be supplemented with field validation and study such as recovery success analysis to facilitate better environmental assessment and mining sustainability.}
+}
+
+@article{DEMARZO2021102310,
+title = {Characterizing forest disturbances across the Argentine Dry Chaco based on Landsat time series},
+journal = {International Journal of Applied Earth Observation and Geoinformation},
+volume = {98},
+pages = {102310},
+year = {2021},
+issn = {1569-8432},
+doi = {https://doi.org/10.1016/j.jag.2021.102310},
+url = {https://www.sciencedirect.com/science/article/pii/S0303243421000179},
+author = {Teresa {De Marzo} and Dirk Pflugmacher and Matthias Baumann and Eric F. Lambin and Ignacio Gasparri and Tobias Kuemmerle},
+keywords = {Ensemble classification, Forest degradation, LandTrendr, Trajectory analyses, Tropical dry forests, Random Forests},
+abstract = {Forest loss in the tropics affects large areas, but whereas full forest conversions are routinely assessed, forest degradation patters remain often unclear. This is particularly so for the world’s tropical dry forests, where remote sensing of forest disturbances is challenging due to high canopy complexity, strong phenology and climate variability, and diverse degradation drivers. Here, we used the full depth of the Landsat archive and devised an approach to detect disturbances related to forest degradation across the entire Argentine Dry Chaco (about 489,000 km2) over a 30-year timespan. We used annual time series of different spectral indices, summarized for three seasonal windows, and applied LandTrendr to temporally segment each time series. The resulting pixel-level forest disturbance metrics then served as input for a Random Forests classification which we used to produce an area-wide disturbance map, and associated yearly area estimates of disturbed forest. Finally, we evaluated disturbance trends in relation to climate and soil conditions. Our best model produced a disturbance map with an overall accuracy of 79%, with a balanced error distribution. A total of 8% (24,877 ± 860 km2) of the remaining forest in the Argentine Dry Chaco have been affected by forest disturbances between 1990 and 2017. Diverse spatial patterns of forest disturbances indicate a variety of agents driving disturbances. We also found the disturbed area to vary strongly between years, with larger areas being disturbed during drought years. Our approach shows that it is possible to robustly map forest disturbances in tropical dry forests using Landsat time series, and demonstrates the value of ensemble approaches to capture spectrally-complex and heterogeneous land-change processes. For the Chaco, a global deforestation hotspot, our analyses provide the first Landsat-based assessment of forest disturbance in remaining forests, highlighting the need to better consider such disturbances in assessments of carbon budgets and biodiversity change.}
+}
+
+@article{GELABERT2021112521,
+title = {LandTrendr smoothed spectral profiles enhance woody encroachment monitoring},
+journal = {Remote Sensing of Environment},
+volume = {262},
+pages = {112521},
+year = {2021},
+issn = {0034-4257},
+doi = {https://doi.org/10.1016/j.rse.2021.112521},
+url = {https://www.sciencedirect.com/science/article/pii/S0034425721002418},
+author = {P.J. Gelabert and M. Rodrigues and J. {de la Riva} and A. Ameztegui and M.T. Sebastià and C. Vega-Garcia},
+keywords = {Landsat, LandTrendr, Land abandonment, SVM},
+abstract = {Secondary succession (SS) is one of the main consequences of the abandonment of agricultural and forestry practices in rural areas, causing -among other processes- woody encroachment on former pastures and croplands. In this study we model and monitor the spatial evolution of SS over semi-natural grassland communities in the mountain range of the Pyrenees in Spain, during the last 36 years (1984-2019). Independent variables for ‘annual-based’ and ‘period-based’ modeling were drawn from a suite of Surface Reflectance Landsat images, LandTrendr (LT)-algorithm-adjusted images and LT outputs. Support vector machine (SVM) classifiers were trained and tested using all possible variable combinations of all the aforementioned datasets. The best modeling strategy involved yearly time series of LT-adjusted Tasseled Cap Brightness (TCB) and Wetness (TCW) axes as predictors, attaining a F1-score of 0.85, a Matthew Correlation Coefficient (MCC) of 0.67 and an AUC 0.83. Woodlands encroached above 480,000 ha of grasslands and crops during the study period. A model using LT outputs for the whole period also denoted good performance (F1-score = 0.85, MCC = 0.75) and estimated a similar area of woodland expansion (~509,000 ha), but this ‘period’ approach was unable to provide temporal information on the year or the encroachment dynamics. Our results suggest an overall proportion of 66% for the Pyrenees being affected by SS, with higher intensity in the west-central part, decreasing towards the eastern end.}
+}
+
+@article{MURILLOSANDOVAL2021102283,
+title = {No peace for the forest: Rapid, widespread land changes in the Andes-Amazon region following the Colombian civil war},
+journal = {Global Environmental Change},
+volume = {69},
+pages = {102283},
+year = {2021},
+issn = {0959-3780},
+doi = {https://doi.org/10.1016/j.gloenvcha.2021.102283},
+url = {https://www.sciencedirect.com/science/article/pii/S0959378021000625},
+author = {Paulo J. Murillo-Sandoval and Emma Gjerdseth and Camilo Correa-Ayram and David Wrathall and Jamon {Van Den Hoek} and Liliana M. Dávalos and Robert Kennedy},
+keywords = {Post-conflict, Landsat, Landscape metrics, Land cover change, Armed conflict},
+abstract = {Negative environmental impacts of violent conflict have been observed worldwide. Whether or not active global conflicts are declining in number remains hotly debated, the number of countries entering post-conflict periods is on the rise, and the impact of this transition on land cover changes remains poorly understood. In Colombia, though large-scale armed conflict has concluded, the post-conflict period represents an ongoing threat to forest conservation, putting at risk commitments to meet global conservation goals and even those stipulated in the peace accord. This paper aims to assess land cover change associated with the Colombian conflict in the Andes-Amazon region between 1988 and 2019. First, we use the Landsat archive to map land cover and characterize the spatial patterns of change at the regional level. Second, to empirically identify the effect of conflict on land cover change, we employ a difference-in-difference approach using local conflict events data. During conflict (1988–2011), land cover in the Andes-Amazon remained relatively stable, however during the post-conflict period (2012–2019), the conversion from forest to agriculture increased by 40%. We find that forest cover surrounding conflict events (1 km radius) decreased significantly, on average by ~ 19% during conflict, which accelerated to ~ 30% in the post-conflict period. Similarly, agriculture expansion is most substantial during the post-conflict period, but exclusively in municipalities with population below the 50th percentile. Landscape metrics show that in peripheral municipalities (<50th), agriculture occurs in clumped distributions during the conflict period. Meanwhile, during the post-conflict period, this expansion happens more quickly, with significantly greater agricultural patch sizes than during the conflict period. We conclude that a slow implementation of conservation governance, the emergence of illegal land markets, and illicit land uses (i.e., coca and illegal cattle ranching) may accelerate land cover change in the coming years.}
+}
+
+@article{YE2021101221,
+title = {Developing a new disturbance index for tracking gradual change of forest ecosystems in the hilly red soil region of southern China using dense Landsat time series},
+journal = {Ecological Informatics},
+volume = {61},
+pages = {101221},
+year = {2021},
+issn = {1574-9541},
+doi = {https://doi.org/10.1016/j.ecoinf.2021.101221},
+url = {https://www.sciencedirect.com/science/article/pii/S1574954121000121},
+author = {Lu Ye and Meiling Liu and Xiangnan Liu and Lihong Zhu},
+keywords = {Forest gradual change, Vegetation index, Evaluation aspects, LandTrendr algorithm, Landsat time series, Google earth engine},
+abstract = {Gradual change is prevalent across the forest landscape and generates long-lasting effects for the landscape surface; thus, tracking long-term gradual change can effectively characterize forest change processes. The objective of this study was to establish a vegetation index for change monitoring so as to determine long-term gradual change processes of forest ecosystems in typical red soil areas. The study area was located in Hengyang City, Hunan Province, China. Landsat images, field survey, and auxiliary data were collected to devise a disturbance sensitive vegetation index (DSVI) as an indicator of forest change. Long-term (1985–2019) forest changes were detected using the LandTrendr algorithm on the Google Earth Engine (GEE), while three evaluation aspects of velocity, frequency, and variance were used to analyze the processes of forest gradual change in red soil regions. Results indicate that the DSVI is a suitable index for forest change detection due to its stronger sensitivity compared to other indexes. Further, it shows excellent change detection ability for different types of gradual changes, such as those caused by drought and significant soil erosion. Furthermore, 97.26% of the forests showed gradual change, and approximately 2/3 of monitored forests showed an increasing growth trend while 1/3 showed a decreasing trend. The dominant (28.33%) forest disturbance frequency indicated instability in red soil regions. Dispersion degree of forest variance was mainly low (48.46%) or medium (28.84%). This research establishes the DSVI as a promising method to track forest gradual change and contributes to a better understanding of gradual change processes of forest landscape over time.}
+}
+
+@Article{rs12101612,
+AUTHOR = {Xiao, Wu and Deng, Xinyu and He, Tingting and Chen, Wenqi},
+TITLE = {Mapping Annual Land Disturbance and Reclamation in a Surface Coal Mining Region Using Google Earth Engine and the LandTrendr Algorithm: A Case Study of the Shengli Coalfield in Inner Mongolia, China},
+JOURNAL = {Remote Sensing},
+VOLUME = {12},
+YEAR = {2020},
+NUMBER = {10},
+ARTICLE-NUMBER = {1612},
+URL = {https://www.mdpi.com/2072-4292/12/10/1612},
+ISSN = {2072-4292},
+ABSTRACT = {The development and utilization of mining resources are basic requirements for social and economic development. Both open-pit mining and underground mining have impacts on land, ecology, and the environment. Of these, open-pit mining is considered to have the greatest impact due to the drastic changes wrought on the original landform and the disturbance to vegetation. As awareness of environmental protection has grown, land reclamation has been included in the mining process. In this study, we used the Shengli Coalfield in the eastern steppe region of Inner Mongolia to demonstrate a mining and reclamation monitoring process. We combined the Google Earth Engine platform with time series Landsat images and the LandTrendr algorithm to identify and monitor mining disturbances to grassland and land reclamation in open-pit mining areas of the coalfield between 2003 and 2019. Pixel-based trajectories were used to reconstruct the temporal evolution of vegetation, and sequential Landsat archive data were used to achieve accurate measures of disturbances to vegetation. The results show that: (1) the proposed method can be used to determine the years in which vegetation disturbance and recovery occurred with accuracies of 86.53% and 78.57%, respectively; (2) mining in the Shengli mining area resulted in the conversion of 89.98 km2 of land from grassland, water, etc., to barren earth, and only 23.54 km2 was reclaimed, for a reclamation rate of 26.16%; and (3) the method proposed in this paper can achieve fast, efficient identification of surface mining land disturbances and reclamation, and has the potential to be applied to other similar areas.},
+DOI = {10.3390/rs12101612}
+}
+
+@Article{f11030362,
+AUTHOR = {Vogeler, Jody C. and Slesak, Robert A. and Fekety, Patrick A. and Falkowski, Michael J.},
+TITLE = {Characterizing over Four Decades of Forest Disturbance in Minnesota, USA},
+JOURNAL = {Forests},
+VOLUME = {11},
+YEAR = {2020},
+NUMBER = {3},
+ARTICLE-NUMBER = {362},
+URL = {https://www.mdpi.com/1999-4907/11/3/362},
+ISSN = {1999-4907},
+ABSTRACT = {Spatial information about disturbance driven patterns of forest structure and ages across landscapes provide a valuable resource for all land management efforts including cross-ownership collaborative forest treatments and restoration. While disturbance events in general are known to impact stand characteristics, the agent of change may also influence recovery and the supply of ecosystem services. Our study utilizes the full extent of the Landsat archive to identify the timing, extent, magnitude, and agent, of the most recent fast disturbance event for all forested lands within Minnesota, USA. To account for the differences in the Landsat sensors through time, specifically the coarser spatial, spectral, and radiometric resolutions of the early MSS sensors, we employed a two-step approach, first harmonizing spectral indices across the Landsat sensors, then applying a segmentation algorithm to fit temporal trends to the time series to identify abrupt forest disturbance events. We further incorporated spectral, topographic, and land protection information in our classification of the agent of change for all disturbance patches. After allowing two years for the time series to stabilize, we were able to identify the most recent fast disturbance events across Minnesota from 1974–2018 with a change versus no-change validation accuracy of 97.2% ± 1.9%, and higher omission (14.9% ± 9.3%) than commission errors (1.6% ± 1.9%) for the identification of change patches. Our classification of the agent of change exhibited an overall accuracy of 96.5% ± 1.9% with classes including non-disturbed forest, land conversion, fire, flooding, harvest, wind/weather, and other rare natural events. Individual class errors varied, but all class user and producer accuracies were above 78%. The unmatched nature of the Landsat archive for providing comparable forest attribute and change information across more than four decades highlights the value of the totality of the Landsat program to the larger geospatial, ecological research, and forest management communities.},
+DOI = {10.3390/f11030362}
+}
+
+@Article{land9010027,
+AUTHOR = {Rathnayake, Chithrangani WM and Jones, Simon and Soto-Berelov, Mariela},
+TITLE = {Mapping Land Cover Change over a 25-Year Period (1993–2018) in Sri Lanka Using Landsat Time-Series},
+JOURNAL = {Land},
+VOLUME = {9},
+YEAR = {2020},
+NUMBER = {1},
+ARTICLE-NUMBER = {27},
+URL = {https://www.mdpi.com/2073-445X/9/1/27},
+ISSN = {2073-445X},
+ABSTRACT = {Land use and land cover change (LULCC) are dynamic over time and space due to human and biophysical factors. Accurate and up-to-date LULCC information is a mandatory part of environmental change analysis and natural resource management. In Sri Lanka, there is a significant temporal gap in the existing LULCC information due to the civil war that took place from 1983 to 2009. In order to fill this gap, this study presents a whole-country LULCC map for Sri Lanka over a 25-year period using Landsat time-series imagery from 1993 to 2018. The LandTrendr change detection algorithm, utilising the normalised burn ratio (NBR) and normalised difference vegetation index (NDVI), was used to develop spectral trajectories over this time period. A land cover change and disturbance map was created with random forest, using 2117 manually interpreted reference pixels, of which 75% were used for training and 25% for validation. The model achieved an overall accuracy of 94.14%. The study found that 890,003.52 hectares (ha) (13.5%) of the land has changed, while 72,266.31 ha (1%) was disturbed (but not permanently changed) over the last 25 years. LULCC was found to concentrate on two distinct periods (2000 to 2004 and 2010 to 2018) when social and economic stability allowed greater land clearing and investment opportunities. In addition, LULCC was found to impact forest reserves and protected areas. This new set of Sri Lanka-wide land cover information describing change and disturbance may provide a reference point for policy makers and other stakeholders to aid in decision making and for planning purposes.},
+DOI = {10.3390/land9010027}
+}
+
+@article{senf_mapping_2021,
+	title = {Mapping the forest disturbance regimes of {Europe}},
+	volume = {4},
+	issn = {2398-9629},
+	url = {https://doi.org/10.1038/s41893-020-00609-y},
+	doi = {10.1038/s41893-020-00609-y},
+	abstract = {Changes in forest disturbances can have strong impacts on forests, yet we lack consistent data on Europe’s forest disturbance regimes and their changes over time. Here we used satellite data to map three decades of forest disturbances across continental Europe, and analysed the patterns and trends in disturbance size, frequency and severity. Between 1986 and 2016, 17\% of Europe’s forest area was disturbed by anthropogenic and/or natural causes. We identified 36 million individual disturbance patches with a mean patch size of 1.09 ha, which equals an annual average of 0.52 disturbance patches per km2 of forest area. The majority of disturbances were stand replacing. While trends in disturbance size were highly variable, disturbance frequency consistently increased and disturbance severity decreased. Here we present a continental-scale characterization of Europe’s forest disturbance regimes and their changes over time, providing spatial information that is critical for understanding the ongoing changes in Europe’s forests.},
+	number = {1},
+	journal = {Nature Sustainability},
+	author = {Senf, Cornelius and Seidl, Rupert},
+	month = jan,
+	year = {2021},
+	pages = {63--70},
+}
+
+
+
